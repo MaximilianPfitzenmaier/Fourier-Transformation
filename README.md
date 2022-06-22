@@ -18,7 +18,7 @@ Using the latest LTS version of node.js should work just fine: https://nodejs.or
 ### Clone the repository
 
 1. Open a terminal and move to your folder.
-2. Being there, clone this repository into a new directory called 'project' with `git clone git@github.com:MaximilianPfitzenmaier/bv-project.git project`.
+2. Being there, clone this repository into a new directory called 'project' with `git clone git@github.com:MaximilianPfitzenmaier/Fourier-Transformation.git project`.
 3. Move the `.git` folder to the project webroot (`mv project/.git .`) and delete the cloned folder afterwards: `rm -rf project`
 4. Restore the project structure with `git reset HEAD --hard`. Now you should see a lot of additional files in your folder.
 
@@ -78,10 +78,10 @@ https://youmightnotneedjquery.com/
 
 # Timetable
 
--   [ ] Abgabe Projektplan/Exposee bis zum 17. Mai 2022
--   [ ] Präsentation der Projektideen am 19. Mai 2022, 16 Uhr c.t.
--   [ ] Das Exposee soll eine Beschreibung des Projektziels mit einzelnen Meilensteinen sowie eine Aufteilung nach Praktikumsteilnehmern beinhalten. Das Thema des Projekts muss vorher mit dem Tutor abgesprochen sein.
--   [ ] Zwischenpräsentation am 23. Juni 2022, 16 Uhr c.t. (Abgabe 22.6.)
+-   [x] Abgabe Projektplan/Exposee bis zum 17. Mai 2022
+-   [x] Präsentation der Projektideen am 19. Mai 2022, 16 Uhr c.t.
+-   [x] Das Exposee soll eine Beschreibung des Projektziels mit einzelnen Meilensteinen sowie eine Aufteilung nach Praktikumsteilnehmern beinhalten. Das Thema des Projekts muss vorher mit dem Tutor abgesprochen sein.
+-   [x] Zwischenpräsentation am 23. Juni 2022, 16 Uhr c.t. (Abgabe 22.6.)
 -   [ ] Abschlusspräsentation Ende des Semesters
 -   [ ] Abgabe der Ausarbeitung Anfang Semesterferien
 
