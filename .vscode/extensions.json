@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "mgmcdermott.vscode-language-babel",
+    "esbenp.prettier-vscode",
+    "EditorConfig.EditorConfig",
+    "aaron-bond.better-comments",
+    "naumovs.color-highlight",
+    "ms-vsliveshare.vsliveshare",
+    "pkief.material-icon-theme",
+    "msjsdiag.vscode-react-native",
+    "syler.sass-indented",
+    "maxvanderschee.web-accessibility",
+    "eamodio.gitlens",
+    "dbaeumer.vscode-eslint"
+  ]
+}
