@@ -1,4 +1,4 @@
-// Left Bottom
+// right Bottom
 import React from 'react';
 
 class ImagSpectral extends React.Component {
