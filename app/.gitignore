@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+# Local Netlify folder
+.netlify
+
+
 # testing
 /coverage
 
