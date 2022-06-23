@@ -4,10 +4,13 @@
     "es2021": true
   },
   "globals": {},
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react/jsx-runtime"],
   "parserOptions": {
+    "sourceType": "module",
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "rules": {
     "quotes": ["warn", "single", { "allowTemplateLiterals": true }]

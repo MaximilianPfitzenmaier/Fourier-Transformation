@@ -1,0 +1,20 @@
+.fourier {
+  display: grid;
+  &--basegrid-fourier {
+    grid-template-columns: var(--count);
+    grid-template-areas: var(--areas);
+    padding: 0;
+
+    .real,
+    .imag {
+      grid-area: var(--area);
+      width: 50vh;
+      height: 50vh;
+    }
+  }
+
+  canvas {
+    width: 600px;
+    height: 300px;
+  }
+}

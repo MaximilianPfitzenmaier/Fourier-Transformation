@@ -1,4 +1,5 @@
 import React from 'react';
+import BaseGrid from './components/fft/BaseGrid';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,7 +8,9 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div className="App">HELLO</div>
+        <div className="App">
+          <BaseGrid></BaseGrid>
+        </div>
       </>
     );
   }

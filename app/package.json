@@ -6,11 +6,11 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "parcel src/index.html --open -p 3000",
-    "oldstart": "parcel watch src/index.js && parcel src/index.js --open",
+    "oldstart": "parcel watch src/index.js",
     "build": "parcel build src/index.js --no-source-maps",
     "lint": "eslint \"./src/**/*.js\" --fix"
   },
-  "author": "",
+  "author": "Maximilian Pfitzenmaier, Thanh-Michael Giang",
   "license": "MIT",
   "dependencies": {
     "prop-types": "^15.8.1",
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.2",
+    "bootstrap": "^5.1.3",
     "eslint": "^8.18.0",
     "eslint-plugin-react": "^7.30.0",
     "parcel": "^2.6.2",

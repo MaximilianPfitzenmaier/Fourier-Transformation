@@ -1,0 +1,23 @@
+@use 'sass:math';
+@use 'sass:color';
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+// Colors
+$primary: rgb(80, 83, 196);
+$orange: rgb(249, 101, 16);
+$red: rgb(204, 39, 36);
+$secondary: rgba(0, 197, 180, 1);
+$blue: rgb(50, 95, 255);
+$white: rgb(255, 255, 255);
+$dark: rgb(38, 38, 38);
+
+$base-font-size: 18px;
+// $primary-70: transparentize($primary, 0.3);
