@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class ImagSpatial extends React.Component {
   render() {
-    const { getBaseFunctionFromSpatialToSpectral } = this.props;
+    const { getBaseFunctionFromSpatialToSpectral} = this.props;
     return (
       <>
         <canvas id="imagspatial" className="graph imagspatial"></canvas>
@@ -15,6 +15,8 @@ class ImagSpatial extends React.Component {
         <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrOnes', 'imagspatial')}>Ones</button>
         <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrPyra', 'imagspatial')}>Pyra</button>
         <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrGaus', 'imagspatial')}>Gaus</button>
+
+
       </>
     );
   }
@@ -24,4 +26,6 @@ export default ImagSpatial;
 
 ImagSpatial.propTypes = {
   getBaseFunctionFromSpatialToSpectral: PropTypes.func,
+
+
 };

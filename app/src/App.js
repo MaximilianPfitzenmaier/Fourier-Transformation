@@ -46,7 +46,7 @@ class App extends React.Component {
         <div className="fourier-ctr">
           <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
             <div className="real real--spatial" style={{ '--area': ' left_top' }}>
-              <RealSpatial getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} drawfunction={this.drawfunction}/>
+              <RealSpatial getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} drawfunction={this.drawfunction} clickGraph={this.clickGraph}/>
             </div>
             <div className="real real--spectral" style={{ '--area': ' left_bottom' }}>
               <RealSpectral />

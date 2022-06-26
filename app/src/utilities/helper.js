@@ -52,7 +52,6 @@ export const getBaseFunctionFromSpatialToSpectral = function (funcName, type) {
   // get state
   const userData = { ...this.state.userData };
   const button = type;
-  console.log(button)
   // set imag/real to state
   switch (funcName) {
     case 'arrZero':
@@ -219,7 +218,7 @@ export function Coord(con,arr) {
     ctx.lineWidth = canvas.width/256;
     ctx.strokeStyle = "#000000";
     ctx.moveTo(i, 0);
-    ctx.lineTo(i, arr[count]*peaks);
+    ctx.lineTo(i, -arr[count]*peaks);
     count++;
     ctx.stroke();
   }
@@ -272,13 +271,14 @@ export function drawClickedFunct(con, baseArr) {
     ctx.lineWidth = canvas.width/256;
     ctx.strokeStyle = "#000000";
     ctx.moveTo(i, 0);
-    ctx.lineTo(i, baseArr[count]*peaks);
+    ctx.lineTo(i, -baseArr[count]*peaks);
     count++;
     ctx.stroke();
   }
 }
 
 
+// calculate peaks and look if smalles or bigges peak is higher return the highest peak
 export function findPeaks(arr) {
   const numbers = arr;
 
@@ -291,4 +291,17 @@ export function findPeaks(arr) {
 
   return peaks;
 }
+
+export const clickGraph = function () {
+  const graphArr = ['imagspatial','imagspectral','realspatial','realspectral'];
+
+  graphArr.forEach(el => {
+    const canvas = document.getElementById(el);
+    canvas.addEventListener('click', function() {
+      console.log('JAMES WE HAVE A WINNER!!!!')
+     }, false);
+  });
+
+}
+
 
