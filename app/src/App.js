@@ -21,7 +21,9 @@ class App extends React.Component {
 
     // Bind Helper functions
     this.getBaseFunctionFromSpatialToSpectral = HelperUtils.getBaseFunctionFromSpatialToSpectral.bind(this);
+    this.drawfunction = HelperUtils.drawfunction.bind(this);
     this.setSessionStorage = HelperUtils.setSessionStorage.bind(this);
+
 
     // Set initial state
     this.state = {};
@@ -44,7 +46,7 @@ class App extends React.Component {
         <div className="fourier-ctr">
           <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
             <div className="real real--spatial" style={{ '--area': ' left_top' }}>
-              <RealSpatial getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} />
+              <RealSpatial getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} drawfunction={this.drawfunction}/>
             </div>
             <div className="real real--spectral" style={{ '--area': ' left_bottom' }}>
               <RealSpectral />

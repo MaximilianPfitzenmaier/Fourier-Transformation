@@ -6,20 +6,22 @@ class RealSpatial extends React.Component {
   constructor(props) {
     super(props);
   }
-
+  componentDidUpdate(){
+    this.drawfunction;
+  }
   render() {
-    const { getBaseFunctionFromSpatialToSpectral } = this.props;
+    const { drawfunction ,getBaseFunctionFromSpatialToSpectral} = this.props;
 
     return (
       <>
         <canvas id="realspatial" width="auto" height="auto" className="graph realspatial"></canvas>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrZero', 'real')}>Zero</button>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrSin', 'real')}>Sin</button>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrCos', 'real')}>Cos</button>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrKamm', 'real')}>Kamm</button>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrOnes', 'real')}>Ones</button>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrPyra', 'real')}>Pyra</button>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrGaus', 'real')}>Gaus</button>
+        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrZero', 'realspatial')}>Zero</button>
+        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrSin', 'realspatial')}>Sin</button>
+        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrCos', 'realspatial')}>Cos</button>
+        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrKamm', 'realspatial')}>Kamm</button>
+        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrOnes', 'realspatial')}>Ones</button>
+        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrPyra', 'realspatial')}>Pyra</button>
+        <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrGaus', 'realspatial')}>Gaus</button>
       </>
     );
   }
@@ -29,4 +31,5 @@ export default RealSpatial;
 
 RealSpatial.propTypes = {
   getBaseFunctionFromSpatialToSpectral: PropTypes.func,
+  drawfunction: PropTypes.func,
 };
