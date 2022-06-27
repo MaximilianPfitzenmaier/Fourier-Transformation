@@ -1,5 +1,6 @@
 // data
 import { arrZero } from '../assets/data/basedata';
+
 export const getSessionStorage = function () {
   let data = {};
   if (!sessionStorage.getItem('bv_project')) {
@@ -10,15 +11,11 @@ export const getSessionStorage = function () {
   return data;
 };
 
-export const initialize = async function () {
-  // * 1. Init App Data
-  const appData = {};
-
-  // * 2. Init User Data
-  const userData = await getSessionStorage();
+export const initialize = function () {
+  // *1. Init User Data
+  const userData = getSessionStorage();
 
   this.setState({
-    appData,
     userData,
   });
 };

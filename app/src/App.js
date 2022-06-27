@@ -25,8 +25,10 @@ class App extends React.Component {
 
     // Bind Graph functions
     this.getBaseFunctionFromSpatialToSpectral = GraphUtils.getBaseFunctionFromSpatialToSpectral.bind(this);
-    this.drawfunction = GraphUtils.drawfunction.bind(this);
-    this.clickGraph = GraphUtils.clickGraph.bind(this);
+    // this.drawFunction = GraphUtils.drawFunction.bind(this);
+    // this.createCanvas = GraphUtils.createCanvas.bind(this);
+    // this.drawfunction = GraphUtils.drawfunction.bind(this);
+    // this.clickGraph = GraphUtils.clickGraph.bind(this);
 
     // Set initial state
     this.state = {};
@@ -48,18 +50,14 @@ class App extends React.Component {
         <Navigation />
         <div className="fourier-ctr">
           <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
-            <div className="real real--spatial" style={{ '--area': ' left_top' }}>
-              <RealSpatial getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} drawfunction={this.drawfunction} />
-            </div>
-            <div className="real real--spectral" style={{ '--area': ' left_bottom' }}>
-              <RealSpectral />
-            </div>
-            <div className="imag imag--spatial" style={{ '--area': ' right_top' }}>
-              <ImagSpatial getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} />
-            </div>
-            <div className="imag imag--spectral" style={{ '--area': ' right_bottom' }}>
-              <ImagSpectral />
-            </div>
+            <RealSpatial
+              // createCanvas={this.createCanvas}
+              // drawFunction={this.drawFunction}
+              getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral}
+            />
+            <RealSpectral />
+            <ImagSpatial drawFunction={this.drawFunction} getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} />
+            <ImagSpectral />
           </div>
         </div>
       </>

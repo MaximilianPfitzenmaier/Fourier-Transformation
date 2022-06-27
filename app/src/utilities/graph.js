@@ -1,3 +1,4 @@
+import React from 'react';
 import { arrCos, arrKamm, arrOnes, arrPyra, arrSin, arrZero, arrGaus } from '../assets/data/basedata';
 import { calculateFFT } from './calculateFFT';
 
@@ -7,78 +8,88 @@ import { calculateFFT } from './calculateFFT';
  */
 export const getBaseFunctionFromSpatialToSpectral = function (funcName, type) {
   // get state
-  const userData = { ...this.state.userData };
+  const userData = JSON.parse(JSON.stringify(this.state.userData));
 
-  console.log();
   const button = type;
+
   // set imag/real to state
   switch (funcName) {
     case 'arrZero':
       button === 'realspatial' ? (userData.realSpatialArray = arrZero) : (userData.imagSpatialArray = arrZero);
-      this.setState({
-        userData,
-      });
       break;
 
     case 'arrSin':
       button === 'realspatial' ? (userData.realSpatialArray = arrSin) : (userData.imagSpatialArray = arrSin);
-      this.setState({
-        userData,
-      });
       break;
 
     case 'arrCos':
       button === 'realspatial' ? (userData.realSpatialArray = arrCos) : (userData.imagSpatialArray = arrCos);
-      this.setState({
-        userData,
-      });
       break;
 
     case 'arrKamm':
       button === 'realspatial' ? (userData.realSpatialArray = arrKamm) : (userData.imagSpatialArray = arrKamm);
-      this.setState({
-        userData,
-      });
       break;
 
     case 'arrOnes':
       button === 'realspatial' ? (userData.realSpatialArray = arrOnes) : (userData.imagSpatialArray = arrOnes);
-      this.setState({
-        userData,
-      });
       break;
 
     case 'arrPyra':
       button === 'realspatial' ? (userData.realSpatialArray = arrPyra) : (userData.imagSpatialArray = arrPyra);
-      this.setState({
-        userData,
-      });
       break;
 
     case 'arrGaus':
       button === 'realspatial' ? (userData.realSpatialArray = arrGaus) : (userData.imagSpatialArray = arrGaus);
-      this.setState({
-        userData,
-      });
       break;
 
     default:
       break;
   }
 
-  // fire fft from stored arrays in state
-  const calcArr = calculateFFT(userData.realSpatialArray, userData.imagSpatialArray);
-  const baseArr = [];
+  this.setState({
+    userData,
+  });
 
-  calcArr[0].push(userData.imagSpatialArray);
-  calcArr[0].push(userData.realSpatialArray);
-  baseArr.push(userData.realSpatialArray);
-  baseArr.push(userData.imagSpatialArray);
-  drawfunction(calcArr, button, baseArr);
+  console.log(calculateFFT(userData.realSpatialArray, userData.imagSpatialArray));
+  // fire fft from stored arrays in state
+  // const calcArr = calculateFFT(userData.realSpatialArray, userData.imagSpatialArray);
+  // const baseArr = [];
+
+  // calcArr[0].push(userData.imagSpatialArray);
+  // calcArr[0].push(userData.realSpatialArray);
+  // baseArr.push(userData.realSpatialArray);
+  // baseArr.push(userData.imagSpatialArray);
+  //drawfunction(calcArr, button, baseArr);
 };
 
+// export const createCanvas = function (canvasID) {
+//   // React.createElement(type, { props }, children);
+//   // const canvas = React.createElement('canvas', { id: canvasID, ref: canvasID });
+//   // return canvas;
+//   return <canvas ref={canvasID} width={300} height={300} />;
+// };
+
+// export const drawFunction = function (canvasID) {
+//   // get state
+//   const userData = JSON.parse(JSON.stringify(this.state.userData));
+
+//   let canvasArray = [];
+//   for (const [key, value] of Object.entries(userData)) {
+//     if (key == canvasID) {
+//       canvasArray = [value];
+//     }
+//   }
+
+//   const canvas = createCanvas(canvasID);
+//   console.log(canvas);
+//   const ctx = canvas.getContext('2d');
+//   // const ctx = canvas.ref.realspatial.getContext('2d');
+//   // console.log(ctx);
+// };
+/*
 // Draw Function
-export const drawfunction = function (arr, id, baseArr) {
+export const draw = function (arr, id, baseArr) {
+  console.log('draw ' + id);
   // declare new Graphs for each Grid in Array
   const graphArr = ['imagspatial', 'imagspectral', 'realspatial', 'realspectral'];
 
@@ -130,7 +141,11 @@ export const drawfunction = function (arr, id, baseArr) {
 export function Coord(con, arr) {
   // user defined properties
 
-  const canvas = document.getElementById(con);
+  console.log(arr);
+
+  // const canvas = document.getElementById(con);
+  const canvas = document.createElement('canvas');
+
   const ctx = canvas.getContext('2d');
 
   ctx.save();
@@ -176,6 +191,8 @@ export function Coord(con, arr) {
     count++;
     ctx.stroke();
   }
+
+  return canvas;
 }
 
 export function drawClickedFunct(con, baseArr) {
@@ -255,3 +272,5 @@ export const clickGraph = function () {
     );
   });
 };
+
+*/
