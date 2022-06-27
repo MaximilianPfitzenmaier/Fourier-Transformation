@@ -6,11 +6,9 @@ class RealSpatial extends React.Component {
   constructor(props) {
     super(props);
   }
-  componentDidUpdate(){
-    this.drawfunction;
-  }
+
   render() {
-    const { clickGraph, drawfunction ,getBaseFunctionFromSpatialToSpectral} = this.props;
+    const { getBaseFunctionFromSpatialToSpectral } = this.props;
 
     return (
       <>
@@ -22,7 +20,6 @@ class RealSpatial extends React.Component {
         <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrOnes', 'realspatial')}>Ones</button>
         <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrPyra', 'realspatial')}>Pyra</button>
         <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrGaus', 'realspatial')}>Gaus</button>
-
       </>
     );
   }
@@ -33,5 +30,4 @@ export default RealSpatial;
 RealSpatial.propTypes = {
   getBaseFunctionFromSpatialToSpectral: PropTypes.func,
   drawfunction: PropTypes.func,
-  clickGraph: PropTypes.func,
 };

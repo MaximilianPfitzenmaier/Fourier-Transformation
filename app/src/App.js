@@ -10,6 +10,7 @@ import ImagSpatial from './components/fft/ImagSpatial';
 // functions
 import * as InitUtils from './utilities/init';
 import * as HelperUtils from './utilities/helper';
+import * as GraphUtils from './utilities/graph';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,10 +21,12 @@ class App extends React.Component {
     this.getSessionStorage = InitUtils.getSessionStorage.bind(this);
 
     // Bind Helper functions
-    this.getBaseFunctionFromSpatialToSpectral = HelperUtils.getBaseFunctionFromSpatialToSpectral.bind(this);
-    this.drawfunction = HelperUtils.drawfunction.bind(this);
     this.setSessionStorage = HelperUtils.setSessionStorage.bind(this);
 
+    // Bind Graph functions
+    this.getBaseFunctionFromSpatialToSpectral = GraphUtils.getBaseFunctionFromSpatialToSpectral.bind(this);
+    this.drawfunction = GraphUtils.drawfunction.bind(this);
+    this.clickGraph = GraphUtils.clickGraph.bind(this);
 
     // Set initial state
     this.state = {};
@@ -46,7 +49,7 @@ class App extends React.Component {
         <div className="fourier-ctr">
           <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
             <div className="real real--spatial" style={{ '--area': ' left_top' }}>
-              <RealSpatial getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} drawfunction={this.drawfunction} clickGraph={this.clickGraph}/>
+              <RealSpatial getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} drawfunction={this.drawfunction} />
             </div>
             <div className="real real--spectral" style={{ '--area': ' left_bottom' }}>
               <RealSpectral />

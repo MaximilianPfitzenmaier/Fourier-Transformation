@@ -3,7 +3,7 @@ import { arrZero } from '../assets/data/basedata';
 export const getSessionStorage = function () {
   let data = {};
   if (!sessionStorage.getItem('bv_project')) {
-    data = { realSpatialArray: arrZero, imagSpatialArray: arrZero, realSpectralArray: arrZero, imagSpectralArray: arrZero };
+    data = { realspatial: arrZero, imagspatial: arrZero, realspectral: arrZero, imagspectral: arrZero };
   } else {
     data = JSON.parse(sessionStorage.getItem('bv_project'));
   }
