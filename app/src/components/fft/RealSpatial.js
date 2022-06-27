@@ -35,7 +35,6 @@ class RealSpatial extends React.Component {
     // ! const canvas = this.refs.canvasID;
     const canvas = this.refs.realspatial;
     const ctx = this.refs.realspatial.getContext('2d');
-    console.log(canvas);
 
     ctx.save();
 
@@ -101,8 +100,6 @@ class RealSpatial extends React.Component {
     return (
       <div className="real real--spatial" style={{ '--area': ' left_top' }}>
         {this.createCanvas(this.canvasID)}
-
-        <button onClick={() => this.drawFunction(this.canvasID)}>Malen</button>
         <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrZero', this.canvasID)}>Zero</button>
         <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrSin', this.canvasID)}>Sin</button>
         <button onClick={() => getBaseFunctionFromSpatialToSpectral('arrCos', this.canvasID)}>Cos</button>
