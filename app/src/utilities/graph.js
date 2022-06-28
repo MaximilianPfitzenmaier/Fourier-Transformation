@@ -13,7 +13,7 @@ export const createCanvas = function (canvasID) {
 };
 
 /**
- *  @param funcArray Array for one of the Base functions e.g arrSin, arrCos
+ *  @param funcArray Array for one of the Base functions e.g sin, cos
  *  @param type string if button is for real or imag part
  */
 export const getBaseFunction = function (funcArray, type) {

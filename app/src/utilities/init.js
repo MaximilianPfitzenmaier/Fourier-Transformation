@@ -1,10 +1,10 @@
 // data
-import { arrZero } from '../assets/data/basedata';
+import { zero } from '../assets/data/basedata';
 
 export const getSessionStorage = function () {
   let data = {};
   if (!sessionStorage.getItem('bv_project')) {
-    data = { realspatial: arrZero, imagspatial: arrZero, realspectral: arrZero, imagspectral: arrZero };
+    data = { realspatial: zero[128], imagspatial: zero[128], realspectral: zero[128], imagspectral: zero[128] };
   } else {
     data = JSON.parse(sessionStorage.getItem('bv_project'));
   }
