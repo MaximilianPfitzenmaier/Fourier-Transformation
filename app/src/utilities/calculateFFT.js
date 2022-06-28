@@ -22,7 +22,6 @@ export const calculateFFT = (real, imag, inverse) => {
    *   Software.
    */
 
-  console.log(inverse);
   const realexp = [...real];
   const imagexp = [...imag];
   const inputArray = [realexp, imagexp];
@@ -201,9 +200,10 @@ export const calculateFFT = (real, imag, inverse) => {
     return result;
   }
 
-  if (!inverse) {
-    return transform(inputArray[0], inputArray[1]);
-  } else {
-    return transform(inputArray[1], inputArray[0]);
-  }
+  // if (!inverse) {
+  //   return transform(inputArray[0], inputArray[1]);
+  // } else {
+  //   return transform(inputArray[1], inputArray[0]);
+  // }
+  return transform(inputArray[0], inputArray[1]);
 };

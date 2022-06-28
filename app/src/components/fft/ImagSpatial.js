@@ -8,8 +8,8 @@ class ImagSpatial extends React.Component {
   constructor(props) {
     super(props);
 
-    this.drawFunction = GraphUtils.drawFunction.bind(this);
     this.createCanvas = GraphUtils.createCanvas.bind(this);
+    this.drawFunction = GraphUtils.drawFunction.bind(this);
   }
 
   canvasID = 'imagspatial';
