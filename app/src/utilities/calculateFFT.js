@@ -21,6 +21,8 @@ export const calculateFFT = (real, imag) => {
    *   out of or in connection with the Software or the use or other dealings in the
    *   Software.
    */
+  // const realexp = JSON.parse(JSON.stringify(real));
+  // const imagexp = JSON.parse(JSON.stringify(imag));
   const realexp = [...real];
   const imagexp = [...imag];
   const inputArray = [realexp, imagexp];

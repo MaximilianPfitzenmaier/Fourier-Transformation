@@ -10,6 +10,7 @@
     "ecmaVersion": "latest"
   },
   "rules": {
-    "quotes": ["warn", "single", { "allowTemplateLiterals": true }]
+    "quotes": ["warn", "single", { "allowTemplateLiterals": true }],
+    "no-unused-vars": ["warn"]
   }
 }

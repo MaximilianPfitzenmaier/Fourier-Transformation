@@ -25,10 +25,7 @@ class App extends React.Component {
 
     // Bind Graph functions
     this.getBaseFunctionFromSpatialToSpectral = GraphUtils.getBaseFunctionFromSpatialToSpectral.bind(this);
-    // this.drawFunction = GraphUtils.drawFunction.bind(this);
-    // this.createCanvas = GraphUtils.createCanvas.bind(this);
-    // this.drawfunction = GraphUtils.drawfunction.bind(this);
-    // this.clickGraph = GraphUtils.clickGraph.bind(this);
+    this.getBaseFunctionFromSpectralToSpatial = GraphUtils.getBaseFunctionFromSpectralToSpatial.bind(this);
 
     // Set initial state
     this.state = {};
@@ -45,23 +42,20 @@ class App extends React.Component {
   }
 
   render() {
-    return (
+    const s = this.state;
+    return s.userData ? (
       <>
         <Navigation />
         <div className="fourier-ctr">
           <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
-            <RealSpatial
-              // createCanvas={this.createCanvas}
-              // drawFunction={this.drawFunction}
-              getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral}
-            />
-            <RealSpectral />
-            <ImagSpatial drawFunction={this.drawFunction} getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} />
-            <ImagSpectral />
+            <RealSpatial arrayFromState={s.userData.realspatial} getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} />
+            <RealSpectral arrayFromState={s.userData.realspectral} getBaseFunctionFromSpectralToSpatial={this.getBaseFunctionFromSpectralToSpatial} />
+            <ImagSpatial arrayFromState={s.userData.imagspatial} getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} />
+            <ImagSpectral arrayFromState={s.userData.imagspectral} getBaseFunctionFromSpectralToSpatial={this.getBaseFunctionFromSpectralToSpatial} />
           </div>
         </div>
       </>
-    );
+    ) : null;
   }
 }
 
