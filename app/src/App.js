@@ -24,8 +24,7 @@ class App extends React.Component {
     this.setSessionStorage = HelperUtils.setSessionStorage.bind(this);
 
     // Bind Graph functions
-    this.getBaseFunctionFromSpatialToSpectral = GraphUtils.getBaseFunctionFromSpatialToSpectral.bind(this);
-    this.getBaseFunctionFromSpectralToSpatial = GraphUtils.getBaseFunctionFromSpectralToSpatial.bind(this);
+    this.getBaseFunction = GraphUtils.getBaseFunction.bind(this);
 
     // Set initial state
     this.state = {};
@@ -48,10 +47,10 @@ class App extends React.Component {
         <Navigation />
         <div className="fourier-ctr">
           <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
-            <RealSpatial arrayFromState={s.userData.realspatial} getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} />
-            <RealSpectral arrayFromState={s.userData.realspectral} getBaseFunctionFromSpectralToSpatial={this.getBaseFunctionFromSpectralToSpatial} />
-            <ImagSpatial arrayFromState={s.userData.imagspatial} getBaseFunctionFromSpatialToSpectral={this.getBaseFunctionFromSpatialToSpectral} />
-            <ImagSpectral arrayFromState={s.userData.imagspectral} getBaseFunctionFromSpectralToSpatial={this.getBaseFunctionFromSpectralToSpatial} />
+            <RealSpatial arrayFromState={s.userData.realspatial} getBaseFunction={this.getBaseFunction} />
+            <RealSpectral arrayFromState={s.userData.realspectral} getBaseFunction={this.getBaseFunction} />
+            <ImagSpatial arrayFromState={s.userData.imagspatial} getBaseFunction={this.getBaseFunction} />
+            <ImagSpectral arrayFromState={s.userData.imagspectral} getBaseFunction={this.getBaseFunction} />
           </div>
         </div>
       </>

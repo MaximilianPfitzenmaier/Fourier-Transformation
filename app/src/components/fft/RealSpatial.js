@@ -23,17 +23,17 @@ class RealSpatial extends React.Component {
   }
 
   render() {
-    const { getBaseFunctionFromSpatialToSpectral } = this.props;
+    const { getBaseFunction } = this.props;
 
     return (
       <div className="real real--spatial" style={{ '--area': ' left_top' }}>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral(arrZero, this.canvasID)}>Zero</button>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral(arrSin, this.canvasID)}>Sin</button>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral(arrCos, this.canvasID)}>Cos</button>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral(arrKamm, this.canvasID)}>Kamm</button>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral(arrOnes, this.canvasID)}>Ones</button>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral(arrPyra, this.canvasID)}>Pyra</button>
-        <button onClick={() => getBaseFunctionFromSpatialToSpectral(arrGaus, this.canvasID)}>Gaus</button>
+        <button onClick={() => getBaseFunction(arrZero, this.canvasID)}>Zero</button>
+        <button onClick={() => getBaseFunction(arrSin, this.canvasID)}>Sin</button>
+        <button onClick={() => getBaseFunction(arrCos, this.canvasID)}>Cos</button>
+        <button onClick={() => getBaseFunction(arrKamm, this.canvasID)}>Kamm</button>
+        <button onClick={() => getBaseFunction(arrOnes, this.canvasID)}>Ones</button>
+        <button onClick={() => getBaseFunction(arrPyra, this.canvasID)}>Pyra</button>
+        <button onClick={() => getBaseFunction(arrGaus, this.canvasID)}>Gaus</button>
         {this.createCanvas(this.canvasID)}
       </div>
     );
@@ -43,6 +43,6 @@ class RealSpatial extends React.Component {
 export default RealSpatial;
 
 RealSpatial.propTypes = {
-  getBaseFunctionFromSpatialToSpectral: PropTypes.func,
+  getBaseFunction: PropTypes.func,
   arrayFromState: PropTypes.array,
 };

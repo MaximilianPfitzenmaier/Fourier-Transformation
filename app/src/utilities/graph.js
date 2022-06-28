@@ -1,36 +1,60 @@
-import React from 'react';
-
 import { calculateFFT } from './calculateFFT';
 
 /**
- *  @param funcName string for one of the Base functions e.g arrSin, arrCos
- *  @param type string if button is for real or imag part
+ *  @param canvasID String for the ID and the REF
+ *  @return canvas React element with ref as ID
  */
-export const getBaseFunctionFromSpatialToSpectral = function (funcName, type) {
-  // get state
-  const userData = JSON.parse(JSON.stringify(this.state.userData));
-  userData[type] = funcName;
-
-  // fire fft from stored arrays in state
-  const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
-
-  this.setState({
-    userData: {
-      ...userData,
-      realspectral,
-      imagspectral,
-    },
-  });
-};
-
-export const getBaseFunctionFromSpectralToSpatial = function (funcName, type) {
-  console.log(funcName, type);
-};
-
 export const createCanvas = function (canvasID) {
   return <canvas ref={canvasID} width={300} height={300} />;
 };
 
+/**
+ *  @param funcArray Array for one of the Base functions e.g arrSin, arrCos
+ *  @param type string if button is for real or imag part
+ */
+export const getBaseFunction = function (funcArray, type) {
+  // get state
+  const userData = JSON.parse(JSON.stringify(this.state.userData));
+  let inverse = false;
+
+  // set userData Array of this canvas to clicked function
+  userData[type] = funcArray;
+
+  // call inverse FFT if spectral button
+  if (type == 'realspectral' || type == 'imagspectral') {
+    inverse = true;
+
+    // fire INVERSE fft from stored arrays in state
+    const [[realspatial, imagspatial]] = calculateFFT(userData.realspatial, userData.imagspatial, inverse);
+
+    // set all the other Arrays in userData
+    this.setState({
+      userData: {
+        ...userData,
+        realspatial,
+        imagspatial,
+      },
+    });
+  } else {
+    // fire fft from stored arrays in state
+    const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial, inverse);
+
+    // set all the other Arrays in userData
+    this.setState({
+      userData: {
+        ...userData,
+        realspectral,
+        imagspectral,
+      },
+    });
+  }
+};
+
+/**
+ *  @param canvasID Canvas ID to identify (realspatial, realspectral, imagspatial, imagspectral)
+ *  @param arrayFromUserData Array from userData to be drawn
+ *  @return void
+ */
 export const drawFunction = function (canvasID, arrayFromUserData) {
   const canvasArray = arrayFromUserData;
 
@@ -82,7 +106,10 @@ export const drawFunction = function (canvasID, arrayFromUserData) {
   }
 };
 
-// calculate peaks and look if smalles or bigges peak is higher return the highest peak
+/**
+ *  @param arr Array which has to be drawn
+ *  @return highest Peak
+ */
 export function findPeaks(arr) {
   const numbers = arr;
 

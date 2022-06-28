@@ -1,4 +1,4 @@
-export const calculateFFT = (real, imag) => {
+export const calculateFFT = (real, imag, inverse) => {
   /*
    * Free FFT and convolution (compiled from TypeScript)
    *
@@ -21,8 +21,8 @@ export const calculateFFT = (real, imag) => {
    *   out of or in connection with the Software or the use or other dealings in the
    *   Software.
    */
-  // const realexp = JSON.parse(JSON.stringify(real));
-  // const imagexp = JSON.parse(JSON.stringify(imag));
+
+  console.log(inverse);
   const realexp = [...real];
   const imagexp = [...imag];
   const inputArray = [realexp, imagexp];
@@ -201,5 +201,9 @@ export const calculateFFT = (real, imag) => {
     return result;
   }
 
-  return transform(inputArray[0], inputArray[1]);
+  if (!inverse) {
+    return transform(inputArray[0], inputArray[1]);
+  } else {
+    return transform(inputArray[1], inputArray[0]);
+  }
 };
