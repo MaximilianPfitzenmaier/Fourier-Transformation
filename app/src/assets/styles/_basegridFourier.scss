@@ -8,8 +8,8 @@
     .real,
     .imag {
       grid-area: var(--area);
-      width: 50vh;
-      height: 50vh;
+      width: auto;
+      height: 45vh;
     }
   }
 
@@ -17,5 +17,9 @@
     width: 100vh;
     height: 48vh;
     padding: 10px;
+  }
+
+  select {
+    position: absolute;
   }
 }

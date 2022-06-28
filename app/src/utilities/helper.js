@@ -1,3 +1,5 @@
+import { zero } from '../assets/data/basedata';
+
 export const slideUp = (target, duration) => {
   target.style.transitionProperty = 'height, margin, padding';
   target.style.transitionDuration = duration + 'ms';
@@ -48,4 +50,23 @@ export const setSessionStorage = function () {
     sessionStorage.removeItem('bv_project');
     sessionStorage.setItem('bv_project', JSON.stringify(this.state.userData));
   }
+};
+
+// Set current Array values to SessionStorage
+export const handleArraySizeChange = function (event) {
+  // get selected value
+  const size = Number(event.target.value);
+
+  // get state
+  const userData = JSON.parse(JSON.stringify(this.state.userData));
+
+  // build new arraysize and redraw all canvas
+  const data = { arraySize: size, realspatial: zero[size], imagspatial: zero[size], realspectral: zero[size], imagspectral: zero[size] };
+  // set new array size
+  this.setState({
+    userData: {
+      ...userData,
+      ...data,
+    },
+  });
 };

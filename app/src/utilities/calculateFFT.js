@@ -1,4 +1,4 @@
-export const calculateFFT = (real, imag, inverse) => {
+export const calculateFFT = (real, imag) => {
   /*
    * Free FFT and convolution (compiled from TypeScript)
    *
@@ -200,10 +200,5 @@ export const calculateFFT = (real, imag, inverse) => {
     return result;
   }
 
-  // if (!inverse) {
-  //   return transform(inputArray[0], inputArray[1]);
-  // } else {
-  //   return transform(inputArray[1], inputArray[0]);
-  // }
   return transform(inputArray[0], inputArray[1]);
 };

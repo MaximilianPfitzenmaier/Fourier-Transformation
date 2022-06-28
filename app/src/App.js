@@ -22,6 +22,7 @@ class App extends React.Component {
 
     // Bind Helper functions
     this.setSessionStorage = HelperUtils.setSessionStorage.bind(this);
+    this.handleArraySizeChange = HelperUtils.handleArraySizeChange.bind(this);
 
     // Bind Graph functions
     this.getBaseFunction = GraphUtils.getBaseFunction.bind(this);
@@ -45,13 +46,18 @@ class App extends React.Component {
     return s.userData ? (
       <>
         <Navigation />
-        <div className="fourier-ctr">
-          <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
-            <RealSpatial arrayFromState={s.userData.realspatial} getBaseFunction={this.getBaseFunction} />
-            <RealSpectral arrayFromState={s.userData.realspectral} getBaseFunction={this.getBaseFunction} />
-            <ImagSpatial arrayFromState={s.userData.imagspatial} getBaseFunction={this.getBaseFunction} />
-            <ImagSpectral arrayFromState={s.userData.imagspectral} getBaseFunction={this.getBaseFunction} />
-          </div>
+        <select defaultValue={64} onChange={this.handleArraySizeChange}>
+          <option value={16}>16</option>
+          <option value={32}>32</option>
+          <option value={64}>64</option>
+          <option value={128}>128</option>
+        </select>
+
+        <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
+          <RealSpatial arraySize={s.userData.arraySize} arrayFromState={s.userData.realspatial} getBaseFunction={this.getBaseFunction} />
+          <RealSpectral arraySize={s.userData.arraySize} arrayFromState={s.userData.realspectral} getBaseFunction={this.getBaseFunction} />
+          <ImagSpatial arraySize={s.userData.arraySize} arrayFromState={s.userData.imagspatial} getBaseFunction={this.getBaseFunction} />
+          <ImagSpectral arraySize={s.userData.arraysize} arrayFromState={s.userData.imagspectral} getBaseFunction={this.getBaseFunction} />
         </div>
       </>
     ) : null;

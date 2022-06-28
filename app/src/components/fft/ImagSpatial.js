@@ -10,6 +10,7 @@ class ImagSpatial extends React.Component {
 
     this.createCanvas = GraphUtils.createCanvas.bind(this);
     this.drawFunction = GraphUtils.drawFunction.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   canvasID = 'imagspatial';
@@ -22,17 +23,24 @@ class ImagSpatial extends React.Component {
     this.drawFunction(this.canvasID, this.props.arrayFromState);
   }
 
+  handleChange(event) {
+    const array = JSON.parse(event.target.value);
+    const size = this.props.arraySize;
+    this.props.getBaseFunction(array[size], this.canvasID);
+  }
+
   render() {
-    const { getBaseFunction } = this.props;
     return (
       <div className="imag imag--spatial" style={{ '--area': ' right_top' }}>
-        <button onClick={() => getBaseFunction(zero[128], this.canvasID)}>Zero</button>
-        <button onClick={() => getBaseFunction(sin[128], this.canvasID)}>Sin</button>
-        <button onClick={() => getBaseFunction(cos[128], this.canvasID)}>Cos</button>
-        <button onClick={() => getBaseFunction(kamm[128], this.canvasID)}>kamm</button>
-        <button onClick={() => getBaseFunction(ones[128], this.canvasID)}>Ones</button>
-        <button onClick={() => getBaseFunction(pyra[128], this.canvasID)}>Pyra</button>
-        <button onClick={() => getBaseFunction(gaus[128], this.canvasID)}>Gaus</button>
+        <select onChange={this.handleChange}>
+          <option value={JSON.stringify(zero)}>Zero</option>
+          <option value={JSON.stringify(sin)}>Sin</option>
+          <option value={JSON.stringify(cos)}>Cos</option>
+          <option value={JSON.stringify(kamm)}>Kamm</option>
+          <option value={JSON.stringify(ones)}>Ones</option>
+          <option value={JSON.stringify(pyra)}>Pyra</option>
+          <option value={JSON.stringify(gaus)}>Gaus</option>
+        </select>
         {this.createCanvas(this.canvasID)}
       </div>
     );
@@ -44,4 +52,5 @@ export default ImagSpatial;
 ImagSpatial.propTypes = {
   getBaseFunction: PropTypes.func,
   arrayFromState: PropTypes.array,
+  arraySize: PropTypes.number,
 };

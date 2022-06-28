@@ -17,22 +17,16 @@ export const createCanvas = function (canvasID) {
  *  @param type string if button is for real or imag part
  */
 export const getBaseFunction = function (funcArray, type) {
-  console.log(funcArray);
-  console.log(type);
-
   // get state
   const userData = JSON.parse(JSON.stringify(this.state.userData));
-  let inverse = false;
 
   // set userData Array of this canvas to clicked function
   userData[type] = funcArray;
 
   // call inverse FFT if spectral button
   if (type == 'realspectral' || type == 'imagspectral') {
-    inverse = true;
-
     // fire INVERSE fft from stored arrays in state
-    const [[imagspatial, realspatial]] = calculateFFT(userData.imagspectral, userData.realspectral, inverse);
+    const [[imagspatial, realspatial]] = calculateFFT(userData.imagspectral, userData.realspectral);
 
     // set all the other Arrays in userData
     this.setState({
@@ -44,7 +38,7 @@ export const getBaseFunction = function (funcArray, type) {
     });
   } else {
     // fire fft from stored arrays in state
-    const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial, inverse);
+    const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
 
     // set all the other Arrays in userData
     this.setState({
