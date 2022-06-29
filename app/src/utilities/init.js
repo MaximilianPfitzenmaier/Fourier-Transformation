@@ -1,5 +1,6 @@
 // data
 import { zero } from '../assets/data/basedata';
+import { labels } from '../assets/data/labels';
 
 export const getSessionStorage = function () {
   let data = {};
@@ -21,7 +22,9 @@ export const getSessionStorage = function () {
 export const initialize = function () {
   // *1. Init User Data
   const userData = getSessionStorage();
+  const appData = { labels: labels };
   this.setState({
+    appData,
     userData,
   });
 };

@@ -16,12 +16,15 @@ export const createCanvas = function (canvasID) {
  *  @param funcArray Array for one of the Base functions e.g sin, cos
  *  @param type string if button is for real or imag part
  */
-export const getBaseFunction = function (funcArray, type) {
+export const getBaseFunction = function (funcArray, type, newSelectedBaseFunctions) {
   // get state
   const userData = JSON.parse(JSON.stringify(this.state.userData));
 
   // set userData Array of this canvas to clicked function
   userData[type] = funcArray;
+
+  // set userData selected Basefunction for this canvas
+  userData['selectedBaseFunctions'][type] = newSelectedBaseFunctions;
 
   // call inverse FFT if spectral button
   if (type == 'realspectral' || type == 'imagspectral') {

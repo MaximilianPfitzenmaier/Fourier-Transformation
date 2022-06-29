@@ -54,10 +54,35 @@ class App extends React.Component {
         </select>
 
         <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
-          <RealSpatial arraySize={s.userData.arraySize} arrayFromState={s.userData.realspatial} getBaseFunction={this.getBaseFunction} />
-          <RealSpectral arraySize={s.userData.arraySize} arrayFromState={s.userData.realspectral} getBaseFunction={this.getBaseFunction} />
-          <ImagSpatial arraySize={s.userData.arraySize} arrayFromState={s.userData.imagspatial} getBaseFunction={this.getBaseFunction} />
-          <ImagSpectral arraySize={s.userData.arraysize} arrayFromState={s.userData.imagspectral} getBaseFunction={this.getBaseFunction} />
+          <RealSpatial
+            selectedBaseFunctions={s.userData.selectedBaseFunctions.realspatial}
+            labels={s.appData.labels}
+            arraySize={s.userData.arraySize}
+            arrayFromState={s.userData.realspatial}
+            getBaseFunction={this.getBaseFunction}
+          />
+          <RealSpectral
+            selectedBaseFunctions={s.userData.selectedBaseFunctions.realspectral}
+            labels={s.appData.labels}
+            arraySize={s.userData.arraySize}
+            arrayFromState={s.userData.realspectral}
+            getBaseFunction={this.getBaseFunction}
+          />
+
+          <ImagSpatial
+            selectedBaseFunctions={s.userData.selectedBaseFunctions.imagspatial}
+            labels={s.appData.labels}
+            arraySize={s.userData.arraySize}
+            arrayFromState={s.userData.imagspatial}
+            getBaseFunction={this.getBaseFunction}
+          />
+          <ImagSpectral
+            selectedBaseFunctions={s.userData.selectedBaseFunctions.imagspectral}
+            labels={s.appData.labels}
+            arraySize={s.userData.arraySize}
+            arrayFromState={s.userData.imagspectral}
+            getBaseFunction={this.getBaseFunction}
+          />
         </div>
       </>
     ) : null;

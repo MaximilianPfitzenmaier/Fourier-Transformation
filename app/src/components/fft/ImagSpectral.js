@@ -24,22 +24,42 @@ class ImagSpectral extends React.Component {
   }
 
   handleChange(event) {
+    const selectedIndex = event.target.options.selectedIndex;
+    const newSelectedBaseFunctions = event.target.options[selectedIndex].getAttribute('data-key');
     const array = JSON.parse(event.target.value);
     const size = this.props.arraySize;
-    this.props.getBaseFunction(array[size], this.canvasID);
+
+    this.props.getBaseFunction(array[size], this.canvasID, newSelectedBaseFunctions);
   }
 
+  getValue() {}
+
   render() {
+    const { labels } = this.props;
     return (
       <div className="imag imag--spectral" style={{ '--area': ' right_bottom' }}>
-        <select onChange={this.handleChange}>
-          <option value={JSON.stringify(zero)}>Zero</option>
-          <option value={JSON.stringify(sin)}>Sin</option>
-          <option value={JSON.stringify(cos)}>Cos</option>
-          <option value={JSON.stringify(kamm)}>Kamm</option>
-          <option value={JSON.stringify(ones)}>Ones</option>
-          <option value={JSON.stringify(pyra)}>Pyra</option>
-          <option value={JSON.stringify(gaus)}>Gaus</option>
+        <select defaultValue={this.getValue()} onChange={this.handleChange}>
+          <option key={labels.zero} data-key={labels.zero} value={JSON.stringify(zero)}>
+            {labels.zero}
+          </option>
+          <option key={labels.sin} data-key={labels.sin} value={JSON.stringify(sin)}>
+            {labels.sin}
+          </option>
+          <option key={labels.cos} data-key={labels.cos} value={JSON.stringify(cos)}>
+            {labels.cos}
+          </option>
+          <option key={labels.kamm} data-key={labels.kamm} value={JSON.stringify(kamm)}>
+            {labels.kamm}
+          </option>
+          <option key={labels.ones} data-key={labels.ones} value={JSON.stringify(ones)}>
+            {labels.ones}
+          </option>
+          <option key={labels.pyra} data-key={labels.pyra} value={JSON.stringify(pyra)}>
+            {labels.pyra}
+          </option>
+          <option key={labels.gaus} data-key={labels.gaus} value={JSON.stringify(gaus)}>
+            {labels.gaus}
+          </option>
         </select>
         {this.createCanvas(this.canvasID)}
       </div>
@@ -53,4 +73,6 @@ ImagSpectral.propTypes = {
   getBaseFunction: PropTypes.func,
   arrayFromState: PropTypes.array,
   arraySize: PropTypes.number,
+  selectedBaseFunctions: PropTypes.string,
+  labels: PropTypes.object,
 };
