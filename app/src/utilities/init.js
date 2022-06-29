@@ -6,10 +6,10 @@ export const getSessionStorage = function () {
   let data = {};
   if (!sessionStorage.getItem('bv_project')) {
     const selectedBaseFunctions = {
-      realspatial: 'zero',
-      realspectral: 'zero',
-      imagspatial: 'zero',
-      imagspectral: 'zero',
+      realspatial: JSON.stringify(zero),
+      realspectral: JSON.stringify(zero),
+      imagspatial: JSON.stringify(zero),
+      imagspectral: JSON.stringify(zero),
     };
 
     data = { selectedBaseFunctions, arraySize: 64, realspatial: zero[64], imagspatial: zero[64], realspectral: zero[64], imagspectral: zero[64] };

@@ -6,4 +6,5 @@ export const labels = {
   ones: 'Konstant',
   pyra: 'Pyramide',
   gaus: 'Gaus',
+  custom: 'Custom',
 };

@@ -17,6 +17,8 @@ export const createCanvas = function (canvasID) {
  *  @param type string if button is for real or imag part
  */
 export const getBaseFunction = function (funcArray, type, newSelectedBaseFunctions) {
+  // const selectedBaseFunctions = 'selectedBaseFunctions';
+
   // get state
   const userData = JSON.parse(JSON.stringify(this.state.userData));
 
@@ -31,6 +33,10 @@ export const getBaseFunction = function (funcArray, type, newSelectedBaseFunctio
     // fire INVERSE fft from stored arrays in state
     const [[imagspatial, realspatial]] = calculateFFT(userData.imagspectral, userData.realspectral);
 
+    // set dropdown to custom
+    userData['selectedBaseFunctions']['realspatial'] = '0';
+    userData['selectedBaseFunctions']['imagspatial'] = '0';
+
     // set all the other Arrays in userData
     this.setState({
       userData: {
@@ -42,6 +48,10 @@ export const getBaseFunction = function (funcArray, type, newSelectedBaseFunctio
   } else {
     // fire fft from stored arrays in state
     const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
+
+    // set dropdown to custom
+    userData['selectedBaseFunctions']['realspectral'] = '0';
+    userData['selectedBaseFunctions']['imagspectral'] = '0';
 
     // set all the other Arrays in userData
     this.setState({
