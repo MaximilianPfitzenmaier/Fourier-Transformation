@@ -12,6 +12,9 @@ class ImagSpatial extends React.Component {
     this.createCanvas = GraphUtils.createCanvas.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getDropdown = Filter.getDropdown.bind(this);
+
+    // Refs
+    this.select = React.createRef();
   }
 
   canvasID = 'imagspatial';
@@ -20,13 +23,19 @@ class ImagSpatial extends React.Component {
     this.drawFunction(this.canvasID, this.props.arrayFromState);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
+    if (prevProps.selectedBaseFunctions !== this.props.selectedBaseFunctions) {
+      this.updateValue(this.props.selectedBaseFunctions);
+    }
+
     const p = this.props;
     this.drawFunction(this.canvasID, p.arrayFromState);
     this.getDropdown(p.labels, p.selectedBaseFunctions);
   }
 
-  getValue() {}
+  updateValue(value) {
+    this.select.current.value = value;
+  }
 
   handleChange(event) {
     const newValue = event.target.value;
@@ -41,7 +50,7 @@ class ImagSpatial extends React.Component {
     const { labels, selectedBaseFunctions } = this.props;
     return (
       <div className="imag imag--spatial" style={{ '--area': ' right_top' }}>
-        {this.getDropdown(labels, selectedBaseFunctions)}
+        {this.getDropdown(labels, selectedBaseFunctions, this.select)}
         {this.createCanvas(this.canvasID)}
       </div>
     );

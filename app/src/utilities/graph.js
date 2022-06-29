@@ -1,7 +1,7 @@
 import { calculateFFT } from './calculateFFT';
 
 /*
-TODO: 16 - 128 dropdown, zero all button, handfree
+TODO: zero all button, handfree
 */
 
 /**
@@ -75,10 +75,8 @@ export const drawFunction = function (canvasID, arrayFromUserData) {
   const ctx = this.refs[canvasID].getContext('2d');
 
   ctx.save();
-
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
   ctx.restore();
 
   const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);

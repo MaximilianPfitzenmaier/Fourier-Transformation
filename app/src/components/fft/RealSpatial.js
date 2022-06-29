@@ -12,6 +12,9 @@ class RealSpatial extends React.Component {
     this.createCanvas = GraphUtils.createCanvas.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getDropdown = getDropdown.bind(this);
+
+    // Refs
+    this.select = React.createRef();
   }
 
   canvasID = 'realspatial';
@@ -20,10 +23,18 @@ class RealSpatial extends React.Component {
     this.drawFunction(this.canvasID, this.props.arrayFromState);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
+    if (prevProps.selectedBaseFunctions !== this.props.selectedBaseFunctions) {
+      this.updateValue(this.props.selectedBaseFunctions);
+    }
+
     const p = this.props;
     this.drawFunction(this.canvasID, p.arrayFromState);
     this.getDropdown(p.labels, p.selectedBaseFunctions);
+  }
+
+  updateValue(value) {
+    this.select.current.value = value;
   }
 
   handleChange(event) {
@@ -32,8 +43,6 @@ class RealSpatial extends React.Component {
       const array = JSON.parse(event.target.value);
       const size = this.props.arraySize;
       this.props.getBaseFunction(array[size], this.canvasID, newValue);
-    } else {
-      console.log('hello');
     }
   }
 
@@ -41,7 +50,7 @@ class RealSpatial extends React.Component {
     const { labels, selectedBaseFunctions } = this.props;
     return (
       <div className="real real--spatial" style={{ '--area': ' left_top' }}>
-        {this.getDropdown(labels, selectedBaseFunctions)}
+        {this.getDropdown(labels, selectedBaseFunctions, this.select)}
         {this.createCanvas(this.canvasID)}
       </div>
     );

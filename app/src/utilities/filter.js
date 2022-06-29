@@ -1,8 +1,8 @@
 import { cos, kamm, ones, pyra, sin, zero, gaus } from '../assets/data/basedata';
 
-export const getDropdown = function (labels, selectedBaseFunction) {
+export const getDropdown = function (labels, selectedBaseFunction, refName) {
   return (
-    <select defaultValue={selectedBaseFunction} onChange={this.handleChange}>
+    <select ref={refName} defaultValue={selectedBaseFunction} onChange={this.handleChange}>
       <option value={JSON.stringify(zero)}>{labels.zero}</option>
       <option value={JSON.stringify(sin)}>{labels.sin}</option>
       <option value={JSON.stringify(cos)}>{labels.cos}</option>
