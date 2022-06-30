@@ -1,6 +1,6 @@
 import { calculateFFT } from './calculateFFT';
 
-// TODO: dropdown zahl richtig anzeigen, wenn gezeichnet wird dropdowns auf custom stellen
+// TODO: dropdown zahl richtig anzeigen, wenn gezeichnet wird dropdowns auf custom stellen, on mouseDown einmal zeichnen
 /**
  *  @param canvasID String for the ID and the REF
  *  @return canvas React element with ref as ID
