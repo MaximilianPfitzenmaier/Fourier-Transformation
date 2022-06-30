@@ -1,4 +1,4 @@
-import { resetAllDropdowns } from './helper';
+import { getCustomBoolean, resetAllDropdowns } from './helper';
 
 // data
 import { zero } from '../assets/data/basedata';
@@ -8,7 +8,8 @@ export const getSessionStorage = function () {
   let data = {};
   if (!sessionStorage.getItem('bv_project')) {
     const selectedBaseFunctions = resetAllDropdowns();
-    data = { selectedBaseFunctions, arraySize: 64, realspatial: zero[64], imagspatial: zero[64], realspectral: zero[64], imagspectral: zero[64] };
+    const custom = getCustomBoolean();
+    data = { turn: false, selectedBaseFunctions, arraySize: 64, realspatial: zero[64], imagspatial: zero[64], realspectral: zero[64], imagspectral: zero[64], custom };
   } else {
     data = JSON.parse(sessionStorage.getItem('bv_project'));
   }

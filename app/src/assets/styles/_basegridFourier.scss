@@ -8,13 +8,13 @@
     .real,
     .imag {
       grid-area: var(--area);
-      width: auto;
-      height: 45vh;
+      width: 100%;
+      height: 100%;
     }
   }
 
   canvas {
-    width: 100vh;
+    width: 100%;
     height: 48vh;
     padding: 10px;
   }

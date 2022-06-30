@@ -13,14 +13,17 @@ class RealSpatial extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.getDropdown = getDropdown.bind(this);
 
+
     // Refs
     this.select = React.createRef();
+    this.canvas = React.createRef();
   }
 
   canvasID = 'realspatial';
 
   componentDidMount() {
-    this.drawFunction(this.canvasID, this.props.arrayFromState);
+    this.drawFunction(this.canvas, this.props.arrayFromState, this.props.custom);
+
   }
 
   componentDidUpdate(prevProps) {
@@ -29,7 +32,7 @@ class RealSpatial extends React.Component {
     }
 
     const p = this.props;
-    this.drawFunction(this.canvasID, p.arrayFromState);
+    this.drawFunction(this.canvas, p.arrayFromState, p.custom);
     this.getDropdown(p.labels, p.selectedBaseFunctions);
   }
 
@@ -46,12 +49,14 @@ class RealSpatial extends React.Component {
     }
   }
 
+
+
   render() {
     const { labels, selectedBaseFunctions } = this.props;
     return (
       <div className="real real--spatial" style={{ '--area': ' left_top' }}>
         {this.getDropdown(labels, selectedBaseFunctions, this.select)}
-        {this.createCanvas(this.canvasID)}
+        {this.createCanvas(this.canvasID, this.canvas)}
       </div>
     );
   }
@@ -65,4 +70,5 @@ RealSpatial.propTypes = {
   arraySize: PropTypes.number,
   labels: PropTypes.object,
   selectedBaseFunctions: PropTypes.string,
+  custom: PropTypes.bool,
 };

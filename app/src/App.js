@@ -29,6 +29,11 @@ class App extends React.Component {
     // Bind Graph functions
     this.getBaseFunction = GraphUtils.getBaseFunction.bind(this);
 
+    // Bind eventListener
+    this.mouseDown = GraphUtils.mouseDown.bind(this);
+    this.mouseMove = GraphUtils.mouseMove.bind(this);
+    this.mouseUp = GraphUtils.mouseUp.bind(this);
+
     // Set initial state
     this.state = {};
   }
@@ -36,6 +41,18 @@ class App extends React.Component {
   componentDidMount() {
     // Get data from SessionStorage
     this.initialize();
+
+    window.addEventListener("mousedown", (event) =>{
+      this.mouseDown(event)
+    });
+    window.addEventListener("mousemove", (event) =>{
+      this.mouseMove(event)
+    });
+    window.addEventListener("mouseup", (event) =>{
+      this.mouseUp(event)
+    });
+
+
   }
 
   componentDidUpdate() {
@@ -53,6 +70,7 @@ class App extends React.Component {
 
         <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
           <RealSpatial
+            custom={s.userData.custom.realspatial}
             selectedBaseFunctions={s.userData.selectedBaseFunctions.realspatial}
             labels={s.appData.labels}
             arraySize={s.userData.arraySize}
@@ -60,6 +78,7 @@ class App extends React.Component {
             getBaseFunction={this.getBaseFunction}
           />
           <RealSpectral
+            custom={s.userData.custom.realspectral}
             selectedBaseFunctions={s.userData.selectedBaseFunctions.realspectral}
             labels={s.appData.labels}
             arraySize={s.userData.arraySize}
@@ -68,6 +87,7 @@ class App extends React.Component {
           />
 
           <ImagSpatial
+            custom={s.userData.custom.imagspatial}
             selectedBaseFunctions={s.userData.selectedBaseFunctions.imagspatial}
             labels={s.appData.labels}
             arraySize={s.userData.arraySize}
@@ -75,6 +95,7 @@ class App extends React.Component {
             getBaseFunction={this.getBaseFunction}
           />
           <ImagSpectral
+            custom={s.userData.custom.imagspectral}
             selectedBaseFunctions={s.userData.selectedBaseFunctions.imagspectral}
             labels={s.appData.labels}
             arraySize={s.userData.arraySize}

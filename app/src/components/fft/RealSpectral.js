@@ -15,12 +15,13 @@ class RealSpectral extends React.Component {
 
     // Refs
     this.select = React.createRef();
+    this.canvas = React.createRef();
   }
 
   canvasID = 'realspectral';
 
   componentDidMount() {
-    this.drawFunction(this.canvasID, this.props.arrayFromState);
+    this.drawFunction(this.canvas, this.props.arrayFromState, this.props.custom);
   }
 
   componentDidUpdate(prevProps) {
@@ -29,7 +30,7 @@ class RealSpectral extends React.Component {
     }
 
     const p = this.props;
-    this.drawFunction(this.canvasID, p.arrayFromState);
+    this.drawFunction(this.canvas, p.arrayFromState, p.custom);
     this.getDropdown(p.labels, p.selectedBaseFunctions);
   }
 
@@ -51,7 +52,7 @@ class RealSpectral extends React.Component {
     return (
       <div className="real real--spectral" style={{ '--area': ' left_bottom' }}>
         {this.getDropdown(labels, selectedBaseFunctions, this.select)}
-        {this.createCanvas(this.canvasID)}
+        {this.createCanvas(this.canvasID, this.canvas)}
       </div>
     );
   }
@@ -65,4 +66,5 @@ RealSpectral.propTypes = {
   arraySize: PropTypes.number,
   selectedBaseFunctions: PropTypes.string,
   labels: PropTypes.object,
+  custom: PropTypes.bool,
 };

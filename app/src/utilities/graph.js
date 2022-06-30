@@ -1,15 +1,15 @@
 import { calculateFFT } from './calculateFFT';
 
 /*
-TODO: zero all button, dataset für cosinus, sinus usw.. anpassen , handfree
+TODO:  dataset für cosinus, sinus usw.. anpassen , handfree
 */
 
 /**
  *  @param canvasID String for the ID and the REF
  *  @return canvas React element with ref as ID
  */
-export const createCanvas = function (canvasID) {
-  return <canvas ref={canvasID} width={300} height={300} />;
+export const createCanvas = function (canvasID, refName) {
+  return <canvas id={canvasID} ref={refName} width={300} height={300} />;
 };
 
 /**
@@ -21,6 +21,11 @@ export const getBaseFunction = function (funcArray, type, newSelectedBaseFunctio
 
   // get state
   const userData = JSON.parse(JSON.stringify(this.state.userData));
+
+  userData['custom']['realspatial'] = false;
+  userData['custom']['imagspatial'] = false;
+  userData['custom']['realspectral'] = false;
+  userData['custom']['imagspectral'] = false;
 
   // set userData Array of this canvas to clicked function
   userData[type] = funcArray;
@@ -69,10 +74,27 @@ export const getBaseFunction = function (funcArray, type, newSelectedBaseFunctio
  *  @param arrayFromUserData Array from userData to be drawn
  *  @return void
  */
-export const drawFunction = function (canvasID, arrayFromUserData) {
+export const drawFunction = function (canvasID, arrayFromUserData, custom ) {
+
+  let maxPeak  = findPeaks(arrayFromUserData);
+
+  if (!custom ) {
+    for (let i = 0; i < arrayFromUserData.length; i++) {
+      maxPeak = maxPeak ? maxPeak : 1;
+      arrayFromUserData[i] = arrayFromUserData[i]/maxPeak;
+    }
+  }
+
   let canvasArray = arrayFromUserData;
-  const canvas = this.refs[canvasID];
-  const ctx = this.refs[canvasID].getContext('2d');
+  let canvas;
+  let ctx;
+  if(canvasID.current) {
+    canvas = canvasID.current
+    ctx = canvas.getContext('2d');
+  } else {
+    canvas = canvasID;
+    ctx = canvasID.getContext('2d');
+  }
 
   ctx.save();
   ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -87,8 +109,15 @@ export const drawFunction = function (canvasID, arrayFromUserData) {
   const halfWidth = width / 2;
   const halfHeight = height / 2;
 
-  let peaks = canvas.height / 2 / findPeaks(canvasArray);
-  let tickPeak = findPeaks(canvasArray);
+
+  let peaks = 1;
+  let tickPeak = 1;
+  let scale = canvas.height/2*0.65;
+  if (!custom) {
+    scale = 1;
+    peaks = (canvas.height / 2 / findPeaks(canvasArray)) * 0.6;
+    tickPeak = findPeaks(canvasArray);
+  }
 
   ctx.translate(0, canvas.height / 2);
 
@@ -112,7 +141,7 @@ export const drawFunction = function (canvasID, arrayFromUserData) {
   canvasArray.push(0);
 
   for (let i = 0; i < canvas.width; i = i + canvas.width / canvasArray.length) {
-    yposition = -canvasArray[count] * (peaks * 0.6);
+    yposition = (-canvasArray[count] * (peaks))*scale;
     yposition = yposition ? yposition : 0;
 
     ctx.beginPath();
@@ -120,7 +149,9 @@ export const drawFunction = function (canvasID, arrayFromUserData) {
     //ctx.lineWidth = canvas.width / (canvasArray.length * 2);
     ctx.strokeStyle = '#000000';
     ctx.moveTo(i, 0);
-    ctx.lineTo(i, -canvasArray[count] * (peaks * 0.6));
+
+    ctx.lineTo(i, yposition);
+
     ctx.stroke();
     ctx.closePath();
     // draw circles
@@ -131,6 +162,7 @@ export const drawFunction = function (canvasID, arrayFromUserData) {
     ctx.closePath();
     count++;
   }
+
   canvasArray.shift();
   canvasArray.pop();
 
@@ -165,4 +197,108 @@ export function findPeaks(arr) {
   smallest_number > largest_number ? (peaks = smallest_number) : (peaks = largest_number);
 
   return peaks;
+}
+
+
+let isPressed = false;
+let canvasTarget;
+export const mouseDown = function(event) {
+  const userData = JSON.parse(JSON.stringify(this.state.userData));
+
+  if(event.target.closest('canvas')){
+    isPressed = true;
+    canvasTarget = event.target;
+    const canvasid = canvasTarget.id
+
+    userData['custom']['realspatial'] = false;
+    userData['custom']['imagspatial'] = false;
+    userData['custom']['imagspectral'] = false;
+    userData['custom']['realspectral'] = false;
+
+    userData['custom'][canvasid] = true;
+
+
+    this.setState({
+      userData: {
+        ...userData,
+      }
+    });
+  }
+}
+
+
+// Up
+export const mouseUp = function(event) {
+  isPressed = false;
+}
+
+// Move
+export const mouseMove = function(event) {
+  const userData = JSON.parse(JSON.stringify(this.state.userData));
+  const turn = userData.turn;
+  const canvas = event.target;
+  const rect = canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+
+  // size + 2 because we add 0 at the beginning and end of each array
+  const size = userData.arraySize + 2;
+  let currentIndex = Math.floor(Math.floor(x)/(Math.floor(canvas.width)/(size)));
+
+  if(canvasTarget == event.target.closest('canvas') && isPressed && currentIndex >= 0 && currentIndex < size ){
+    const y = event.clientY - rect.top;
+    const canvasID = event.target.id;
+    const customArray = userData[canvasID]
+
+
+    if (currentIndex >= 0 && currentIndex < userData.arraySize) {
+      customArray[currentIndex] = -(y-canvas.height/2)/(canvas.height/2.65);
+      userData[canvasID] = customArray;
+    }
+
+    drawFunction(event.target, customArray, true )
+
+    // call inverse FFT if spectral button
+    if (canvasID == 'realspectral' || canvasID == 'imagspectral') {
+      // fire INVERSE fft from stored arrays in state
+      const [[imagspatial, realspatial]] = calculateFFT(userData.imagspectral, userData.realspectral);
+
+      // set dropdown to custom
+      userData['selectedBaseFunctions']['realspatial'] = '0';
+      userData['selectedBaseFunctions']['imagspatial'] = '0';
+
+      userData['turn'] = true;
+
+      // set all the other Arrays in userData
+      this.setState({
+        userData: {
+          ...userData,
+          realspatial,
+          imagspatial,
+        },
+      });
+    } else {
+      // fire fft from stored arrays in state
+      const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
+
+      // set dropdown to custom
+      userData['selectedBaseFunctions']['realspectral'] = '0';
+      userData['selectedBaseFunctions']['imagspectral'] = '0';
+
+      userData['turn'] = true;
+
+
+      // set all the other Arrays in userData
+      this.setState({
+        userData: {
+          ...userData,
+          realspectral,
+          imagspectral,
+        },
+      });
+    }
+
+
+  }
+
+
 }
