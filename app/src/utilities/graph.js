@@ -1,9 +1,6 @@
 import { calculateFFT } from './calculateFFT';
 
-/*
-TODO:  dataset für cosinus, sinus usw.. anpassen , handfree
-*/
-
+// TODO: dropdown zahl richtig anzeigen, wenn gezeichnet wird dropdowns auf custom stellen
 /**
  *  @param canvasID String for the ID and the REF
  *  @return canvas React element with ref as ID
@@ -74,22 +71,21 @@ export const getBaseFunction = function (funcArray, type, newSelectedBaseFunctio
  *  @param arrayFromUserData Array from userData to be drawn
  *  @return void
  */
-export const drawFunction = function (canvasID, arrayFromUserData, custom ) {
+export const drawFunction = function (canvasID, arrayFromUserData, custom) {
+  let maxPeak = findPeaks(arrayFromUserData);
 
-  let maxPeak  = findPeaks(arrayFromUserData);
-
-  if (!custom ) {
+  if (!custom) {
     for (let i = 0; i < arrayFromUserData.length; i++) {
       maxPeak = maxPeak ? maxPeak : 1;
-      arrayFromUserData[i] = arrayFromUserData[i]/maxPeak;
+      arrayFromUserData[i] = arrayFromUserData[i] / maxPeak;
     }
   }
 
   let canvasArray = arrayFromUserData;
   let canvas;
   let ctx;
-  if(canvasID.current) {
-    canvas = canvasID.current
+  if (canvasID.current) {
+    canvas = canvasID.current;
     ctx = canvas.getContext('2d');
   } else {
     canvas = canvasID;
@@ -106,13 +102,12 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom ) {
 
   canvas.width = width / 2;
   canvas.height = height / 2;
-  const halfWidth = width / 2;
-  const halfHeight = height / 2;
-
+  // const halfWidth = width / 2;
+  // const halfHeight = height / 2;
 
   let peaks = 1;
   let tickPeak = 1;
-  let scale = canvas.height/2*0.65;
+  let scale = (canvas.height / 2) * 0.65;
   if (!custom) {
     scale = 1;
     peaks = (canvas.height / 2 / findPeaks(canvasArray)) * 0.6;
@@ -141,7 +136,7 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom ) {
   canvasArray.push(0);
 
   for (let i = 0; i < canvas.width; i = i + canvas.width / canvasArray.length) {
-    yposition = (-canvasArray[count] * (peaks))*scale;
+    yposition = -canvasArray[count] * peaks * scale;
     yposition = yposition ? yposition : 0;
 
     ctx.beginPath();
@@ -199,16 +194,15 @@ export function findPeaks(arr) {
   return peaks;
 }
 
-
 let isPressed = false;
 let canvasTarget;
-export const mouseDown = function(event) {
+export const mouseDown = function (event) {
   const userData = JSON.parse(JSON.stringify(this.state.userData));
 
-  if(event.target.closest('canvas')){
+  if (event.target.closest('canvas')) {
     isPressed = true;
     canvasTarget = event.target;
-    const canvasid = canvasTarget.id
+    const canvasid = canvasTarget.id;
 
     userData['custom']['realspatial'] = false;
     userData['custom']['imagspatial'] = false;
@@ -217,45 +211,42 @@ export const mouseDown = function(event) {
 
     userData['custom'][canvasid] = true;
 
-
     this.setState({
       userData: {
         ...userData,
-      }
+      },
     });
   }
-}
-
+};
 
 // Up
-export const mouseUp = function(event) {
+export const mouseUp = function () {
   isPressed = false;
-}
+};
 
 // Move
-export const mouseMove = function(event) {
+export const mouseMove = function (event) {
   const userData = JSON.parse(JSON.stringify(this.state.userData));
-  const turn = userData.turn;
   const canvas = event.target;
   const rect = canvas.getBoundingClientRect();
   const x = event.clientX - rect.left;
 
   // size + 2 because we add 0 at the beginning and end of each array
   const size = userData.arraySize + 2;
-  let currentIndex = Math.floor(Math.floor(x)/(Math.floor(canvas.width)/(size)));
+  // -0,5 because of mouse click diffrence
+  let currentIndex = Math.floor(Math.floor(x) / (Math.floor(canvas.width) / size) - 0.5);
 
-  if(canvasTarget == event.target.closest('canvas') && isPressed && currentIndex >= 0 && currentIndex < size ){
+  if (canvasTarget == event.target.closest('canvas') && isPressed && currentIndex >= 0 && currentIndex < size) {
     const y = event.clientY - rect.top;
     const canvasID = event.target.id;
-    const customArray = userData[canvasID]
-
+    const customArray = userData[canvasID];
 
     if (currentIndex >= 0 && currentIndex < userData.arraySize) {
-      customArray[currentIndex] = -(y-canvas.height/2)/(canvas.height/2.65);
+      customArray[currentIndex] = -(y - canvas.height / 2) / (canvas.height / 2.65);
       userData[canvasID] = customArray;
     }
 
-    drawFunction(event.target, customArray, true )
+    drawFunction(event.target, customArray, true);
 
     // call inverse FFT if spectral button
     if (canvasID == 'realspectral' || canvasID == 'imagspectral') {
@@ -286,7 +277,6 @@ export const mouseMove = function(event) {
 
       userData['turn'] = true;
 
-
       // set all the other Arrays in userData
       this.setState({
         userData: {
@@ -296,9 +286,5 @@ export const mouseMove = function(event) {
         },
       });
     }
-
-
   }
-
-
-}
+};

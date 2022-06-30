@@ -42,13 +42,13 @@ class App extends React.Component {
     // Get data from SessionStorage
     this.initialize();
 
-    window.addEventListener("mousedown", (event) =>{
+    window.addEventListener('mousedown', (event) =>{
       this.mouseDown(event)
     });
-    window.addEventListener("mousemove", (event) =>{
+    window.addEventListener('mousemove', (event) =>{
       this.mouseMove(event)
     });
-    window.addEventListener("mouseup", (event) =>{
+    window.addEventListener('mouseup', (event) =>{
       this.mouseUp(event)
     });
 
