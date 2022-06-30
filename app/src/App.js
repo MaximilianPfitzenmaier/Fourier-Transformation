@@ -2,6 +2,7 @@ import React from 'react';
 
 // Components
 import Navigation from './components/Navigation';
+import Filters from './components/fft/Filters';
 import RealSpatial from './components/fft/RealSpatial';
 import RealSpectral from './components/fft/RealSpectral';
 import ImagSpectral from './components/fft/ImagSpectral';
@@ -23,6 +24,7 @@ class App extends React.Component {
     // Bind Helper functions
     this.setSessionStorage = HelperUtils.setSessionStorage.bind(this);
     this.handleArraySizeChange = HelperUtils.handleArraySizeChange.bind(this);
+    this.handleResetAll = HelperUtils.handleResetAll.bind(this);
 
     // Bind Graph functions
     this.getBaseFunction = GraphUtils.getBaseFunction.bind(this);
@@ -46,12 +48,8 @@ class App extends React.Component {
     return s.userData ? (
       <>
         <Navigation />
-        <select defaultValue={64} onChange={this.handleArraySizeChange}>
-          <option value={16}>16</option>
-          <option value={32}>32</option>
-          <option value={64}>64</option>
-          <option value={128}>128</option>
-        </select>
+
+        <Filters labels={s.appData.labels} handleArraySizeChange={this.handleArraySizeChange} handleResetAll={this.handleResetAll} />
 
         <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
           <RealSpatial

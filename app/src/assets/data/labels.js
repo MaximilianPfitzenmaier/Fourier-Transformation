@@ -7,4 +7,5 @@ export const labels = {
   pyra: 'Pyramide',
   gaus: 'Gaus',
   custom: 'Custom',
+  reset: 'Reset',
 };

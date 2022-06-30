@@ -1,7 +1,7 @@
 import { calculateFFT } from './calculateFFT';
 
 /*
-TODO: zero all button, handfree
+TODO: zero all button, dataset für cosinus, sinus usw.. anpassen , handfree
 */
 
 /**

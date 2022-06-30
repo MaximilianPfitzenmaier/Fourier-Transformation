@@ -1,3 +1,5 @@
+import { resetAllDropdowns } from './helper';
+
 // data
 import { zero } from '../assets/data/basedata';
 import { labels } from '../assets/data/labels';
@@ -5,13 +7,7 @@ import { labels } from '../assets/data/labels';
 export const getSessionStorage = function () {
   let data = {};
   if (!sessionStorage.getItem('bv_project')) {
-    const selectedBaseFunctions = {
-      realspatial: JSON.stringify(zero),
-      realspectral: JSON.stringify(zero),
-      imagspatial: JSON.stringify(zero),
-      imagspectral: JSON.stringify(zero),
-    };
-
+    const selectedBaseFunctions = resetAllDropdowns();
     data = { selectedBaseFunctions, arraySize: 64, realspatial: zero[64], imagspatial: zero[64], realspectral: zero[64], imagspectral: zero[64] };
   } else {
     data = JSON.parse(sessionStorage.getItem('bv_project'));
