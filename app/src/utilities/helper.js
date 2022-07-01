@@ -60,9 +60,18 @@ export const handleArraySizeChange = function (event) {
   // get state
   const userData = JSON.parse(JSON.stringify(this.state.userData));
   const custom = getCustomBoolean();
+
   // build new arraysize and redraw all canvas
   const selectedBaseFunctions = resetAllDropdowns();
-  const data = { custom, selectedBaseFunctions, arraySize: size, realspatial: zero[size], imagspatial: zero[size], realspectral: zero[size], imagspectral: zero[size] };
+  const data = {
+    custom,
+    selectedBaseFunctions,
+    arraySize: size,
+    realspatial: zero[size],
+    imagspatial: zero[size],
+    realspectral: zero[size],
+    imagspectral: zero[size],
+  };
 
   // set new array size
   this.setState({
@@ -80,6 +89,18 @@ export const resetAllDropdowns = function () {
     realspectral: JSON.stringify(zero),
     imagspatial: JSON.stringify(zero),
     imagspectral: JSON.stringify(zero),
+  };
+
+  return selectedBaseFunctions;
+};
+
+// set all dropdowns to custom
+export const setAllDropdownsToCustom = function () {
+  const selectedBaseFunctions = {
+    realspatial: '*',
+    realspectral: '*',
+    imagspatial: '*',
+    imagspectral: '*',
   };
 
   return selectedBaseFunctions;
@@ -110,7 +131,15 @@ export const handleResetAll = function () {
   // reset custom
   const custom = getCustomBoolean();
 
-  const data = { custom, selectedBaseFunctions, arraySize: size, realspatial: zero[size], imagspatial: zero[size], realspectral: zero[size], imagspectral: zero[size] };
+  const data = {
+    custom,
+    selectedBaseFunctions,
+    arraySize: size,
+    realspatial: zero[size],
+    imagspatial: zero[size],
+    realspectral: zero[size],
+    imagspectral: zero[size],
+  };
 
   // set new array size
   this.setState({
