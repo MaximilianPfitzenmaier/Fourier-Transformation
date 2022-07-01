@@ -42,17 +42,15 @@ class App extends React.Component {
     // Get data from SessionStorage
     this.initialize();
 
-    window.addEventListener('mousedown', (event) =>{
-      this.mouseDown(event)
+    window.addEventListener('mousedown', (event) => {
+      this.mouseDown(event);
     });
-    window.addEventListener('mousemove', (event) =>{
-      this.mouseMove(event)
+    window.addEventListener('mousemove', (event) => {
+      this.mouseMove(event);
     });
-    window.addEventListener('mouseup', (event) =>{
-      this.mouseUp(event)
+    window.addEventListener('mouseup', (event) => {
+      this.mouseUp(event);
     });
-
-
   }
 
   componentDidUpdate() {
@@ -66,7 +64,12 @@ class App extends React.Component {
       <>
         <Navigation />
 
-        <Filters labels={s.appData.labels} handleArraySizeChange={this.handleArraySizeChange} handleResetAll={this.handleResetAll} />
+        <Filters
+          arraySize={s.userData.arraySize}
+          labels={s.appData.labels}
+          handleArraySizeChange={this.handleArraySizeChange}
+          handleResetAll={this.handleResetAll}
+        />
 
         <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
           <RealSpatial
