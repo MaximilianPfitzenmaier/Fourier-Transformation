@@ -260,8 +260,6 @@ export const mouseMove = function (event) {
       userData['selectedBaseFunctions']['realspatial'] = '0';
       userData['selectedBaseFunctions']['imagspatial'] = '0';
 
-      userData['turn'] = true;
-
       // set all the other Arrays in userData
       this.setState({
         userData: {
@@ -277,8 +275,6 @@ export const mouseMove = function (event) {
       // set dropdown to custom
       userData['selectedBaseFunctions']['realspectral'] = '0';
       userData['selectedBaseFunctions']['imagspectral'] = '0';
-
-      userData['turn'] = true;
 
       // set all the other Arrays in userData
       this.setState({

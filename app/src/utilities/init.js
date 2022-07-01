@@ -9,7 +9,7 @@ export const getSessionStorage = function () {
   if (!sessionStorage.getItem('bv_project')) {
     const selectedBaseFunctions = resetAllDropdowns();
     const custom = getCustomBoolean();
-    data = { turn: false, selectedBaseFunctions, arraySize: 64, realspatial: zero[64], imagspatial: zero[64], realspectral: zero[64], imagspectral: zero[64], custom };
+    data = { selectedBaseFunctions, arraySize: 64, realspatial: zero[64], imagspatial: zero[64], realspectral: zero[64], imagspectral: zero[64], custom };
   } else {
     data = JSON.parse(sessionStorage.getItem('bv_project'));
   }
