@@ -205,7 +205,8 @@ export const mouseDown = function (event) {
     const canvasid = canvasTarget.id;
 
     // set this select to custom
-    userData['selectedBaseFunction'][canvasid] = '0';
+    // userData['selectedBaseFunction'][canvasid] = '0';
+    console.log(userData['selectedBaseFunction'][canvasid]);
 
     // set all custom statemants to false
     userData['custom']['realspatial'] = false;
