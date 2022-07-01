@@ -286,7 +286,7 @@ export const mouseDown = function (event) {
     if (currentIndex >= 0 && currentIndex < userData.arraySize && control == 1) {
       if (firstMiddleX < nextMiddleX ) {
 
-        for (let i = Math.min(...xArray); i < Math.max(...xArray); i++) {
+        for (let i = Math.min(...xArray); i <= Math.max(...xArray); i++) {
 
           if(firstMiddleY > nextMiddleY ){
             customArray[i] = -(Math.min(...yArray))+stepClone;
@@ -303,7 +303,7 @@ export const mouseDown = function (event) {
 
       } else {
 
-        for (let i = Math.max(...xArray) ; i > Math.min(...xArray); i--) {
+        for (let i = Math.max(...xArray) ; i >= Math.min(...xArray); i--) {
           if(firstMiddleY > nextMiddleY ){
             customArray[i] = -(Math.min(...yArray))+stepClone;
             stepClone = stepClone + steps;
