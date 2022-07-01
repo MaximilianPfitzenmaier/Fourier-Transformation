@@ -1,6 +1,5 @@
 import { calculateFFT } from './calculateFFT';
-import { setAllDropdownsToCustom, getCustomBoolean } from './helper';
-// TODO: dropdown zahl richtig anzeigen, wenn gezeichnet wird dropdowns auf custom stellen, on mouseDown einmal zeichnen
+// TODO: dropdown zahl richtig anzeigen, on mouseDown einmal zeichnen
 /**
  *  @param canvasID String for the ID and the REF
  *  @return canvas React element with ref as ID
@@ -199,20 +198,18 @@ let canvasTarget;
 export const mouseDown = function (event) {
   const userData = JSON.parse(JSON.stringify(this.state.userData));
 
+  // set all custom statemants to false
+  userData['custom']['realspatial'] = false;
+  userData['custom']['imagspatial'] = false;
+  userData['custom']['imagspectral'] = false;
+  userData['custom']['realspectral'] = false;
   if (event.target.closest('canvas')) {
     isPressed = true;
     canvasTarget = event.target;
     const canvasid = canvasTarget.id;
 
     // set this select to custom
-    // userData['selectedBaseFunction'][canvasid] = '0';
-    console.log(userData['selectedBaseFunction'][canvasid]);
-
-    // set all custom statemants to false
-    userData['custom']['realspatial'] = false;
-    userData['custom']['imagspatial'] = false;
-    userData['custom']['imagspectral'] = false;
-    userData['custom']['realspectral'] = false;
+    userData['selectedBaseFunctions'][canvasid] = '0';
 
     // execpt this one must be true
     userData['custom'][canvasid] = true;
