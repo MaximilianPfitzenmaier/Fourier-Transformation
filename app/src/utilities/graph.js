@@ -195,6 +195,11 @@ export function findPeaks(arr) {
 
 let isPressed = false;
 let canvasTarget;
+/**
+ *  @param mousedown event
+ * Resets all custom statements to false except this canvas to handle draw scaling and
+ * sets this select to custom
+ */
 export const mouseDown = function (event) {
   const userData = JSON.parse(JSON.stringify(this.state.userData));
 
@@ -222,12 +227,18 @@ export const mouseDown = function (event) {
   }
 };
 
-// Up
+/**
+ *  @param mouseup event
+ * end of drawing when isPressed is false
+ */
 export const mouseUp = function () {
   isPressed = false;
 };
 
-// Move
+/**
+ *  @param mousemove event
+ * calls the drawFunction
+ */
 export const mouseMove = function (event) {
   const userData = JSON.parse(JSON.stringify(this.state.userData));
   const canvas = event.target;

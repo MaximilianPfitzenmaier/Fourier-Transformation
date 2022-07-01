@@ -118,6 +118,7 @@ export const getCustomBoolean = function () {
   return custom;
 };
 
+// Click on reset Button resets all data
 export const handleResetAll = function () {
   // get state
   const userData = JSON.parse(JSON.stringify(this.state.userData));

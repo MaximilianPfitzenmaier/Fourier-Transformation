@@ -1,5 +1,11 @@
 import { cos, kamm, ones, pyra, sin, zero, gaus } from '../assets/data/basedata';
 
+/**
+ * @param labels labels for the options
+ * @param selectedBaseFunction sets the default value
+ * @param refName sets the ref name
+ * @return select with options for all the base functions
+ */
 export const getDropdown = function (labels, selectedBaseFunction, refName) {
   return (
     <select ref={refName} defaultValue={selectedBaseFunction} onChange={this.handleChange}>
