@@ -1,5 +1,5 @@
 import { calculateFFT } from './calculateFFT';
-// TODO: dropdown zahl richtig anzeigen, on mouseDown einmal zeichnen
+
 /**
  *  @param canvasID String for the ID and the REF
  *  @return canvas React element with ref as ID
