@@ -13,7 +13,7 @@ import * as InitUtils from './utilities/init';
 import * as HelperUtils from './utilities/helper';
 import * as GraphUtils from './utilities/graph';
 
-// TODO: on mouseDown einmal zeichnen, richtige arrays für cosinus, gaus etc
+// TODO: richtige arrays für cosinus, gaus etc
 
 class App extends React.Component {
   constructor(props) {

@@ -1,3 +1,4 @@
+@import 'variables';
 .fourier {
   display: grid;
   &--basegrid-fourier {
@@ -10,16 +11,18 @@
       grid-area: var(--area);
       width: 100%;
       height: 100%;
+      position: relative;
     }
   }
 
   canvas {
     width: 100%;
-    height: 48vh;
+    height: 100%;
     padding: 10px;
   }
 
   select {
     position: absolute;
+    right: 0;
   }
 }
