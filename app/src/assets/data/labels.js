@@ -5,7 +5,7 @@ export const labels = {
   kamm: 'Kamm',
   ones: 'Konstant',
   pyra: 'Pyramide',
-  gaus: 'Gaus',
+  gaus: 'Single',
   custom: 'Custom',
   reset: 'Reset',
 };

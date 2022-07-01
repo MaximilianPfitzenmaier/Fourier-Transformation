@@ -160,6 +160,8 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
   canvasArray.shift();
   canvasArray.pop();
 
+  console.log(JSON.stringify(canvasArray));
+
   ctx.beginPath();
   ctx.font = '300 13px Arial';
   ctx.textAlign = 'left';
