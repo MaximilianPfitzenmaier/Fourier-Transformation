@@ -8,12 +8,15 @@ class Filters extends React.Component {
 
   sizeFilter() {
     return (
-      <select defaultValue={this.props.arraySize} onChange={this.props.handleArraySizeChange}>
-        <option value={16}>16</option>
-        <option value={32}>32</option>
-        <option value={64}>64</option>
-        <option value={128}>128</option>
-      </select>
+      <div className="size">
+        <label htmlFor="arraySize">{this.props.labels.chooseArraySize}</label>
+        <select name="arraySize" defaultValue={this.props.arraySize} onChange={this.props.handleArraySizeChange}>
+          <option value={16}>16</option>
+          <option value={32}>32</option>
+          <option value={64}>64</option>
+          <option value={128}>128</option>
+        </select>
+      </div>
     );
   }
 

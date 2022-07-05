@@ -67,8 +67,8 @@ class App extends React.Component {
         <Navigation />
 
         <Filters
-          arraySize={s.userData.arraySize}
           labels={s.appData.labels}
+          arraySize={s.userData.arraySize}
           handleArraySizeChange={this.handleArraySizeChange}
           handleResetAll={this.handleResetAll}
         />

@@ -51,6 +51,7 @@ class ImagSpatial extends React.Component {
     const { labels, selectedBaseFunctions } = this.props;
     return (
       <div className="imag imag--spatial" style={{ '--area': ' right_top' }}>
+        <div className="title">{labels.imagspatial}</div>
         {this.getDropdown(labels, selectedBaseFunctions, this.select)}
         {this.createCanvas(this.canvasID, this.canvas)}
       </div>

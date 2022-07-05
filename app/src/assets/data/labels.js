@@ -7,5 +7,11 @@ export const labels = {
   pyra: 'Pyramide',
   gaus: 'Single',
   custom: 'Custom',
-  reset: 'Reset',
+  reset: 'Reset all Functions',
+  selectBaseFunction: 'Choose a Basefunction',
+  chooseArraySize: 'Choose the size',
+  realspatial: 'Spatial Real',
+  realspectral: 'Spectral Real',
+  imagspatial: 'Spatial Imaginary',
+  imagspectral: 'Spectral Imaginary',
 };

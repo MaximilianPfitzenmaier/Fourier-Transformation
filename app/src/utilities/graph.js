@@ -5,7 +5,7 @@ import { calculateFFT } from './calculateFFT';
  *  @return canvas React element with ref as ID
  */
 export const createCanvas = function (canvasID, refName) {
-  return <canvas onContextMenu={(e) => e.button === 2 ? e.preventDefault() : null} id={canvasID} ref={refName} width={300} height={300} />;
+  return <canvas onContextMenu={(e) => (e.button === 2 ? e.preventDefault() : null)} id={canvasID} ref={refName} width={300} height={300} />;
 };
 
 /**
@@ -99,8 +99,8 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
   const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
   const height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-  canvas.width = width / 2;
-  canvas.height = (height / 2) - 100;
+  canvas.width = width / 2 - 20;
+  canvas.height = height / 2 - 120;
   // const halfWidth = width / 2;
   // const halfHeight = height / 2;
 
@@ -160,8 +160,6 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
   canvasArray.shift();
   canvasArray.pop();
 
-  console.log(JSON.stringify(canvasArray));
-
   ctx.beginPath();
   ctx.font = '300 13px Arial';
   ctx.textAlign = 'left';
@@ -198,7 +196,7 @@ export function findPeaks(arr) {
 let isPressed = false;
 let rightPressed = false;
 let middlePressed = false;
-let canvasTarget,firstRight,firstMiddleX,firstMiddleY,nextMiddleX,nextMiddleY;
+let canvasTarget, firstRight, firstMiddleX, firstMiddleY, nextMiddleX, nextMiddleY;
 let control = 1;
 /**
  *  @param mousedown event
@@ -206,72 +204,64 @@ let control = 1;
  * sets this select to custom
  */
 export const mouseDown = function (event) {
-
   //TODO: abfrage um middle x,y zurückzusetzen bei klick auf selects und reset
 
   const userData = JSON.parse(JSON.stringify(this.state.userData));
 
   // draw on click
   const canvas = event.target;
+  canvasTarget = event.target;
   const rect = canvas.getBoundingClientRect();
   const x = event.clientX - rect.left;
   const size = userData.arraySize + 2;
   let currentIndex = Math.floor(Math.floor(x) / (Math.floor(canvas.width) / size) - 0.5);
   if (event.button === 0) {
-
     // reset if mouseheel was used before
     firstMiddleX = 0;
     firstMiddleY = 0;
     nextMiddleX = 0;
     nextMiddleY = 0;
     control = 1;
-
     isPressed = true;
-      // size + 2 because we add 0 at the beginning and end of each array
 
-      // -0,5 because of mouse click diffrence
+    if (canvasTarget == event.target.closest('canvas') && currentIndex >= 0 && currentIndex < size) {
+      const y = event.clientY - rect.top;
+      const canvasID = event.target.id;
+      const customArray = userData[canvasID];
 
-      if (canvasTarget == event.target.closest('canvas')  && currentIndex >= 0 && currentIndex < size) {
-        const y = event.clientY - rect.top;
-        const canvasID = event.target.id;
-        const customArray = userData[canvasID];
-
-        if (currentIndex >= 0 && currentIndex < userData.arraySize) {
-          customArray[currentIndex] = -(y - canvas.height / 2) / (canvas.height / 2.65);
-          userData[canvasID] = customArray;
+      if (currentIndex >= 0 && currentIndex < userData.arraySize) {
+        customArray[currentIndex] = -(y - canvas.height / 2) / (canvas.height / 2.65);
+        userData[canvasID] = customArray;
       }
       drawFunction(event.target, customArray, true);
-
     }
   }
 
   // Mousewheel
   if (event.button === 1) {
-
     const y = event.clientY - rect.top;
     const canvasID = event.target.id;
     const customArray = userData[canvasID];
-    const xArray = [0,0];
-    const yArray = [0,0];
+    const xArray = [0, 0];
+    const yArray = [0, 0];
     let differenceX, differenceY;
 
-    if(canvasTarget != event.target.closest('canvas') ){
+    if (canvasTarget != event.target.closest('canvas')) {
       firstMiddleX = 0;
       firstMiddleY = 0;
       nextMiddleX = 0;
       nextMiddleY = 0;
       control = 1;
     }
-    canvasTarget = event.target;
 
-    if(control % 2 == 1){
+    if (control % 2 == 1) {
       firstMiddleX = Math.floor(Math.floor(event.clientX - rect.left) / (Math.floor(canvas.width) / size) - 0.5);
-      firstMiddleY = -((event.clientY - rect.top) - canvas.height / 2) / (canvas.height / 2.65);
+      firstMiddleY = -(event.clientY - rect.top - canvas.height / 2) / (canvas.height / 2.65);
 
       control = 2;
-    }else{
+    } else {
       nextMiddleX = Math.floor(Math.floor(event.clientX - rect.left) / (Math.floor(canvas.width) / size) - 0.5);
-      nextMiddleY = -((event.clientY - rect.top) - canvas.height / 2) / (canvas.height / 2.65);
+      nextMiddleY = -(event.clientY - rect.top - canvas.height / 2) / (canvas.height / 2.65);
 
       control = 1;
     }
@@ -280,37 +270,32 @@ export const mouseDown = function (event) {
     xArray[1] = nextMiddleX;
     yArray[1] = nextMiddleY;
 
-    differenceX = Math.min(...xArray)  - Math.max(...xArray);
+    differenceX = Math.min(...xArray) - Math.max(...xArray);
     differenceY = firstMiddleY - nextMiddleY;
-    let steps = differenceY/differenceX;
+    let steps = differenceY / differenceX;
     let stepClone = steps;
 
     if (currentIndex >= 0 && currentIndex < userData.arraySize && control == 1) {
-      if (firstMiddleX < nextMiddleX ) {
-
+      if (firstMiddleX < nextMiddleX) {
         for (let i = Math.min(...xArray); i <= Math.max(...xArray); i++) {
-
-          if(firstMiddleY > nextMiddleY ){
-            customArray[i] = -(Math.min(...yArray))+stepClone;
+          if (firstMiddleY > nextMiddleY) {
+            customArray[i] = -Math.min(...yArray) + stepClone;
             stepClone = stepClone + steps;
-          }else{
-            customArray[i] = (Math.min(...yArray))+stepClone;
+          } else {
+            customArray[i] = Math.min(...yArray) + stepClone;
             stepClone = stepClone + steps;
           }
-
         }
 
         userData[canvasID] = customArray;
         drawFunction(event.target, customArray, true);
-
       } else {
-
-        for (let i = Math.max(...xArray) ; i >= Math.min(...xArray); i--) {
-          if(firstMiddleY > nextMiddleY ){
-            customArray[i] = -(Math.min(...yArray))+stepClone;
+        for (let i = Math.max(...xArray); i >= Math.min(...xArray); i--) {
+          if (firstMiddleY > nextMiddleY) {
+            customArray[i] = -Math.min(...yArray) + stepClone;
             stepClone = stepClone + steps;
-          }else{
-            customArray[i] = (Math.min(...yArray))+stepClone;
+          } else {
+            customArray[i] = Math.min(...yArray) + stepClone;
             stepClone = stepClone + steps;
           }
         }
@@ -320,11 +305,7 @@ export const mouseDown = function (event) {
       }
     }
 
-
-
     if (control == 1) {
-
-
       // call inverse FFT if spectral button
       if (canvasID == 'realspectral' || canvasID == 'imagspectral') {
         // fire INVERSE fft from stored arrays in state
@@ -340,43 +321,30 @@ export const mouseDown = function (event) {
 
         // set all the other Arrays in userData
         this.setState({
-        userData: {
-          ...userData,
-        },
-      });
-    } else {
-      // fire fft from stored arrays in state
-      const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
+          userData: {
+            ...userData,
+          },
+        });
+      } else {
+        // fire fft from stored arrays in state
+        const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
 
-      // set dropdown to custom
-      userData['selectedBaseFunctions']['realspectral'] = '0';
-      userData['selectedBaseFunctions']['imagspectral'] = '0';
+        // set dropdown to custom
+        userData['selectedBaseFunctions']['realspectral'] = '0';
+        userData['selectedBaseFunctions']['imagspectral'] = '0';
 
-      // set arrays
-      userData['realspectral'] = realspectral;
-      userData['imagspectral'] = imagspectral;
+        // set arrays
+        userData['realspectral'] = realspectral;
+        userData['imagspectral'] = imagspectral;
 
-      // set all the other Arrays in userData
-      this.setState({
-        userData: {
-          ...userData,
-        },
-      });
+        // set all the other Arrays in userData
+        this.setState({
+          userData: {
+            ...userData,
+          },
+        });
+      }
     }
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
   }
 
   // Right Click
@@ -392,7 +360,6 @@ export const mouseDown = function (event) {
     rightPressed = true;
     canvasTarget = event.target;
     firstRight = event.clientY - rect.top;
-
   }
 
   // set all custom statemants to false
@@ -401,7 +368,6 @@ export const mouseDown = function (event) {
   userData['custom']['imagspectral'] = false;
   userData['custom']['realspectral'] = false;
   if (event.target.closest('canvas')) {
-
     canvasTarget = event.target;
     const canvasid = canvasTarget.id;
 
@@ -417,7 +383,6 @@ export const mouseDown = function (event) {
       },
     });
   }
-
 };
 
 /**
@@ -444,7 +409,6 @@ export const mouseMove = function (event) {
   const size = userData.arraySize + 2;
   // -0,5 because of mouse click diffrence
   let currentIndex = Math.floor(Math.floor(x) / (Math.floor(canvas.width) / size) - 0.5);
-
 
   // handle left click move
   if (canvasTarget == event.target.closest('canvas') && isPressed && currentIndex >= 0 && currentIndex < size) {
@@ -495,7 +459,6 @@ export const mouseMove = function (event) {
     }
   }
 
-
   // handle right click move
   if (canvasTarget == event.target.closest('canvas') && rightPressed && currentIndex >= 0 && currentIndex < size) {
     const y = event.clientY - rect.top;
@@ -544,6 +507,4 @@ export const mouseMove = function (event) {
       });
     }
   }
-
-
 };

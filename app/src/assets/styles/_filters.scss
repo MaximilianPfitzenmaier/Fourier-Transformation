@@ -1,4 +1,5 @@
 @import 'variables';
 .filters {
-    height: $filtersHeight;
+  height: $filtersHeight;
+  display: flex;
 }

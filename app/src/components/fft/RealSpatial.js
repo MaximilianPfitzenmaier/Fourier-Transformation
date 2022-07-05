@@ -13,7 +13,6 @@ class RealSpatial extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.getDropdown = getDropdown.bind(this);
 
-
     // Refs
     this.select = React.createRef();
     this.canvas = React.createRef();
@@ -23,7 +22,6 @@ class RealSpatial extends React.Component {
 
   componentDidMount() {
     this.drawFunction(this.canvas, this.props.arrayFromState, this.props.custom);
-
   }
 
   componentDidUpdate(prevProps) {
@@ -49,12 +47,11 @@ class RealSpatial extends React.Component {
     }
   }
 
-
-
   render() {
     const { labels, selectedBaseFunctions } = this.props;
     return (
       <div className="real real--spatial" style={{ '--area': ' left_top' }}>
+        <div className="title">{labels.realspatial}</div>
         {this.getDropdown(labels, selectedBaseFunctions, this.select)}
         {this.createCanvas(this.canvasID, this.canvas)}
       </div>

@@ -51,6 +51,7 @@ class RealSpectral extends React.Component {
     const { labels, selectedBaseFunctions } = this.props;
     return (
       <div className="real real--spectral" style={{ '--area': ' left_bottom' }}>
+        <div className="title">{labels.realspectral}</div>
         {this.getDropdown(labels, selectedBaseFunctions, this.select)}
         {this.createCanvas(this.canvasID, this.canvas)}
       </div>
