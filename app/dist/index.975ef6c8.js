@@ -30166,12 +30166,12 @@ const mouseDown = function(event) {
                 // set dropdown to custom
                 userData["selectedBaseFunctions"]["realspatial"] = "0";
                 userData["selectedBaseFunctions"]["imagspatial"] = "0";
+                userData["realspatial"] = realspatial;
+                userData["imagspatial"] = imagspatial;
                 // set all the other Arrays in userData
                 this.setState({
                     userData: {
-                        ...userData,
-                        realspatial,
-                        imagspatial
+                        ...userData
                     }
                 });
             } else {
