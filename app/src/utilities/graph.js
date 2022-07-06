@@ -13,8 +13,6 @@ export const createCanvas = function (canvasID, refName) {
  *  @param type string if button is for real or imag part
  */
 export const getBaseFunction = function (funcArray, type, newSelectedBaseFunctions) {
-  // const selectedBaseFunctions = 'selectedBaseFunctions';
-
   // get state
   const userData = JSON.parse(JSON.stringify(this.state.userData));
 
@@ -204,8 +202,6 @@ let control = 1;
  * sets this select to custom
  */
 export const mouseDown = function (event) {
-  //TODO: abfrage um middle x,y zurückzusetzen bei klick auf selects und reset
-
   const userData = JSON.parse(JSON.stringify(this.state.userData));
 
   // draw on click
@@ -234,6 +230,42 @@ export const mouseDown = function (event) {
         userData[canvasID] = customArray;
       }
       drawFunction(event.target, customArray, true);
+
+      // call inverse FFT if spectral button
+      if (canvasTarget.id == 'realspectral' || canvasTarget.id == 'imagspectral') {
+        // fire INVERSE fft from stored arrays in state
+        const [[imagspatial, realspatial]] = calculateFFT(userData.imagspectral, userData.realspectral);
+
+        // set dropdown to custom
+        userData['selectedBaseFunctions']['realspatial'] = '0';
+        userData['selectedBaseFunctions']['imagspatial'] = '0';
+
+        // set all the other Arrays in userData
+        this.setState({
+          userData: {
+            ...userData,
+            realspatial,
+            imagspatial,
+          },
+        });
+      } else {
+        // fire fft from stored arrays in state
+        const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
+        console.log([realspectral, imagspectral]);
+
+        // set dropdown to custom
+        userData['selectedBaseFunctions']['realspectral'] = '0';
+        userData['selectedBaseFunctions']['imagspectral'] = '0';
+
+        userData['realspectral'] = realspectral;
+        userData['imagspectral'] = imagspectral;
+        // set all the other Arrays in userData
+        this.setState({
+          userData: {
+            ...userData,
+          },
+        });
+      }
     }
   }
 
