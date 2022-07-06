@@ -240,12 +240,13 @@ export const mouseDown = function (event) {
         userData['selectedBaseFunctions']['realspatial'] = '0';
         userData['selectedBaseFunctions']['imagspatial'] = '0';
 
+        userData['realspatial'] = realspatial;
+        userData['imagspatial'] = imagspatial;
+
         // set all the other Arrays in userData
         this.setState({
           userData: {
             ...userData,
-            realspatial,
-            imagspatial,
           },
         });
       } else {
@@ -259,6 +260,7 @@ export const mouseDown = function (event) {
 
         userData['realspectral'] = realspectral;
         userData['imagspectral'] = imagspectral;
+
         // set all the other Arrays in userData
         this.setState({
           userData: {
