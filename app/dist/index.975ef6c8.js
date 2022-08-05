@@ -33257,7 +33257,7 @@ function Index() {
                 style: {
                     padding: "1rem 0"
                 },
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                     children: "Index"
                 }, void 0, false, {
                     fileName: "src/components/Index.js",
