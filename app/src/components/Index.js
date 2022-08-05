@@ -7,7 +7,7 @@ export default function Index() {
         <Navigation />
       </header>
       <main style={{ padding: '1rem 0' }}>
-        <h2>Index</h2>
+        <h1>Index</h1>
       </main>
     </>
   );
