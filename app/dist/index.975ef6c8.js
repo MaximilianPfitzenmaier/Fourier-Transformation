@@ -33258,7 +33258,7 @@ function Index() {
                     padding: "1rem 0"
                 },
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                    children: "Index"
+                    children: "Welcometo the Fourier transfomrtaion Application!"
                 }, void 0, false, {
                     fileName: "src/components/Index.js",
                     lineNumber: 10,
