@@ -1,7 +1,9 @@
 @import 'variables';
 .filters {
   height: $filtersHeight;
+  margin-bottom: -15px;
   display: flex;
+  align-items: center;
 
   button {
     box-shadow: inset 0px 1px 0px 0px #ffffff;

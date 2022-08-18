@@ -5,7 +5,18 @@
   display: flex;
   border-bottom: 1px solid #dcd5e0;
   margin-bottom: 10px;
-  .collapse {
+  background-color: $primary;
+  &-brand {
+    display: flex;
+    align-items: center;
+    border-right: 1px solid $turquoise;
+  }
+
+  img {
+    margin: 0 16px;
+  }
+
+  &-collapse {
     display: flex;
     align-items: center;
     margin-left: 2rem;
@@ -14,19 +25,43 @@
       list-style: none;
       margin: 0;
       padding: 0;
+      height: 100%;
 
       li {
-        display: inline;
-        margin-right: 20px;
-        a {
-          color: black;
-          text-decoration: none;
-        }
-      }
+        display: inline-flex;
+        height: 100%;
+        transition: all 0.3s;
 
-      li:hover {
-        background: #f2f2f2;
-        color: #444444;
+        a {
+          color: $turquoise;
+          display: flex;
+          text-decoration: none;
+          align-items: center;
+          padding: 0 20px;
+          height: 100%;
+          font-size: 18px;
+          position: relative;
+
+          &:after {
+            content: '';
+            height: 2px;
+            width: 0px;
+            background-color: $turquoise;
+            position: absolute;
+            bottom: 30px;
+            transition: all 0.3s ease-in-out;
+          }
+
+          &.active:after {
+            display: block;
+            width: calc(100% - 40px);
+          }
+
+          &:hover::after {
+            display: block;
+            width: calc(100% - 40px);
+          }
+        }
       }
     }
   }
