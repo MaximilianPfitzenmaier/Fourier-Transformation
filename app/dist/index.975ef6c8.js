@@ -2908,6 +2908,8 @@ var _app = require("./App");
 var _appDefault = parcelHelpers.interopDefault(_app);
 var _index = require("./components/Index");
 var _indexDefault = parcelHelpers.interopDefault(_index);
+var _legal = require("./components/Legal");
+var _legalDefault = parcelHelpers.interopDefault(_legal);
 var _notFound = require("./components/NotFound");
 var _notFoundDefault = parcelHelpers.interopDefault(_notFound);
 // root.render(<App />);
@@ -2923,7 +2925,7 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Browser
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _indexDefault.default), {}, void 0, false, void 0, void 0)
             }, void 0, false, {
                 fileName: "src/index.js",
-                lineNumber: 12,
+                lineNumber: 13,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -2931,7 +2933,15 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Browser
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, void 0, void 0)
             }, void 0, false, {
                 fileName: "src/index.js",
-                lineNumber: 13,
+                lineNumber: 14,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                path: "legal-notice",
+                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _legalDefault.default), {}, void 0, false, void 0, void 0)
+            }, void 0, false, {
+                fileName: "src/index.js",
+                lineNumber: 15,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -2939,7 +2949,7 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Browser
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _notFoundDefault.default), {}, void 0, false, void 0, void 0)
             }, void 0, false, {
                 fileName: "src/index.js",
-                lineNumber: 14,
+                lineNumber: 16,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -2947,18 +2957,18 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Browser
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _notFoundDefault.default), {}, void 0, false, void 0, void 0)
             }, void 0, false, {
                 fileName: "src/index.js",
-                lineNumber: 15,
+                lineNumber: 17,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/index.js",
-        lineNumber: 11,
+        lineNumber: 12,
         columnNumber: 5
     }, undefined)
 }, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 10,
+    lineNumber: 11,
     columnNumber: 3
 }, undefined));
 
@@ -2967,7 +2977,7 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Browser
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","react-router-dom":"fdOAw","./App":"2kQhy","./components/Index":"8p8PO","./components/NotFound":"jE4T6","./style.scss":"81Z0h","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","react-router-dom":"fdOAw","./App":"2kQhy","./components/Index":"8p8PO","./components/NotFound":"jE4T6","./style.scss":"81Z0h","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./components/Legal":"8xpqr"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("./cjs/react-jsx-dev-runtime.development.js");
 
@@ -29024,9 +29034,9 @@ class Navigation extends (0, _reactDefault.default).Component {
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
                 className: "navbar navbar-expand-lg navbar-light bg-light",
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.NavLink), {
                         className: "navbar-brand",
-                        href: "#",
+                        to: "/",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                             src: (0, _bvLogoTransparentPngDefault.default),
                             alt: "logo",
@@ -30374,8 +30384,7 @@ const drawFunction = function(canvasID, arrayFromUserData, custom) {
         //ctx.lineWidth = canvas.width / (canvasArray.length * 2);
         var grad = ctx.createLinearGradient(i1, 0, i1, yposition);
         grad.addColorStop(0, "hsl(176, 72%, 71%)");
-        grad.addColorStop(0.5, "hsl(251, 53%, 45%)");
-        grad.addColorStop(1, "hsl(286, 100%, 50%)");
+        grad.addColorStop(1, "hsl(251, 53%, 45%)");
         ctx.strokeStyle = grad;
         ctx.moveTo(i1, 0);
         ctx.lineTo(i1, yposition);
@@ -30384,14 +30393,15 @@ const drawFunction = function(canvasID, arrayFromUserData, custom) {
         // draw circles
         ctx.beginPath();
         ctx.arc(i1, yposition, 3, 0, 2 * Math.PI);
-        ctx.fillStyle = "hsl(286, 100%, 50%)";
+        ctx.fillStyle = "hsl(251, 53%, 45%)";
         ctx.fill();
         ctx.closePath();
         count++;
     }
     canvasArray.shift();
     canvasArray.pop();
-/*ctx.beginPath();
+/*
+  ctx.beginPath();
   ctx.font = '300 13px Arial';
   ctx.textAlign = 'left';
   if (Math.ceil(tickPeak) != 0 || -Math.ceil(tickPeak) != 0) {
@@ -30407,7 +30417,8 @@ const drawFunction = function(canvasID, arrayFromUserData, custom) {
     ctx.lineTo(canvas.width / 2 + 6, -(canvas.height / 2) * 0.65);
     ctx.closePath();
     ctx.stroke();
-  }*/ };
+  }
+  */ };
 function findPeaks(arr) {
     let smallest_number = Math.min(...arr);
     let largest_number = Math.max(...arr);
@@ -33267,9 +33278,9 @@ const labels = {
     zero: "Zero",
     sin: "Sinus",
     cos: "Cosinus",
-    kamm: "Kamm",
-    ones: "Konstant",
-    pyra: "Pyramide",
+    kamm: "Comb",
+    ones: "Constant",
+    pyra: "Pyramid",
     single: "Single",
     custom: "Custom",
     reset: "Reset all Functions",
@@ -33293,64 +33304,352 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _navigation = require("./Navigation");
 var _navigationDefault = parcelHelpers.interopDefault(_navigation);
+var _footer = require("./Footer");
+var _footerDefault = parcelHelpers.interopDefault(_footer);
+var _sinusPng = require("../assets/images/sinus.png");
+var _sinusPngDefault = parcelHelpers.interopDefault(_sinusPng);
+var _cosinusPng = require("../assets/images/cosinus.png");
+var _cosinusPngDefault = parcelHelpers.interopDefault(_cosinusPng);
+var _rightClickPng = require("../assets/images/right-click.png");
+var _rightClickPngDefault = parcelHelpers.interopDefault(_rightClickPng);
+var _middleClickPng = require("../assets/images/middle-click.png");
+var _middleClickPngDefault = parcelHelpers.interopDefault(_middleClickPng);
+var _pyramidePng = require("../assets/images/pyramide.png");
+var _pyramidePngDefault = parcelHelpers.interopDefault(_pyramidePng);
+var _kammPng = require("../assets/images/kamm.png");
+var _kammPngDefault = parcelHelpers.interopDefault(_kammPng);
+var _konstantPng = require("../assets/images/konstant.png");
+var _konstantPngDefault = parcelHelpers.interopDefault(_konstantPng);
+var _singlePng = require("../assets/images/single.png");
+var _singlePngDefault = parcelHelpers.interopDefault(_singlePng);
+var _size16Png = require("../assets/images/size-16.png");
+var _size16PngDefault = parcelHelpers.interopDefault(_size16Png);
+var _size32Png = require("../assets/images/size-32.png");
+var _size32PngDefault = parcelHelpers.interopDefault(_size32Png);
+var _size64Png = require("../assets/images/size-64.png");
+var _size64PngDefault = parcelHelpers.interopDefault(_size64Png);
+var _size128Png = require("../assets/images/size-128.png");
+var _size128PngDefault = parcelHelpers.interopDefault(_size128Png);
 function Index() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
                     fileName: "src/components/Index.js",
-                    lineNumber: 7,
+                    lineNumber: 20,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/Index.js",
-                lineNumber: 6,
+                lineNumber: 19,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
-                style: {
-                    padding: "1rem 0"
-                },
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                        children: "Welcome to the Fourier transformation Application!"
+                        children: "Welcome to the 2D Fourier-Transformation Application!"
                     }, void 0, false, {
                         fileName: "src/components/Index.js",
-                        lineNumber: 10,
+                        lineNumber: 23,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                        children: "How to use:"
+                        children: "How to use"
                     }, void 0, false, {
                         fileName: "src/components/Index.js",
-                        lineNumber: 12,
+                        lineNumber: 24,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: "The application has four areas that can be interacted with. To calculate the Fourier Transformation you can simply click on one of the areas and the application will calculate and visualise the result."
                     }, void 0, false, {
                         fileName: "src/components/Index.js",
-                        lineNumber: 14,
+                        lineNumber: 25,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                        children: "Buttons/Dropdowns"
+                        children: "How to interact with the Grid Systems"
                     }, void 0, false, {
                         fileName: "src/components/Index.js",
-                        lineNumber: 19,
+                        lineNumber: 30,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: "Size Dropdown: The size dropedown "
+                        children: "To draw inside the areas you can simply click and drag the mouse"
                     }, void 0, false, {
                         fileName: "src/components/Index.js",
-                        lineNumber: 21,
+                        lineNumber: 31,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: [
+                            "To draw a line with the ",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                                children: "same height"
+                            }, void 0, false, {
+                                fileName: "src/components/Index.js",
+                                lineNumber: 33,
+                                columnNumber: 35
+                            }, this),
+                            " click and drag with the right mousebutton"
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 32,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _rightClickPngDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 35,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: "You can also connect two points together by using the middle mousebutton. The first click for the starting point and the next click to connect it"
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 36,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _middleClickPngDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 37,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        style: {
+                            margin: "2rem 0"
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                children: "Buttons/Dropdowns"
+                            }, void 0, false, {
+                                fileName: "src/components/Index.js",
+                                lineNumber: 40,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                                        children: "Reset all Functions Button:"
+                                    }, void 0, false, {
+                                        fileName: "src/components/Index.js",
+                                        lineNumber: 42,
+                                        columnNumber: 13
+                                    }, this),
+                                    " Resets all Areas."
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/Index.js",
+                                lineNumber: 41,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                                        children: "Size Dropdown:"
+                                    }, void 0, false, {
+                                        fileName: "src/components/Index.js",
+                                        lineNumber: 45,
+                                        columnNumber: 13
+                                    }, this),
+                                    " The size dropedown determines the interval between points."
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/Index.js",
+                                lineNumber: 44,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 39,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                        children: "Size 16:"
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 48,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _size16PngDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 49,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                        children: "Size 32:"
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 50,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _size32PngDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 51,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                        children: "Size 64:"
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 52,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _size64PngDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 53,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                        children: "Size 128:"
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 54,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _size128PngDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 55,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        children: "Basefunction Dropdown"
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 56,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: "Determines predefined functions that are hard to draw with the mouse."
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 57,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                        children: "Sinus"
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 58,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _sinusPngDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 59,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                        children: "Cosinus"
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 60,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _cosinusPngDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 61,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                        children: "Comb"
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 62,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _kammPngDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 63,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                        children: "Constant"
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 64,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _konstantPngDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 65,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                        children: "Pyramid"
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 66,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _pyramidePngDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 67,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                        children: "Single"
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 68,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _singlePngDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/components/Index.js",
+                        lineNumber: 69,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Index.js",
-                lineNumber: 9,
+                lineNumber: 22,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("footer", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
+                    fileName: "src/components/Index.js",
+                    lineNumber: 72,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "src/components/Index.js",
+                lineNumber: 71,
                 columnNumber: 7
             }, this)
         ]
@@ -33366,7 +33665,90 @@ $RefreshReg$(_c, "Index");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./Navigation":"ixx0n","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jE4T6":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./Navigation":"ixx0n","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../assets/images/sinus.png":"hZXY2","../assets/images/cosinus.png":"9RfUf","../assets/images/right-click.png":"ixczD","../assets/images/middle-click.png":"8oP7q","../assets/images/pyramide.png":"dLZMy","../assets/images/kamm.png":"3RFQ6","../assets/images/konstant.png":"2Djwc","../assets/images/single.png":"9Qy58","../assets/images/size-16.png":"6jKBH","../assets/images/size-32.png":"6S5ZL","../assets/images/size-64.png":"dr5um","../assets/images/size-128.png":"g8H7Z","./Footer":"8pPOA"}],"hZXY2":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "sinus.4d8b0770.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"9RfUf":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "cosinus.f72a1edd.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"ixczD":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "right-click.c9a5dec3.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"8oP7q":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "middle-click.c911ba15.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"dLZMy":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "pyramide.7a40a3c0.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"3RFQ6":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "kamm.9b9ed95d.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"2Djwc":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "konstant.e774dd34.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"9Qy58":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "single.ffae1e6a.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"6jKBH":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "size-16.8bc1726c.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"6S5ZL":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "size-32.1243e91f.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"dr5um":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "size-64.2f912503.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"g8H7Z":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "size-128.aa5fb4bb.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"8pPOA":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$bc7c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$bc7c.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouterDom = require("react-router-dom");
+class Footer extends (0, _reactDefault.default).Component {
+    render() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    children: [
+                        " \xa9 ",
+                        new Date().getFullYear(),
+                        " Giang & Pfitzenmaier | All Rights Reserved"
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/Footer.js",
+                    lineNumber: 8,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.NavLink), {
+                    to: "/legal-notice",
+                    children: "Legal Notice"
+                }, void 0, false, {
+                    fileName: "src/components/Footer.js",
+                    lineNumber: 9,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true);
+    }
+}
+exports.default = Footer;
+
+  $parcel$ReactRefreshHelpers$bc7c.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"fdOAw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jE4T6":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$b014 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33404,6 +33786,174 @@ $RefreshReg$(_c, "NotFound");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"81Z0h":[function() {},{}]},["1xC6H","ShInH","8lqZg"], "8lqZg", "parcelRequiree2ec")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"81Z0h":[function() {},{}],"8xpqr":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$9b4c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9b4c.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _footer = require("./Footer");
+var _footerDefault = parcelHelpers.interopDefault(_footer);
+var _navigation = require("./Navigation");
+var _navigationDefault = parcelHelpers.interopDefault(_navigation);
+class Legal extends (0, _reactDefault.default).Component {
+    render() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
+                        fileName: "src/components/Legal.js",
+                        lineNumber: 10,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/components/Legal.js",
+                    lineNumber: 9,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+                    style: {
+                        width: "50%",
+                        margin: "0 auto"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                    children: "Legal notice"
+                                }, void 0, false, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 14,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "Maximilian Pfitzenmaier"
+                                }, void 0, false, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 15,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "74354 Besigheim"
+                                }, void 0, false, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 16,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "Deutschland"
+                                }, void 0, false, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 17,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "E-Mail: max.pfitzenmaier@web.de"
+                                }, void 0, false, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 18,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/Legal.js",
+                            lineNumber: 13,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                            children: "Accountability for content"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Legal.js",
+                                            lineNumber: 22,
+                                            columnNumber: 15
+                                        }, this),
+                                        " The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents accuracy, completeness or topicality. According to statutory provisions, we are furthermore responsible for our own content on these web pages. In this context, please note that we are accordingly not obliged to monitor merely the transmitted or saved information of third parties, or investigate circumstances pointing to illegal activity. Our obligations to remove or block the use of information under generally applicable laws remain unaffected by this as per \xa7 8 to \xa7 10 of the Telemedia Act (TMG)"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 21,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                            children: "Accountability for links"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Legal.js",
+                                            lineNumber: 29,
+                                            columnNumber: 15
+                                        }, this),
+                                        " Responsibility for the content of external links (to web pages of third parties) lies solely with the operators of the linked pages. No violations were evident to us at the time of linking. Should any legal infringement become known to us, we will remove the respective link immediately."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 28,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                            children: "Copyright"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Legal.js",
+                                            lineNumber: 34,
+                                            columnNumber: 15
+                                        }, this),
+                                        " Our web pages and their contents are subject to German copyright law. Unless expressly permitted by law (\xa7 44a et seq. of the copyright law), every form of utilizing, reproducing or processing works subject to copyright protection on our web pages requires the prior consent of the respective owner of the rights. Individual reproductions of a work are allowed only for private use, so must not serve either directly or indirectly for earnings. Unauthorized utilization of copyrighted works is punishable (\xa7 106 of the copyright law)."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 33,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/Legal.js",
+                            lineNumber: 20,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/Legal.js",
+                    lineNumber: 12,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("footer", {
+                    style: {
+                        position: "absolute",
+                        bottom: "0"
+                    },
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
+                        fileName: "src/components/Legal.js",
+                        lineNumber: 42,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/components/Legal.js",
+                    lineNumber: 41,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true);
+    }
+}
+exports.default = Legal;
+
+  $parcel$ReactRefreshHelpers$9b4c.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Footer":"8pPOA","./Navigation":"ixx0n"}]},["1xC6H","ShInH","8lqZg"], "8lqZg", "parcelRequiree2ec")
 
 //# sourceMappingURL=index.975ef6c8.js.map

@@ -141,8 +141,7 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
     //ctx.lineWidth = canvas.width / (canvasArray.length * 2);
     var grad = ctx.createLinearGradient(i, 0, i, yposition);
     grad.addColorStop(0, 'hsl(176, 72%, 71%)');
-    grad.addColorStop(0.5, 'hsl(251, 53%, 45%)');
-    grad.addColorStop(1, 'hsl(286, 100%, 50%)');
+    grad.addColorStop(1, 'hsl(251, 53%, 45%)');
     ctx.strokeStyle = grad;
     ctx.moveTo(i, 0);
     ctx.lineTo(i, yposition);
@@ -152,7 +151,7 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
     // draw circles
     ctx.beginPath();
     ctx.arc(i, yposition, 3, 0, 2 * Math.PI);
-    ctx.fillStyle = 'hsl(286, 100%, 50%)';
+    ctx.fillStyle = 'hsl(251, 53%, 45%)';
     ctx.fill();
     ctx.closePath();
     count++;
@@ -161,7 +160,8 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
   canvasArray.shift();
   canvasArray.pop();
 
-  /*ctx.beginPath();
+  /*
+  ctx.beginPath();
   ctx.font = '300 13px Arial';
   ctx.textAlign = 'left';
   if (Math.ceil(tickPeak) != 0 || -Math.ceil(tickPeak) != 0) {
@@ -177,7 +177,8 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
     ctx.lineTo(canvas.width / 2 + 6, -(canvas.height / 2) * 0.65);
     ctx.closePath();
     ctx.stroke();
-  }*/
+  }
+  */
 };
 
 /**

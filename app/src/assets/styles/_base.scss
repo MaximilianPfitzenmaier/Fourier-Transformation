@@ -11,9 +11,91 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+footer {
+  height: $navbarHeight;
+  background-color: $primary;
+  color: $turquoise;
+  display: inline-flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    margin-right: 2rem;
+    color: $turquoise;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    padding: 0 20px;
+    height: 100%;
+    font-size: 18px;
+    position: relative;
+
+    &:after {
+      content: '';
+      height: 2px;
+      width: 0px;
+      background-color: $turquoise;
+      position: absolute;
+      bottom: 30px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &.active:after {
+      display: block;
+      width: calc(100% - 40px);
+    }
+
+    &:hover::after {
+      display: block;
+      width: calc(100% - 40px);
+    }
+  }
+
+  span {
+    margin-left: 2rem;
+  }
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+main {
+  max-width: 90%;
+  display: block;
+  margin: 0 auto;
+}
+
+strong {
+  display: block;
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+strong {
+  font-size: 1.25rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+img {
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
 }
 
 /* SELECTS */

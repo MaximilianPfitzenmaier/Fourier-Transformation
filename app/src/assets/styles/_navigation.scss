@@ -6,14 +6,15 @@
   border-bottom: 1px solid #dcd5e0;
   margin-bottom: 10px;
   background-color: $primary;
+
   &-brand {
     display: flex;
     align-items: center;
     border-right: 1px solid $turquoise;
-  }
 
-  img {
-    margin: 0 16px;
+    img {
+      margin: 0 16px;
+    }
   }
 
   &-collapse {

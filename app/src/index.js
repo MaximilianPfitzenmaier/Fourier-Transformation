@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
 import Index from './components/Index';
+import Legal from './components/Legal';
 import NotFound from './components/NotFound';
 
 //const el = document.getElementById('root');
@@ -11,6 +12,7 @@ root.render(
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="fourier-transformation" element={<App />} />
+      <Route path="legal-notice" element={<Legal />} />
       <Route path="404" element={<NotFound />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

@@ -7,8 +7,86 @@ body {
   font-weight: 400;
 }
 
+footer {
+  height: 80px;
+  color: #80eae3;
+  width: 100%;
+  background-color: #5053c4;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  display: inline-flex;
+}
+
+footer a {
+  color: #80eae3;
+  height: 100%;
+  align-items: center;
+  margin-right: 2rem;
+  padding: 0 20px;
+  font-size: 18px;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+}
+
+footer a:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  background-color: #80eae3;
+  transition: all .3s ease-in-out;
+  position: absolute;
+  bottom: 30px;
+}
+
+footer a.active:after, footer a:hover:after {
+  width: calc(100% - 40px);
+  display: block;
+}
+
+footer span {
+  margin-left: 2rem;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+}
+
+main {
+  max-width: 90%;
+  margin: 0 auto;
+  display: block;
+}
+
+strong {
+  text-decoration: underline;
+  display: block;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+strong {
+  font-size: 1.25rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+img {
+  margin-top: .5rem;
+  margin-bottom: 2rem;
 }
 
 select, label {
@@ -43,7 +121,7 @@ button {
   display: flex;
 }
 
-.navbar img {
+.navbar-brand img {
   margin: 0 16px;
 }
 
@@ -100,25 +178,19 @@ button {
 }
 
 .filters button {
+  color: #000;
   cursor: pointer;
-  text-shadow: 0 1px #fff;
   background-color: #fff;
-  border: 1px solid #dcdcdc;
+  border: 2px solid #5053c4;
   padding: 6px 24px;
-  font-family: Arial;
-  font-size: 15px;
+  font-size: 16px;
   text-decoration: none;
   display: inline-block;
-  box-shadow: inset 0 1px #fff;
 }
 
 .filters button:hover {
-  background-color: #f6f6f6;
-}
-
-.filters button:active {
-  position: relative;
-  top: 1px;
+  color: #fff;
+  background-color: #5053c4;
 }
 
 .fourier {
@@ -140,7 +212,9 @@ button {
 }
 
 .fourier--basegrid-fourier .real .title, .fourier--basegrid-fourier .imag .title {
+  justify-content: center;
   font-weight: 600;
+  display: flex;
 }
 
 .fourier--basegrid-fourier .real canvas, .fourier--basegrid-fourier .imag canvas {
@@ -148,12 +222,16 @@ button {
   border: 1px solid #dcd5e0;
 }
 
+#root select {
+  cursor: pointer;
+}
+
 #root select, #root label {
   font-size: 16px;
 }
 
 #root .size select {
-  border: 1px solid #dcdcdc;
+  border: 2px solid #5053c4;
   margin: 0 20px;
   padding: 5px;
 }
@@ -164,19 +242,19 @@ button {
   right: 20px;
 }
 
-#root .basefunctions select {
-  background-color: #fff;
-}
-
 #root .basefunctions select, #root .basefunctions label {
   width: 100%;
   height: 1.5rem;
   display: flex;
 }
 
-.title {
-  justify-content: center;
-  display: flex;
+#root .basefunctions select {
+  cursor: pointer;
+  background-color: #f6f0f9;
+  border-top: 0;
+  border-bottom: 1px solid #dcd5e0;
+  border-left: 1px solid #dcd5e0;
+  border-right: 0;
 }
 
 /*# sourceMappingURL=index.b2d9cf43.css.map */

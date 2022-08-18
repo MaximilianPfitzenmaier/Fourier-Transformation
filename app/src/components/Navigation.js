@@ -7,9 +7,9 @@ class Navigation extends React.Component {
     return (
       <>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="#">
+          <NavLink className="navbar-brand" to="/">
             <img src={logo} alt="logo" width={188} height={60.75} />
-          </a>
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"

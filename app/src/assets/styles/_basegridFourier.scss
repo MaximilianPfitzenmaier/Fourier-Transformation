@@ -19,11 +19,13 @@
 
       .title {
         font-weight: 600;
+        display: flex;
+        justify-content: center;
       }
 
       canvas {
         background-color: $secondary;
-        border: 1px solid #dcd5e0;
+        border: 1px solid $border;
       }
     }
   }
