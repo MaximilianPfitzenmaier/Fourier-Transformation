@@ -7,7 +7,7 @@ export default function Index() {
         <Navigation />
       </header>
       <main style={{ padding: '1rem 0' }}>
-        <h1>Welcometo the Fourier transfomrtaion Application!</h1>
+        <h1>Welcome to the Fourier transformation Application!</h1>
       </main>
     </>
   );

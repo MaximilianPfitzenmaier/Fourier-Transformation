@@ -13,8 +13,6 @@ import * as InitUtils from './utilities/init';
 import * as HelperUtils from './utilities/helper';
 import * as GraphUtils from './utilities/graph';
 
-// TODO: richtige arrays für cosinus, gaus etc
-
 class App extends React.Component {
   constructor(props) {
     super(props);

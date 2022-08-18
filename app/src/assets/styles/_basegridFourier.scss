@@ -1,6 +1,6 @@
 @import 'variables';
 .fourier {
-  max-width: 1900px;
+  // max-width: 1900px;
   display: block;
   margin: 0 auto;
 
@@ -16,6 +16,15 @@
       width: 100%;
       height: 100%;
       position: relative;
+
+      .title {
+        font-weight: 600;
+      }
+
+      canvas {
+        background-color: $secondary;
+        border: 1px solid #dcd5e0;
+      }
     }
   }
 }

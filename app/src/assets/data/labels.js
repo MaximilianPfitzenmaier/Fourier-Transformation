@@ -5,7 +5,7 @@ export const labels = {
   kamm: 'Kamm',
   ones: 'Konstant',
   pyra: 'Pyramide',
-  gaus: 'Single',
+  single: 'Single',
   custom: 'Custom',
   reset: 'Reset all Functions',
   selectBaseFunction: 'Choose a Basefunction',

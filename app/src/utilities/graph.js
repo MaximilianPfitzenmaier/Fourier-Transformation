@@ -5,7 +5,7 @@ import { calculateFFT } from './calculateFFT';
  *  @return canvas React element with ref as ID
  */
 export const createCanvas = function (canvasID, refName) {
-  return <canvas onContextMenu={(e) => (e.button === 2 ? e.preventDefault() : null)} id={canvasID} ref={refName} width={300} height={300} />;
+  return <canvas onContextMenu={(e) => (e.button === 2 ? e.preventDefault() : null)} id={canvasID} ref={refName} width={960} height={350} />;
 };
 
 /**
@@ -99,8 +99,6 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
 
   canvas.width = width / 2 - 20;
   canvas.height = height / 2 - 120;
-  // const halfWidth = width / 2;
-  // const halfHeight = height / 2;
 
   let peaks = 1;
   let tickPeak = 1;
@@ -112,20 +110,22 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
   }
 
   ctx.translate(0, canvas.height / 2);
-
   ctx.beginPath();
+  ctx.setLineDash([5, 3]);
   ctx.lineWidth = 1;
-  ctx.strokeStyle = '#000000';
+  ctx.strokeStyle = 'hsl(176, 72%, 71%)';
   ctx.moveTo(0, 0);
   ctx.lineTo(canvas.width, 0);
   ctx.stroke();
+  ctx.closePath();
 
   ctx.beginPath();
   ctx.lineWidth = 1;
-  ctx.strokeStyle = '#000000';
+  ctx.strokeStyle = 'hsl(176, 72%, 71%)';
   ctx.moveTo(canvas.width / 2, -canvas.height / 2);
   ctx.lineTo(canvas.width / 2, canvas.height);
   ctx.stroke();
+  ctx.setLineDash([0, 0]);
 
   let count = 0;
   let yposition = 0;
@@ -137,19 +137,22 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
     yposition = yposition ? yposition : 0;
 
     ctx.beginPath();
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 2;
     //ctx.lineWidth = canvas.width / (canvasArray.length * 2);
-    ctx.strokeStyle = '#000000';
+    var grad = ctx.createLinearGradient(i, 0, i, yposition);
+    grad.addColorStop(0, 'hsl(176, 72%, 71%)');
+    grad.addColorStop(0.5, 'hsl(251, 53%, 45%)');
+    grad.addColorStop(1, 'hsl(286, 100%, 50%)');
+    ctx.strokeStyle = grad;
     ctx.moveTo(i, 0);
-
     ctx.lineTo(i, yposition);
-
     ctx.stroke();
     ctx.closePath();
-    // draw circles
 
+    // draw circles
     ctx.beginPath();
-    ctx.arc(i, yposition, 4, 0, 2 * Math.PI);
+    ctx.arc(i, yposition, 3, 0, 2 * Math.PI);
+    ctx.fillStyle = 'hsl(286, 100%, 50%)';
     ctx.fill();
     ctx.closePath();
     count++;
@@ -158,7 +161,7 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
   canvasArray.shift();
   canvasArray.pop();
 
-  ctx.beginPath();
+  /*ctx.beginPath();
   ctx.font = '300 13px Arial';
   ctx.textAlign = 'left';
   if (Math.ceil(tickPeak) != 0 || -Math.ceil(tickPeak) != 0) {
@@ -174,7 +177,7 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
     ctx.lineTo(canvas.width / 2 + 6, -(canvas.height / 2) * 0.65);
     ctx.closePath();
     ctx.stroke();
-  }
+  }*/
 };
 
 /**
@@ -252,7 +255,6 @@ export const mouseDown = function (event) {
       } else {
         // fire fft from stored arrays in state
         const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
-        console.log([realspectral, imagspectral]);
 
         // set dropdown to custom
         userData['selectedBaseFunctions']['realspectral'] = '0';
