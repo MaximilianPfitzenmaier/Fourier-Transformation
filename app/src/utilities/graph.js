@@ -101,12 +101,10 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
   canvas.height = height / 2 - 120;
 
   let peaks = 1;
-  let tickPeak = 1;
   let scale = (canvas.height / 2) * 0.65;
   if (!custom) {
     scale = 1;
     peaks = (canvas.height / 2 / findPeaks(canvasArray)) * 0.6;
-    tickPeak = findPeaks(canvasArray);
   }
 
   ctx.translate(0, canvas.height / 2);
@@ -160,25 +158,6 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
   canvasArray.shift();
   canvasArray.pop();
 
-  /*
-  ctx.beginPath();
-  ctx.font = '300 13px Arial';
-  ctx.textAlign = 'left';
-  if (Math.ceil(tickPeak) != 0 || -Math.ceil(tickPeak) != 0) {
-    ctx.fillText(-Math.ceil(tickPeak), canvas.width / 2 + 10, (canvas.height / 2) * 0.65 + 5);
-    ctx.fillText(Math.ceil(tickPeak), canvas.width / 2 + 10, -(canvas.height / 2) * 0.65 + 5);
-    ctx.closePath();
-    ctx.beginPath();
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = '#000000';
-    ctx.moveTo(canvas.width / 2 - 6, (canvas.height / 2) * 0.65);
-    ctx.lineTo(canvas.width / 2 + 6, (canvas.height / 2) * 0.65);
-    ctx.moveTo(canvas.width / 2 - 6, -(canvas.height / 2) * 0.65);
-    ctx.lineTo(canvas.width / 2 + 6, -(canvas.height / 2) * 0.65);
-    ctx.closePath();
-    ctx.stroke();
-  }
-  */
 };
 
 /**
@@ -197,7 +176,7 @@ export function findPeaks(arr) {
 
 let isPressed = false;
 let rightPressed = false;
-let middlePressed = false;
+let middlePressed = false; // must be assigned
 let canvasTarget, firstRight, firstMiddleX, firstMiddleY, nextMiddleX, nextMiddleY;
 let control = 1;
 /**
@@ -276,7 +255,7 @@ export const mouseDown = function (event) {
 
   // Mousewheel
   if (event.button === 1) {
-    const y = event.clientY - rect.top;
+    const y = event.clientY - rect.top; // must be assigned
     const canvasID = event.target.id;
     const customArray = userData[canvasID];
     const xArray = [0, 0];
@@ -498,7 +477,7 @@ export const mouseMove = function (event) {
 
   // handle right click move
   if (canvasTarget == event.target.closest('canvas') && rightPressed && currentIndex >= 0 && currentIndex < size) {
-    const y = event.clientY - rect.top;
+    const y = event.clientY - rect.top; // must be assigned
     const canvasID = event.target.id;
     const customArray = userData[canvasID];
 

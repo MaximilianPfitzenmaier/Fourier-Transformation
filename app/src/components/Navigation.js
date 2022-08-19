@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/images/BV_Logo_transparent.png';
+import { labels } from '../assets/data/labels';
 
 class Navigation extends React.Component {
   render() {
@@ -25,12 +26,17 @@ class Navigation extends React.Component {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/">
-                  Startseite
+                  {labels.home}
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/fourier-transformation">
-                  Fourier
+                {labels.fourier}
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/about">
+                {labels.about}
                 </NavLink>
               </li>
             </ul>

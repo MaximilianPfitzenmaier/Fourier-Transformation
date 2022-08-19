@@ -1,0 +1,56 @@
+@import 'variables';
+
+footer {
+    height: $navbarHeight;
+    background-color: $primary;
+    color: $turquoise;
+    display: inline-flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    a:not(.no-hover) {
+      color: $turquoise;
+      display: flex;
+      text-decoration: none;
+      align-items: center;
+      padding: 0 20px;
+      height: 100%;
+      font-size: 18px;
+      position: relative;
+
+      &:after {
+        content: '';
+        height: 2px;
+        width: 0px;
+        background-color: $turquoise;
+        position: absolute;
+        bottom: -2px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &.active:after {
+        display: block;
+        width: calc(100% - 40px);
+      }
+
+      &:hover::after {
+        display: block;
+        width: calc(100% - 40px);
+      }
+    }
+
+    svg {
+        fill: $turquoise;
+
+        &:hover {
+            filter: drop-shadow(2px 4px 6px $dark);
+        }
+    }
+
+    span {
+      margin-left: 2rem;
+      display: inline-flex;
+    }
+  }

@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from './Footer';
 import Navigation from './Navigation';
+import { labels } from '../assets/data/labels';
 
 class Legal extends React.Component {
   render() {
@@ -24,6 +25,7 @@ class Legal extends React.Component {
               pages. In this context, please note that we are accordingly not obliged to monitor merely the transmitted or saved information of third parties,
               or investigate circumstances pointing to illegal activity. Our obligations to remove or block the use of information under generally applicable
               laws remain unaffected by this as per § 8 to § 10 of the Telemedia Act (TMG)
+              For the calculation of the Fourier-Transform we use the FFT calculation of: {labels.nayuki} in JavaScript form.
             </p>
             <p>
               <strong>Accountability for links</strong> Responsibility for the content of external links (to web pages of third parties) lies solely with the

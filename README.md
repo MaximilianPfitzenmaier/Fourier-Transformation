@@ -14,11 +14,9 @@ Using the latest LTS version of node.js should work just fine: https://nodejs.or
 ### Clone the repository
 
 1. Open a terminal and move to your folder.
-2. Being there, clone this repository into a new directory called 'project' with `git clone git@github.com:MaximilianPfitzenmaier/Fourier-Transformation.git project`.
-3. Move the `.git` folder to the project webroot (`mv project/.git .`) and delete the cloned folder afterwards: `rm -rf project`
-4. Restore the project structure with `git reset HEAD --hard`. Now you should see a lot of additional files in your folder.
+2. Being there, clone this repository into a new directory called 'project' with `git clone git@github.com:MaximilianPfitzenmaier/Fourier-Transformation.git fft`.
 
-### Install plugins and build assets
+### Build assets
 
 1. Move to your app folder with `cd app/`
 2. Install all npm dependendies by typing `npm install` or just `npm i`
