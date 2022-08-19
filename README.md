@@ -1,4 +1,4 @@
-# Fourier Transformation
+# 2D Fourier-Transformation Application
 ## Live Demo:
 https://fourier-transformation.netlify.app/
 
