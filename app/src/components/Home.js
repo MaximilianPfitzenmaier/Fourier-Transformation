@@ -19,7 +19,7 @@ export default function Home() {
       <header>
         <Navigation />
       </header>
-      <main>
+      <main className="home">
         <h1>Welcome to the 2D Fourier-Transformation Application!</h1>
         <h2>How to use</h2>
         <p>

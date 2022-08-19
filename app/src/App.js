@@ -2,6 +2,7 @@ import React from 'react';
 
 // Components
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 import Filters from './components/fft/Filters';
 import RealSpatial from './components/fft/RealSpatial';
 import RealSpectral from './components/fft/RealSpectral';
@@ -56,11 +57,19 @@ class App extends React.Component {
   componentDidUpdate() {
     // Set data to SessionStorage
     this.setSessionStorage();
+    this.isMobile();
+  }
+
+  isMobile() {
+    const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    const isMobile = width < 1024 ? true : false;
+
+    return isMobile;
   }
 
   render() {
     const s = this.state;
-    return s.userData ? (
+    return ! this.isMobile() && s.userData ? (
       <>
         <Navigation />
 
@@ -107,7 +116,19 @@ class App extends React.Component {
           />
         </div>
       </>
-    ) : null;
+    ) : (
+      <>
+        <header>
+          <Navigation />
+        </header>
+        <main>
+          This Application is not made for mobile use. Please change to your Desktop PC.
+        </main>
+        <footer style={{ position: 'absolute', bottom: '0' }}>
+          <Footer />
+        </footer>
+      </>
+    );
   }
 }
 

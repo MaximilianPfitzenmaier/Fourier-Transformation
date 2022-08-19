@@ -2985,7 +2985,7 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Browser
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","react-router-dom":"fdOAw","./App":"2kQhy","./components/NotFound":"jE4T6","./style.scss":"81Z0h","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./components/Legal":"8xpqr","./components/About":"9R1Eu","./components/Home":"hcu4N"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","react-router-dom":"fdOAw","./App":"2kQhy","./components/Home":"hcu4N","./components/Legal":"8xpqr","./components/NotFound":"jE4T6","./components/About":"9R1Eu","./style.scss":"81Z0h","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("./cjs/react-jsx-dev-runtime.development.js");
 
@@ -28880,6 +28880,8 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 // Components
 var _navigation = require("./components/Navigation");
 var _navigationDefault = parcelHelpers.interopDefault(_navigation);
+var _footer = require("./components/Footer");
+var _footerDefault = parcelHelpers.interopDefault(_footer);
 var _filters = require("./components/fft/Filters");
 var _filtersDefault = parcelHelpers.interopDefault(_filters);
 var _realSpatial = require("./components/fft/RealSpatial");
@@ -28929,14 +28931,20 @@ class App extends (0, _reactDefault.default).Component {
     componentDidUpdate() {
         // Set data to SessionStorage
         this.setSessionStorage();
+        this.isMobile();
+    }
+    isMobile() {
+        const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        const isMobile = width < 1024 ? true : false;
+        return isMobile;
     }
     render() {
         const s = this.state;
-        return s.userData ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        return !this.isMobile() && s.userData ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 65,
+                    lineNumber: 74,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _filtersDefault.default), {
@@ -28946,7 +28954,7 @@ class App extends (0, _reactDefault.default).Component {
                     handleResetAll: this.handleResetAll
                 }, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 67,
+                    lineNumber: 76,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28965,7 +28973,7 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 75,
+                            lineNumber: 84,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _realSpectralDefault.default), {
@@ -28977,7 +28985,7 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 83,
+                            lineNumber: 92,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _imagSpatialDefault.default), {
@@ -28989,7 +28997,7 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 92,
+                            lineNumber: 101,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _imagSpectralDefault.default), {
@@ -29001,17 +29009,53 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 100,
+                            lineNumber: 109,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/App.js",
-                    lineNumber: 74,
+                    lineNumber: 83,
                     columnNumber: 9
                 }, this)
             ]
-        }, void 0, true) : null;
+        }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
+                        fileName: "src/App.js",
+                        lineNumber: 122,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/App.js",
+                    lineNumber: 121,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+                    children: "This Application is not made for mobile use. Please change to your Desktop PC."
+                }, void 0, false, {
+                    fileName: "src/App.js",
+                    lineNumber: 124,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("footer", {
+                    style: {
+                        position: "absolute",
+                        bottom: "0"
+                    },
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
+                        fileName: "src/App.js",
+                        lineNumber: 128,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/App.js",
+                    lineNumber: 127,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true);
     }
 }
 exports.default = App;
@@ -29021,7 +29065,7 @@ exports.default = App;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/Navigation":"ixx0n","./components/fft/RealSpatial":"fZydW","./components/fft/RealSpectral":"fsweb","./components/fft/ImagSpectral":"eYdXG","./components/fft/ImagSpatial":"jFtd4","./utilities/init":"aQ7J1","./utilities/helper":"d1m9W","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./utilities/graph":"aXKMu","./components/fft/Filters":"eXqmd"}],"ixx0n":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/Navigation":"ixx0n","./components/fft/Filters":"eXqmd","./components/fft/RealSpatial":"fZydW","./components/fft/RealSpectral":"fsweb","./components/fft/ImagSpectral":"eYdXG","./components/fft/ImagSpatial":"jFtd4","./utilities/init":"aQ7J1","./utilities/helper":"d1m9W","./utilities/graph":"aXKMu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./components/Footer":"8pPOA"}],"ixx0n":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -29053,27 +29097,7 @@ class Navigation extends (0, _reactDefault.default).Component {
                             height: 60.75
                         }, void 0, false, {
                             fileName: "src/components/Navigation.js",
-                            lineNumber: 12,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "src/components/Navigation.js",
-                        lineNumber: 11,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        className: "navbar-toggler",
-                        type: "button",
-                        "data-toggle": "collapse",
-                        "data-target": "#navbarNav",
-                        "aria-controls": "navbarNav",
-                        "aria-expanded": "false",
-                        "aria-label": "Toggle navigation",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                            className: "navbar-toggler-icon"
-                        }, void 0, false, {
-                            fileName: "src/components/Navigation.js",
-                            lineNumber: 23,
+                            lineNumber: 15,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
@@ -29095,12 +29119,12 @@ class Navigation extends (0, _reactDefault.default).Component {
                                         children: (0, _labels.labels).home
                                     }, void 0, false, {
                                         fileName: "src/components/Navigation.js",
-                                        lineNumber: 28,
+                                        lineNumber: 21,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/components/Navigation.js",
-                                    lineNumber: 27,
+                                    lineNumber: 20,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -29111,12 +29135,12 @@ class Navigation extends (0, _reactDefault.default).Component {
                                         children: (0, _labels.labels).fourier
                                     }, void 0, false, {
                                         fileName: "src/components/Navigation.js",
-                                        lineNumber: 33,
+                                        lineNumber: 26,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/components/Navigation.js",
-                                    lineNumber: 32,
+                                    lineNumber: 25,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -29127,23 +29151,111 @@ class Navigation extends (0, _reactDefault.default).Component {
                                         children: (0, _labels.labels).about
                                     }, void 0, false, {
                                         fileName: "src/components/Navigation.js",
-                                        lineNumber: 38,
+                                        lineNumber: 31,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/components/Navigation.js",
-                                    lineNumber: 37,
+                                    lineNumber: 30,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/Navigation.js",
-                            lineNumber: 26,
+                            lineNumber: 19,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Navigation.js",
-                        lineNumber: 25,
+                        lineNumber: 18,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        id: "menuToggle",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "checkbox"
+                            }, void 0, false, {
+                                fileName: "src/components/Navigation.js",
+                                lineNumber: 39,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {}, void 0, false, {
+                                fileName: "src/components/Navigation.js",
+                                lineNumber: 40,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {}, void 0, false, {
+                                fileName: "src/components/Navigation.js",
+                                lineNumber: 41,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {}, void 0, false, {
+                                fileName: "src/components/Navigation.js",
+                                lineNumber: 42,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                                id: "menu",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                        className: "nav-item",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.NavLink), {
+                                            className: ({ isActive  })=>isActive ? "active" : "",
+                                            to: "/",
+                                            children: (0, _labels.labels).home
+                                        }, void 0, false, {
+                                            fileName: "src/components/Navigation.js",
+                                            lineNumber: 45,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "src/components/Navigation.js",
+                                        lineNumber: 44,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                        className: "nav-item",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.NavLink), {
+                                            className: ({ isActive  })=>isActive ? "active" : "",
+                                            to: "/fourier-transformation",
+                                            children: (0, _labels.labels).fourier
+                                        }, void 0, false, {
+                                            fileName: "src/components/Navigation.js",
+                                            lineNumber: 50,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "src/components/Navigation.js",
+                                        lineNumber: 49,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                        className: "nav-item",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.NavLink), {
+                                            className: ({ isActive  })=>isActive ? "active" : "",
+                                            to: "/about",
+                                            children: (0, _labels.labels).about
+                                        }, void 0, false, {
+                                            fileName: "src/components/Navigation.js",
+                                            lineNumber: 55,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "src/components/Navigation.js",
+                                        lineNumber: 54,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/Navigation.js",
+                                lineNumber: 43,
+                                columnNumber: 15
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/Navigation.js",
+                        lineNumber: 38,
                         columnNumber: 11
                     }, this)
                 ]
@@ -29162,7 +29274,78 @@ exports.default = Navigation;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"fdOAw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../assets/images/BV_Logo_transparent.png":"dH8yU","../assets/data/labels":"cNGYT"}],"km3Ru":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"fdOAw","../assets/images/BV_Logo_transparent.png":"dH8yU","../assets/data/labels":"cNGYT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dH8yU":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "BV_Logo_transparent.4737afbf.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"cNGYT":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "labels", ()=>labels);
+const labels = {
+    // Basefunktions
+    selectBaseFunction: "Choose a Basefunction",
+    zero: "Zero",
+    sin: "Sinus",
+    cos: "Cosinus",
+    kamm: "Comb",
+    ones: "Constant",
+    pyra: "Pyramid",
+    single: "Single",
+    custom: "Custom",
+    // Filters
+    chooseArraySize: "Choose the size:",
+    reset: "Reset all Functions",
+    // Gridlabels
+    realspatial: "Spatial Real",
+    realspectral: "Spectral Real",
+    imagspatial: "Spatial Imaginary",
+    imagspectral: "Spectral Imaginary",
+    // Pages
+    home: "Home",
+    fourier: "Fourier-Transformation",
+    about: "About",
+    legal: "Legal Notice",
+    // Links
+    uni: "https://uni-tuebingen.de/",
+    github: "https://github.com/MaximilianPfitzenmaier/Fourier-Transformation",
+    nayuki: "https://www.nayuki.io/page/free-small-fft-in-multiple-languages/"
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"km3Ru":[function(require,module,exports) {
 "use strict";
 var Refresh = require("react-refresh/runtime");
 function debounce(func, delay) {
@@ -29282,168 +29465,124 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"786KC"}],"dH8yU":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "BV_Logo_transparent.4737afbf.png" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"lgJ39":[function(require,module,exports) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return "/";
-}
-function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
-} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error("Origin not found");
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"cNGYT":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "labels", ()=>labels);
-const labels = {
-    // Basefunktions
-    selectBaseFunction: "Choose a Basefunction",
-    zero: "Zero",
-    sin: "Sinus",
-    cos: "Cosinus",
-    kamm: "Comb",
-    ones: "Constant",
-    pyra: "Pyramid",
-    single: "Single",
-    custom: "Custom",
-    // Filters
-    chooseArraySize: "Choose the size:",
-    reset: "Reset all Functions",
-    // Gridlabels
-    realspatial: "Spatial Real",
-    realspectral: "Spectral Real",
-    imagspatial: "Spatial Imaginary",
-    imagspectral: "Spectral Imaginary",
-    // Pages
-    home: "Home",
-    fourier: "Fourier-Transformation",
-    about: "About",
-    legal: "Legal Notice",
-    // Links
-    uni: "https://uni-tuebingen.de/",
-    github: "https://github.com/MaximilianPfitzenmaier/Fourier-Transformation",
-    nayuki: "https://www.nayuki.io/page/free-small-fft-in-multiple-languages/"
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fZydW":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$3c09 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react-refresh/runtime":"786KC"}],"eXqmd":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$04d9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$3c09.prelude(module);
+$parcel$ReactRefreshHelpers$04d9.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-// left Top
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _graph = require("../../utilities/graph");
-var _filter = require("../../utilities/filter");
-class RealSpatial extends (0, _reactDefault.default).Component {
+class Filters extends (0, _reactDefault.default).Component {
     constructor(props){
         super(props);
-        this.drawFunction = _graph.drawFunction.bind(this);
-        this.createCanvas = _graph.createCanvas.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.getDropdown = (0, _filter.getDropdown).bind(this);
-        // Refs
-        this.select = /*#__PURE__*/ (0, _reactDefault.default).createRef();
-        this.canvas = /*#__PURE__*/ (0, _reactDefault.default).createRef();
     }
-    canvasID = "realspatial";
-    componentDidMount() {
-        this.drawFunction(this.canvas, this.props.arrayFromState, this.props.custom);
-    }
-    componentDidUpdate(prevProps) {
-        if (prevProps.selectedBaseFunctions !== this.props.selectedBaseFunctions) this.updateValue(this.props.selectedBaseFunctions);
-        const p = this.props;
-        this.drawFunction(this.canvas, p.arrayFromState, p.custom);
-        this.getDropdown(p.labels, p.selectedBaseFunctions);
-    }
-    updateValue(value) {
-        this.select.current.value = value;
-    }
-    handleChange(event) {
-        const newValue = event.target.value;
-        if (newValue !== "0") {
-            const array = JSON.parse(event.target.value);
-            const size = this.props.arraySize;
-            this.props.getBaseFunction(array[size], this.canvasID, newValue);
-        }
-    }
-    render() {
-        const { labels , selectedBaseFunctions  } = this.props;
+    sizeFilter() {
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "real real--spatial",
-            style: {
-                "--area": " left_top"
-            },
+            className: "size",
             children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "title",
-                    children: labels.realspatial
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                    htmlFor: "arraySize",
+                    children: this.props.labels.chooseArraySize
                 }, void 0, false, {
-                    fileName: "src/components/fft/RealSpatial.js",
-                    lineNumber: 54,
+                    fileName: "src/components/fft/Filters.js",
+                    lineNumber: 12,
                     columnNumber: 9
                 }, this),
-                this.getDropdown(labels, selectedBaseFunctions, this.select),
-                this.createCanvas(this.canvasID, this.canvas)
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+                    name: "arraySize",
+                    defaultValue: this.props.arraySize,
+                    onChange: this.props.handleArraySizeChange,
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                            value: 16,
+                            children: "16"
+                        }, void 0, false, {
+                            fileName: "src/components/fft/Filters.js",
+                            lineNumber: 14,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                            value: 32,
+                            children: "32"
+                        }, void 0, false, {
+                            fileName: "src/components/fft/Filters.js",
+                            lineNumber: 15,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                            value: 64,
+                            children: "64"
+                        }, void 0, false, {
+                            fileName: "src/components/fft/Filters.js",
+                            lineNumber: 16,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                            value: 128,
+                            children: "128"
+                        }, void 0, false, {
+                            fileName: "src/components/fft/Filters.js",
+                            lineNumber: 17,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/fft/Filters.js",
+                    lineNumber: 13,
+                    columnNumber: 9
+                }, this)
             ]
         }, void 0, true, {
-            fileName: "src/components/fft/RealSpatial.js",
-            lineNumber: 53,
+            fileName: "src/components/fft/Filters.js",
+            lineNumber: 11,
+            columnNumber: 7
+        }, this);
+    }
+    resetAll() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            onClick: this.props.handleResetAll,
+            children: this.props.labels.reset
+        }, void 0, false, {
+            fileName: "src/components/fft/Filters.js",
+            lineNumber: 24,
+            columnNumber: 12
+        }, this);
+    }
+    render() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "filters",
+            children: [
+                this.sizeFilter(),
+                this.resetAll()
+            ]
+        }, void 0, true, {
+            fileName: "src/components/fft/Filters.js",
+            lineNumber: 29,
             columnNumber: 7
         }, this);
     }
 }
-exports.default = RealSpatial;
-RealSpatial.propTypes = {
-    getBaseFunction: (0, _propTypesDefault.default).func,
-    arrayFromState: (0, _propTypesDefault.default).array,
-    arraySize: (0, _propTypesDefault.default).number,
+exports.default = Filters;
+Filters.propTypes = {
+    handleArraySizeChange: (0, _propTypesDefault.default).func,
     labels: (0, _propTypesDefault.default).object,
-    selectedBaseFunctions: (0, _propTypesDefault.default).string,
-    custom: (0, _propTypesDefault.default).bool
+    handleResetAll: (0, _propTypesDefault.default).func,
+    arraySize: (0, _propTypesDefault.default).number
 };
 
-  $parcel$ReactRefreshHelpers$3c09.postlude(module);
+  $parcel$ReactRefreshHelpers$04d9.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../utilities/graph":"aXKMu","../../utilities/filter":"ac9Cm"}],"7wKI2":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7wKI2":[function(require,module,exports) {
 var ReactIs = require("react-is");
 // By explicitly using `prop-types` you are opting into new development behavior.
 // http://fb.me/prop-types-in-prod
@@ -30184,7 +30323,97 @@ printWarning = function(text) {
 };
 module.exports = checkPropTypes;
 
-},{"./lib/ReactPropTypesSecret":"jZTZJ","./lib/has":"fqKuf"}],"aXKMu":[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":"jZTZJ","./lib/has":"fqKuf"}],"fZydW":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$3c09 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$3c09.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+// left Top
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _graph = require("../../utilities/graph");
+var _filter = require("../../utilities/filter");
+class RealSpatial extends (0, _reactDefault.default).Component {
+    constructor(props){
+        super(props);
+        this.drawFunction = _graph.drawFunction.bind(this);
+        this.createCanvas = _graph.createCanvas.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.getDropdown = (0, _filter.getDropdown).bind(this);
+        // Refs
+        this.select = /*#__PURE__*/ (0, _reactDefault.default).createRef();
+        this.canvas = /*#__PURE__*/ (0, _reactDefault.default).createRef();
+    }
+    canvasID = "realspatial";
+    componentDidMount() {
+        this.drawFunction(this.canvas, this.props.arrayFromState, this.props.custom);
+    }
+    componentDidUpdate(prevProps) {
+        if (prevProps.selectedBaseFunctions !== this.props.selectedBaseFunctions) this.updateValue(this.props.selectedBaseFunctions);
+        const p = this.props;
+        this.drawFunction(this.canvas, p.arrayFromState, p.custom);
+        this.getDropdown(p.labels, p.selectedBaseFunctions);
+    }
+    updateValue(value) {
+        this.select.current.value = value;
+    }
+    handleChange(event) {
+        const newValue = event.target.value;
+        if (newValue !== "0") {
+            const array = JSON.parse(event.target.value);
+            const size = this.props.arraySize;
+            this.props.getBaseFunction(array[size], this.canvasID, newValue);
+        }
+    }
+    render() {
+        const { labels , selectedBaseFunctions  } = this.props;
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "real real--spatial",
+            style: {
+                "--area": " left_top"
+            },
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "title",
+                    children: labels.realspatial
+                }, void 0, false, {
+                    fileName: "src/components/fft/RealSpatial.js",
+                    lineNumber: 54,
+                    columnNumber: 9
+                }, this),
+                this.getDropdown(labels, selectedBaseFunctions, this.select),
+                this.createCanvas(this.canvasID, this.canvas)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/fft/RealSpatial.js",
+            lineNumber: 53,
+            columnNumber: 7
+        }, this);
+    }
+}
+exports.default = RealSpatial;
+RealSpatial.propTypes = {
+    getBaseFunction: (0, _propTypesDefault.default).func,
+    arrayFromState: (0, _propTypesDefault.default).array,
+    arraySize: (0, _propTypesDefault.default).number,
+    labels: (0, _propTypesDefault.default).object,
+    selectedBaseFunctions: (0, _propTypesDefault.default).string,
+    custom: (0, _propTypesDefault.default).bool
+};
+
+  $parcel$ReactRefreshHelpers$3c09.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","../../utilities/graph":"aXKMu","../../utilities/filter":"ac9Cm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"aXKMu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$97f1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -32806,7 +33035,7 @@ RealSpectral.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","prop-types":"7wKI2","../../utilities/graph":"aXKMu","../../utilities/filter":"ac9Cm"}],"eYdXG":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","../../utilities/graph":"aXKMu","../../utilities/filter":"ac9Cm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eYdXG":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$34e7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -32896,7 +33125,7 @@ ImagSpectral.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","prop-types":"7wKI2","../../utilities/graph":"aXKMu","../../utilities/filter":"ac9Cm"}],"jFtd4":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","../../utilities/graph":"aXKMu","../../utilities/filter":"ac9Cm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jFtd4":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8454 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -32986,7 +33215,7 @@ ImagSpatial.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../utilities/graph":"aXKMu","../../utilities/filter":"ac9Cm"}],"aQ7J1":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","../../utilities/graph":"aXKMu","../../utilities/filter":"ac9Cm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"aQ7J1":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getSessionStorage", ()=>getSessionStorage);
@@ -33026,7 +33255,7 @@ const initialize = function() {
     });
 };
 
-},{"../assets/data/basedata":"2mThA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./helper":"d1m9W","../assets/data/labels":"cNGYT"}],"d1m9W":[function(require,module,exports) {
+},{"./helper":"d1m9W","../assets/data/basedata":"2mThA","../assets/data/labels":"cNGYT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d1m9W":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "slideUp", ()=>slideUp);
@@ -33192,196 +33421,7 @@ const handleResetAll = function() {
     });
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../assets/data/basedata":"2mThA"}],"eXqmd":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$04d9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$04d9.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-class Filters extends (0, _reactDefault.default).Component {
-    constructor(props){
-        super(props);
-    }
-    sizeFilter() {
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "size",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    htmlFor: "arraySize",
-                    children: this.props.labels.chooseArraySize
-                }, void 0, false, {
-                    fileName: "src/components/fft/Filters.js",
-                    lineNumber: 12,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                    name: "arraySize",
-                    defaultValue: this.props.arraySize,
-                    onChange: this.props.handleArraySizeChange,
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                            value: 16,
-                            children: "16"
-                        }, void 0, false, {
-                            fileName: "src/components/fft/Filters.js",
-                            lineNumber: 14,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                            value: 32,
-                            children: "32"
-                        }, void 0, false, {
-                            fileName: "src/components/fft/Filters.js",
-                            lineNumber: 15,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                            value: 64,
-                            children: "64"
-                        }, void 0, false, {
-                            fileName: "src/components/fft/Filters.js",
-                            lineNumber: 16,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                            value: 128,
-                            children: "128"
-                        }, void 0, false, {
-                            fileName: "src/components/fft/Filters.js",
-                            lineNumber: 17,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/fft/Filters.js",
-                    lineNumber: 13,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/fft/Filters.js",
-            lineNumber: 11,
-            columnNumber: 7
-        }, this);
-    }
-    resetAll() {
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-            onClick: this.props.handleResetAll,
-            children: this.props.labels.reset
-        }, void 0, false, {
-            fileName: "src/components/fft/Filters.js",
-            lineNumber: 24,
-            columnNumber: 12
-        }, this);
-    }
-    render() {
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "filters",
-            children: [
-                this.sizeFilter(),
-                this.resetAll()
-            ]
-        }, void 0, true, {
-            fileName: "src/components/fft/Filters.js",
-            lineNumber: 29,
-            columnNumber: 7
-        }, this);
-    }
-}
-exports.default = Filters;
-Filters.propTypes = {
-    handleArraySizeChange: (0, _propTypesDefault.default).func,
-    labels: (0, _propTypesDefault.default).object,
-    handleResetAll: (0, _propTypesDefault.default).func,
-    arraySize: (0, _propTypesDefault.default).number
-};
-
-  $parcel$ReactRefreshHelpers$04d9.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jE4T6":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$b014 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$b014.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _footer = require("./Footer");
-var _footerDefault = parcelHelpers.interopDefault(_footer);
-var _navigation = require("./Navigation");
-var _navigationDefault = parcelHelpers.interopDefault(_navigation);
-var _labels = require("../assets/data/labels");
-function NotFound() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
-                    fileName: "src/components/NotFound.js",
-                    lineNumber: 10,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "src/components/NotFound.js",
-                lineNumber: 9,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                    children: " 404 Site Not Found "
-                }, void 0, false, {
-                    fileName: "src/components/NotFound.js",
-                    lineNumber: 13,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "src/components/NotFound.js",
-                lineNumber: 12,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("footer", {
-                style: {
-                    position: "absolute",
-                    bottom: "0"
-                },
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
-                    fileName: "src/components/NotFound.js",
-                    lineNumber: 16,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "src/components/NotFound.js",
-                lineNumber: 15,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true);
-}
-exports.default = NotFound;
-_c = NotFound;
-var _c;
-$RefreshReg$(_c, "NotFound");
-
-  $parcel$ReactRefreshHelpers$b014.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","./Footer":"8pPOA","./Navigation":"ixx0n","../assets/data/labels":"cNGYT"}],"8pPOA":[function(require,module,exports) {
+},{"../assets/data/basedata":"2mThA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8pPOA":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$bc7c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33464,517 +33504,7 @@ exports.default = Footer;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"fdOAw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../assets/data/labels":"cNGYT"}],"81Z0h":[function() {},{}],"8xpqr":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$9b4c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$9b4c.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _footer = require("./Footer");
-var _footerDefault = parcelHelpers.interopDefault(_footer);
-var _navigation = require("./Navigation");
-var _navigationDefault = parcelHelpers.interopDefault(_navigation);
-var _labels = require("../assets/data/labels");
-class Legal extends (0, _reactDefault.default).Component {
-    render() {
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
-                        fileName: "src/components/Legal.js",
-                        lineNumber: 11,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "src/components/Legal.js",
-                    lineNumber: 10,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
-                    style: {
-                        width: "50%",
-                        margin: "0 auto"
-                    },
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                    children: "Legal notice"
-                                }, void 0, false, {
-                                    fileName: "src/components/Legal.js",
-                                    lineNumber: 15,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: "Maximilian Pfitzenmaier"
-                                }, void 0, false, {
-                                    fileName: "src/components/Legal.js",
-                                    lineNumber: 16,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: "74354 Besigheim"
-                                }, void 0, false, {
-                                    fileName: "src/components/Legal.js",
-                                    lineNumber: 17,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: "Deutschland"
-                                }, void 0, false, {
-                                    fileName: "src/components/Legal.js",
-                                    lineNumber: 18,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: "E-Mail: max.pfitzenmaier@web.de"
-                                }, void 0, false, {
-                                    fileName: "src/components/Legal.js",
-                                    lineNumber: 19,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/Legal.js",
-                            lineNumber: 14,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                            children: "Accountability for content"
-                                        }, void 0, false, {
-                                            fileName: "src/components/Legal.js",
-                                            lineNumber: 23,
-                                            columnNumber: 15
-                                        }, this),
-                                        " The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents accuracy, completeness or topicality. According to statutory provisions, we are furthermore responsible for our own content on these web pages. In this context, please note that we are accordingly not obliged to monitor merely the transmitted or saved information of third parties, or investigate circumstances pointing to illegal activity. Our obligations to remove or block the use of information under generally applicable laws remain unaffected by this as per \xa7 8 to \xa7 10 of the Telemedia Act (TMG) For the calculation of the Fourier-Transform we use the FFT calculation of: ",
-                                        (0, _labels.labels).nayuki,
-                                        " in JavaScript form."
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/Legal.js",
-                                    lineNumber: 22,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                            children: "Accountability for links"
-                                        }, void 0, false, {
-                                            fileName: "src/components/Legal.js",
-                                            lineNumber: 31,
-                                            columnNumber: 15
-                                        }, this),
-                                        " Responsibility for the content of external links (to web pages of third parties) lies solely with the operators of the linked pages. No violations were evident to us at the time of linking. Should any legal infringement become known to us, we will remove the respective link immediately."
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/Legal.js",
-                                    lineNumber: 30,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                            children: "Copyright"
-                                        }, void 0, false, {
-                                            fileName: "src/components/Legal.js",
-                                            lineNumber: 36,
-                                            columnNumber: 15
-                                        }, this),
-                                        " Our web pages and their contents are subject to German copyright law. Unless expressly permitted by law (\xa7 44a et seq. of the copyright law), every form of utilizing, reproducing or processing works subject to copyright protection on our web pages requires the prior consent of the respective owner of the rights. Individual reproductions of a work are allowed only for private use, so must not serve either directly or indirectly for earnings. Unauthorized utilization of copyrighted works is punishable (\xa7 106 of the copyright law)."
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/Legal.js",
-                                    lineNumber: 35,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/Legal.js",
-                            lineNumber: 21,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/Legal.js",
-                    lineNumber: 13,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("footer", {
-                    style: {
-                        position: "absolute",
-                        bottom: "0"
-                    },
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
-                        fileName: "src/components/Legal.js",
-                        lineNumber: 44,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "src/components/Legal.js",
-                    lineNumber: 43,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true);
-    }
-}
-exports.default = Legal;
-
-  $parcel$ReactRefreshHelpers$9b4c.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Footer":"8pPOA","./Navigation":"ixx0n","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../assets/data/labels":"cNGYT"}],"9R1Eu":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$5b98 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$5b98.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _footer = require("./Footer");
-var _footerDefault = parcelHelpers.interopDefault(_footer);
-var _navigation = require("./Navigation");
-var _navigationDefault = parcelHelpers.interopDefault(_navigation);
-var _labels = require("../assets/data/labels");
-var _forwardfftPng = require("../assets/images/forwardfft.png");
-var _forwardfftPngDefault = parcelHelpers.interopDefault(_forwardfftPng);
-var _backwardfftPng = require("../assets/images/backwardfft.png");
-var _backwardfftPngDefault = parcelHelpers.interopDefault(_backwardfftPng);
-class About extends (0, _reactDefault.default).Component {
-    render() {
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
-                        fileName: "src/components/About.js",
-                        lineNumber: 13,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "src/components/About.js",
-                    lineNumber: 12,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
-                    style: {
-                        width: "50%",
-                        margin: "0 auto"
-                    },
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                                    children: "About this Project"
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 18,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: [
-                                        "This seminar project from ",
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                            href: (0, _labels.labels).uni,
-                                            children: "University of Tuebingen"
-                                        }, void 0, false, {
-                                            fileName: "src/components/About.js",
-                                            lineNumber: 19,
-                                            columnNumber: 42
-                                        }, this),
-                                        " is a beautiful react Application that creates and calculates the 2D Fourier Transformation. We provide this Project for educational purposes, with this Project you can visualise the 2D Fourier Transformation and hopefully learn something from this experience."
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 19,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/About.js",
-                            lineNumber: 17,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                    children: "About us"
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 24,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: [
-                                        "Our names are Maximilian Pfitzenmaier and Thanh Michael Giang and we are two absolutly stunning and awesome master students of the ",
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                            href: (0, _labels.labels).uni,
-                                            children: "University of Tuebingen"
-                                        }, void 0, false, {
-                                            fileName: "src/components/About.js",
-                                            lineNumber: 28,
-                                            columnNumber: 146
-                                        }, this),
-                                        " that are currently studying media informatics."
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 27,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/About.js",
-                            lineNumber: 23,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                    children: "About Fourier-Transformation"
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 33,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: "The Fourier Tranformation breaks down functions while relying on the position in spatial or the time. While the spatial or time is relying on the spatial frequency and the temporal frequency. Using the Fourier Transformation, one tries to find the sinus and cosinus functions that have suitable frequencies and amplitudes. The sum of the suitable frequencies and amplitudes should approximate the given function."
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 34,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                    children: "Properties of Fourier-Transformation"
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 39,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                            children: "Convolution theorem: Convolution in spatial space corresponds to multiplication in frequency space (and vice versa)."
-                                        }, void 0, false, {
-                                            fileName: "src/components/About.js",
-                                            lineNumber: 41,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                            children: "Separability: dimensions can be transformed separately"
-                                        }, void 0, false, {
-                                            fileName: "src/components/About.js",
-                                            lineNumber: 42,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                            children: "Theorem of interchange: FT turned onto FT of a function results in point-mirrored original function: F(F(f(x, y))) = f(- x,- y)"
-                                        }, void 0, false, {
-                                            fileName: "src/components/About.js",
-                                            lineNumber: 43,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                            children: "Displacement law: Displacement in spatial space changes only phase, not amplitude in frequency space."
-                                        }, void 0, false, {
-                                            fileName: "src/components/About.js",
-                                            lineNumber: 44,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                            children: "Rotation theorem: rotation in local space is rotation by the same angle in frequency space"
-                                        }, void 0, false, {
-                                            fileName: "src/components/About.js",
-                                            lineNumber: 45,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                            children: "Superposition theorem: linear combinations of figures in local space correspond to superposition of the respective representations of the figures in frequency space"
-                                        }, void 0, false, {
-                                            fileName: "src/components/About.js",
-                                            lineNumber: 46,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                            children: "Similarity theorem: stretching of the function in local space corresponds to compression in frequency space (and vice versa)"
-                                        }, void 0, false, {
-                                            fileName: "src/components/About.js",
-                                            lineNumber: 47,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                            children: "Periodicity: FT of a periodic function is discrete on a regular grid"
-                                        }, void 0, false, {
-                                            fileName: "src/components/About.js",
-                                            lineNumber: 48,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 40,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                    children: "Discret Fourier-Transformation (DFT)"
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 51,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: "The Discrete Fourier Transformation works with the spectral analysis of discrete finite signals. Those are used to periodically analyse complex numbers that represent the signal values while the signal values can be summed up as a vector."
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 52,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                    children: "Fast Fourier-Transformation (FFT)"
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 57,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: "The FFT is a improvement of the efficiency of computing power compared to the discret fourier transformation. By using the divide and conquer algorithm the FFT reduces the number of arithmetic oprations by a large margin."
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 58,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: "The forward FFT is based on the formular:"
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 63,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                    src: (0, _forwardfftPngDefault.default)
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 67,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: "The inverse FFT is based on the formular:"
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 69,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                    src: (0, _backwardfftPngDefault.default)
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 73,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/About.js",
-                            lineNumber: 32,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                    children: "Building the Project"
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 79,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: [
-                                        "This project was build by using ReactJS and Visual Studio Code as an programming environment. The Project is available at ",
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                            href: (0, _labels.labels).github,
-                                            rel: "nofollow noreferrer",
-                                            target: "_blank",
-                                            children: "GitHub"
-                                        }, void 0, false, {
-                                            fileName: "src/components/About.js",
-                                            lineNumber: 84,
-                                            columnNumber: 137
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 83,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                    children: "React"
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 87,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: "React or ReactJS is a open-source Javascript library that uses UI components to build interfaces. By viewing each state in the Application React can render and update components where the data changes thus making it efficient and fast without much loading time. Through UI components, with each managing their own state, it is possible to easily create complex UIs while still being very clear and easy to debug."
-                                }, void 0, false, {
-                                    fileName: "src/components/About.js",
-                                    lineNumber: 88,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/About.js",
-                            lineNumber: 78,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/About.js",
-                    lineNumber: 15,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("footer", {
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
-                        fileName: "src/components/About.js",
-                        lineNumber: 113,
-                        columnNumber: 17
-                    }, this)
-                }, void 0, false, {
-                    fileName: "src/components/About.js",
-                    lineNumber: 113,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true);
-    }
-}
-exports.default = About;
-
-  $parcel$ReactRefreshHelpers$5b98.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Footer":"8pPOA","./Navigation":"ixx0n","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../assets/data/labels":"cNGYT","../assets/images/forwardfft.png":"4Tssa","../assets/images/backwardfft.png":"2CP8X"}],"4Tssa":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "forwardfft.62c3751c.png" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"2CP8X":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "backwardfft.11b3a55b.png" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"hcu4N":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"fdOAw","../assets/data/labels":"cNGYT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hcu4N":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$a290 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -34027,6 +33557,7 @@ function Home() {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+                className: "home",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                         children: "Welcome to the 2D Fourier-Transformation Application!"
@@ -34383,6 +33914,585 @@ module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "size-6
 },{"./helpers/bundle-url":"lgJ39"}],"g8H7Z":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "size-128.aa5fb4bb.png" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}]},["1xC6H","ShInH","8lqZg"], "8lqZg", "parcelRequiree2ec")
+},{"./helpers/bundle-url":"lgJ39"}],"8xpqr":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$9b4c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9b4c.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _footer = require("./Footer");
+var _footerDefault = parcelHelpers.interopDefault(_footer);
+var _navigation = require("./Navigation");
+var _navigationDefault = parcelHelpers.interopDefault(_navigation);
+var _labels = require("../assets/data/labels");
+class Legal extends (0, _reactDefault.default).Component {
+    render() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
+                        fileName: "src/components/Legal.js",
+                        lineNumber: 11,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/components/Legal.js",
+                    lineNumber: 10,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+                    style: {
+                        width: "50%",
+                        margin: "0 auto"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                    children: "Legal notice"
+                                }, void 0, false, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 15,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "Maximilian Pfitzenmaier"
+                                }, void 0, false, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 16,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "74354 Besigheim"
+                                }, void 0, false, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 17,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "Deutschland"
+                                }, void 0, false, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 18,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "E-Mail: max.pfitzenmaier@web.de"
+                                }, void 0, false, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 19,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/Legal.js",
+                            lineNumber: 14,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                            children: "Accountability for content"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Legal.js",
+                                            lineNumber: 23,
+                                            columnNumber: 15
+                                        }, this),
+                                        " The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents accuracy, completeness or topicality. According to statutory provisions, we are furthermore responsible for our own content on these web pages. In this context, please note that we are accordingly not obliged to monitor merely the transmitted or saved information of third parties, or investigate circumstances pointing to illegal activity. Our obligations to remove or block the use of information under generally applicable laws remain unaffected by this as per \xa7 8 to \xa7 10 of the Telemedia Act (TMG) For the calculation of the Fourier-Transform we use the FFT calculation of: ",
+                                        (0, _labels.labels).nayuki,
+                                        " in JavaScript form."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 22,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                            children: "Accountability for links"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Legal.js",
+                                            lineNumber: 31,
+                                            columnNumber: 15
+                                        }, this),
+                                        " Responsibility for the content of external links (to web pages of third parties) lies solely with the operators of the linked pages. No violations were evident to us at the time of linking. Should any legal infringement become known to us, we will remove the respective link immediately."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 30,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                            children: "Copyright"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Legal.js",
+                                            lineNumber: 36,
+                                            columnNumber: 15
+                                        }, this),
+                                        " Our web pages and their contents are subject to German copyright law. Unless expressly permitted by law (\xa7 44a et seq. of the copyright law), every form of utilizing, reproducing or processing works subject to copyright protection on our web pages requires the prior consent of the respective owner of the rights. Individual reproductions of a work are allowed only for private use, so must not serve either directly or indirectly for earnings. Unauthorized utilization of copyrighted works is punishable (\xa7 106 of the copyright law)."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Legal.js",
+                                    lineNumber: 35,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/Legal.js",
+                            lineNumber: 21,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/Legal.js",
+                    lineNumber: 13,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("footer", {
+                    style: {
+                        position: "absolute",
+                        bottom: "0"
+                    },
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
+                        fileName: "src/components/Legal.js",
+                        lineNumber: 44,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/components/Legal.js",
+                    lineNumber: 43,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true);
+    }
+}
+exports.default = Legal;
+
+  $parcel$ReactRefreshHelpers$9b4c.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Footer":"8pPOA","./Navigation":"ixx0n","../assets/data/labels":"cNGYT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jE4T6":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$b014 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$b014.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _footer = require("./Footer");
+var _footerDefault = parcelHelpers.interopDefault(_footer);
+var _navigation = require("./Navigation");
+var _navigationDefault = parcelHelpers.interopDefault(_navigation);
+function NotFound() {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
+                    fileName: "src/components/NotFound.js",
+                    lineNumber: 8,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "src/components/NotFound.js",
+                lineNumber: 7,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                    children: " 404 Site Not Found "
+                }, void 0, false, {
+                    fileName: "src/components/NotFound.js",
+                    lineNumber: 11,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "src/components/NotFound.js",
+                lineNumber: 10,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("footer", {
+                style: {
+                    position: "absolute",
+                    bottom: "0"
+                },
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
+                    fileName: "src/components/NotFound.js",
+                    lineNumber: 14,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "src/components/NotFound.js",
+                lineNumber: 13,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true);
+}
+exports.default = NotFound;
+_c = NotFound;
+var _c;
+$RefreshReg$(_c, "NotFound");
+
+  $parcel$ReactRefreshHelpers$b014.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","./Footer":"8pPOA","./Navigation":"ixx0n","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9R1Eu":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$5b98 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5b98.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _footer = require("./Footer");
+var _footerDefault = parcelHelpers.interopDefault(_footer);
+var _navigation = require("./Navigation");
+var _navigationDefault = parcelHelpers.interopDefault(_navigation);
+var _labels = require("../assets/data/labels");
+var _forwardfftPng = require("../assets/images/forwardfft.png");
+var _forwardfftPngDefault = parcelHelpers.interopDefault(_forwardfftPng);
+var _backwardfftPng = require("../assets/images/backwardfft.png");
+var _backwardfftPngDefault = parcelHelpers.interopDefault(_backwardfftPng);
+class About extends (0, _reactDefault.default).Component {
+    render() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
+                        fileName: "src/components/About.js",
+                        lineNumber: 13,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/components/About.js",
+                    lineNumber: 12,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+                    style: {
+                        width: "50%",
+                        margin: "0 auto"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                                    children: "About this Project"
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 18,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: [
+                                        "This seminar project from ",
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                            href: (0, _labels.labels).uni,
+                                            children: "University of Tuebingen"
+                                        }, void 0, false, {
+                                            fileName: "src/components/About.js",
+                                            lineNumber: 19,
+                                            columnNumber: 42
+                                        }, this),
+                                        " is a beautiful react Application that creates and calculates the 2D Fourier Transformation. We provide this Project for educational purposes, with this Project you can visualise the 2D Fourier Transformation and hopefully learn something from this experience."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 19,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/About.js",
+                            lineNumber: 17,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                    children: "About us"
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 24,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: [
+                                        "Our names are Maximilian Pfitzenmaier and Thanh Michael Giang and we are two absolutly stunning and awesome master students of the ",
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                            href: (0, _labels.labels).uni,
+                                            children: "University of Tuebingen"
+                                        }, void 0, false, {
+                                            fileName: "src/components/About.js",
+                                            lineNumber: 28,
+                                            columnNumber: 146
+                                        }, this),
+                                        " that are currently studying media informatics."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 27,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/About.js",
+                            lineNumber: 23,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                    children: "About Fourier-Transformation"
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 33,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "The Fourier Tranformation breaks down functions while relying on the position in spatial or the time. While the spatial or time is relying on the spatial frequency and the temporal frequency. Using the Fourier Transformation, one tries to find the sinus and cosinus functions that have suitable frequencies and amplitudes. The sum of the suitable frequencies and amplitudes should approximate the given function."
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 34,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                    children: "Properties of Fourier-Transformation"
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 39,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                            children: "Convolution theorem: Convolution in spatial space corresponds to multiplication in frequency space (and vice versa)."
+                                        }, void 0, false, {
+                                            fileName: "src/components/About.js",
+                                            lineNumber: 41,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                            children: "Separability: dimensions can be transformed separately"
+                                        }, void 0, false, {
+                                            fileName: "src/components/About.js",
+                                            lineNumber: 42,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                            children: "Theorem of interchange: FT turned onto FT of a function results in point-mirrored original function: F(F(f(x, y))) = f(- x,- y)"
+                                        }, void 0, false, {
+                                            fileName: "src/components/About.js",
+                                            lineNumber: 43,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                            children: "Displacement law: Displacement in spatial space changes only phase, not amplitude in frequency space."
+                                        }, void 0, false, {
+                                            fileName: "src/components/About.js",
+                                            lineNumber: 44,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                            children: "Rotation theorem: rotation in local space is rotation by the same angle in frequency space"
+                                        }, void 0, false, {
+                                            fileName: "src/components/About.js",
+                                            lineNumber: 45,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                            children: "Superposition theorem: linear combinations of figures in local space correspond to superposition of the respective representations of the figures in frequency space"
+                                        }, void 0, false, {
+                                            fileName: "src/components/About.js",
+                                            lineNumber: 46,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                            children: "Similarity theorem: stretching of the function in local space corresponds to compression in frequency space (and vice versa)"
+                                        }, void 0, false, {
+                                            fileName: "src/components/About.js",
+                                            lineNumber: 47,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                            children: "Periodicity: FT of a periodic function is discrete on a regular grid"
+                                        }, void 0, false, {
+                                            fileName: "src/components/About.js",
+                                            lineNumber: 48,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 40,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                    children: "Discret Fourier-Transformation (DFT)"
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 51,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "The Discrete Fourier Transformation works with the spectral analysis of discrete finite signals. Those are used to periodically analyse complex numbers that represent the signal values while the signal values can be summed up as a vector."
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 52,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                    children: "Fast Fourier-Transformation (FFT)"
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 57,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "The FFT is a improvement of the efficiency of computing power compared to the discret fourier transformation. By using the divide and conquer algorithm the FFT reduces the number of arithmetic oprations by a large margin."
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 58,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "The forward FFT is based on the formular:"
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 63,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                                    src: (0, _forwardfftPngDefault.default)
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 67,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "The inverse FFT is based on the formular:"
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 69,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                                    src: (0, _backwardfftPngDefault.default)
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 73,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/About.js",
+                            lineNumber: 32,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                    children: "Building the Project"
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 79,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: [
+                                        "This project was build by using ReactJS and Visual Studio Code as an programming environment. The Project is available at ",
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                            href: (0, _labels.labels).github,
+                                            rel: "nofollow noreferrer",
+                                            target: "_blank",
+                                            children: "GitHub"
+                                        }, void 0, false, {
+                                            fileName: "src/components/About.js",
+                                            lineNumber: 84,
+                                            columnNumber: 137
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 83,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                    children: "React"
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 87,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    children: "React or ReactJS is a open-source Javascript library that uses UI components to build interfaces. By viewing each state in the Application React can render and update components where the data changes thus making it efficient and fast without much loading time. Through UI components, with each managing their own state, it is possible to easily create complex UIs while still being very clear and easy to debug."
+                                }, void 0, false, {
+                                    fileName: "src/components/About.js",
+                                    lineNumber: 88,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/About.js",
+                            lineNumber: 78,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/About.js",
+                    lineNumber: 15,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("footer", {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
+                        fileName: "src/components/About.js",
+                        lineNumber: 113,
+                        columnNumber: 17
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/components/About.js",
+                    lineNumber: 113,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true);
+    }
+}
+exports.default = About;
+
+  $parcel$ReactRefreshHelpers$5b98.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Footer":"8pPOA","./Navigation":"ixx0n","../assets/data/labels":"cNGYT","../assets/images/forwardfft.png":"4Tssa","../assets/images/backwardfft.png":"2CP8X","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4Tssa":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "forwardfft.62c3751c.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"2CP8X":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "backwardfft.11b3a55b.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"81Z0h":[function() {},{}]},["1xC6H","ShInH","8lqZg"], "8lqZg", "parcelRequiree2ec")
 
 //# sourceMappingURL=index.975ef6c8.js.map
