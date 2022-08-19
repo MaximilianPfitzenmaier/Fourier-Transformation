@@ -39,8 +39,6 @@ class App extends React.Component {
     this.state = {};
   }
 
-
-
   componentDidMount() {
     // Get data from SessionStorage
     this.initialize();
@@ -74,7 +72,7 @@ class App extends React.Component {
 
   isMobile() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-      return true;
+      return false;
     }
 
     return false;
