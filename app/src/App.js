@@ -53,15 +53,7 @@ class App extends React.Component {
       this.mouseUp(event);
     });
 
-    window.addEventListener('touchdown', (event) => {
-      this.mouseDown(event);
-    });
-    window.addEventListener('touchmove', (event) => {
-      this.mouseMove(event);
-    });
-    window.addEventListener('touchend', (event) => {
-      this.mouseUp(event);
-    });
+
   }
 
   componentDidUpdate() {
