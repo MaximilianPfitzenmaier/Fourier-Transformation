@@ -39,6 +39,8 @@ class App extends React.Component {
     this.state = {};
   }
 
+
+
   componentDidMount() {
     // Get data from SessionStorage
     this.initialize();
@@ -61,10 +63,11 @@ class App extends React.Component {
   }
 
   isMobile() {
-    const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    const isMobile = width < 1024 ? true : false;
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      return true;
+    }
 
-    return isMobile;
+    return false;
   }
 
   render() {
