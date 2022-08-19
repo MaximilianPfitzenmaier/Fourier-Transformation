@@ -31,6 +31,10 @@ main {
   display: block;
 }
 
+main.about {
+  width: 50%;
+}
+
 strong {
   text-decoration: underline;
   display: block;
@@ -97,9 +101,17 @@ button {
   .home img {
     width: 100%;
   }
+
+  footer.footer-legal {
+    position: inherit !important;
+  }
 }
 
 @media only screen and (max-width: 768px) {
+  main.about {
+    width: 95%;
+  }
+
   h1 {
     font-size: 1.75rem;
     line-height: 1;

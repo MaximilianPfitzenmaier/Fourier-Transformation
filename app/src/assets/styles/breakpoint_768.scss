@@ -1,4 +1,7 @@
 @media only screen and (max-width: 768px) {
+  main.about{
+    width: 95%;
+  }
   h1 {
     font-size: 1.75rem;
     line-height: 1.0;
@@ -129,5 +132,4 @@
       transform: none;
     }
   }
-
 }

@@ -40,7 +40,7 @@ class Legal extends React.Component {
             </p>
           </div>
         </main>
-        <footer style={{ position: 'absolute', bottom: '0' }}>
+        <footer className="footer-legal" style={{ position: 'absolute', bottom: '0' }}>
           <Footer />
         </footer>
       </>

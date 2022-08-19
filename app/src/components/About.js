@@ -12,7 +12,7 @@ class About extends React.Component {
         <header>
           <Navigation />
         </header>
-        <main style={{ width: '50%', margin: '0 auto' }}>
+        <main className="about">
 
           <section>
             <h1>About this Project</h1>
