@@ -28927,6 +28927,15 @@ class App extends (0, _reactDefault.default).Component {
         window.addEventListener("mouseup", (event)=>{
             this.mouseUp(event);
         });
+        window.addEventListener("touchdown", (event)=>{
+            this.mouseDown(event);
+        });
+        window.addEventListener("touchmove", (event)=>{
+            this.mouseMove(event);
+        });
+        window.addEventListener("touchend", (event)=>{
+            this.mouseUp(event);
+        });
     }
     componentDidUpdate() {
         // Set data to SessionStorage
@@ -28943,7 +28952,7 @@ class App extends (0, _reactDefault.default).Component {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 77,
+                    lineNumber: 87,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _filtersDefault.default), {
@@ -28953,7 +28962,7 @@ class App extends (0, _reactDefault.default).Component {
                     handleResetAll: this.handleResetAll
                 }, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 79,
+                    lineNumber: 89,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28972,7 +28981,7 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 87,
+                            lineNumber: 97,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _realSpectralDefault.default), {
@@ -28984,7 +28993,7 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 95,
+                            lineNumber: 105,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _imagSpatialDefault.default), {
@@ -28996,7 +29005,7 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 104,
+                            lineNumber: 114,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _imagSpectralDefault.default), {
@@ -29008,13 +29017,13 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 112,
+                            lineNumber: 122,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/App.js",
-                    lineNumber: 86,
+                    lineNumber: 96,
                     columnNumber: 9
                 }, this)
             ]
@@ -29023,19 +29032,19 @@ class App extends (0, _reactDefault.default).Component {
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
                         fileName: "src/App.js",
-                        lineNumber: 125,
+                        lineNumber: 135,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 124,
+                    lineNumber: 134,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
                     children: "This Application is not made for mobile use. Please change to your Desktop PC."
                 }, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 127,
+                    lineNumber: 137,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("footer", {
@@ -29045,12 +29054,12 @@ class App extends (0, _reactDefault.default).Component {
                     },
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
                         fileName: "src/App.js",
-                        lineNumber: 131,
+                        lineNumber: 141,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 130,
+                    lineNumber: 140,
                     columnNumber: 9
                 }, this)
             ]
