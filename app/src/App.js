@@ -72,7 +72,7 @@ class App extends React.Component {
 
   isMobile() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-      return false;
+      return true;
     }
 
     return false;
@@ -80,7 +80,7 @@ class App extends React.Component {
 
   render() {
     const s = this.state;
-    return ! this.isMobile() && s.userData ? (
+    return s.userData ? (
       <>
         <Navigation />
 
