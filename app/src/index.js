@@ -6,7 +6,6 @@ import Legal from './components/Legal';
 import NotFound from './components/NotFound';
 import About from './components/About'
 
-//const el = document.getElementById('root');
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -20,8 +19,6 @@ root.render(
     </Routes>
   </BrowserRouter>
 );
-
-// root.render(<App />);
 
 // import styles
 import './style.scss';
