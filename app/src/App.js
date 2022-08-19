@@ -127,19 +127,7 @@ class App extends React.Component {
           />
         </div>
       </>
-    ) : (
-      <>
-        <header>
-          <Navigation />
-        </header>
-        <main>
-          This Application is not made for mobile use. Please change to your Desktop PC.
-        </main>
-        <footer style={{ position: 'absolute', bottom: '0' }}>
-          <Footer />
-        </footer>
-      </>
-    );
+    ) : null
   }
 }
 
