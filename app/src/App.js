@@ -1,5 +1,10 @@
 import React from 'react';
 
+// TODO: erstens check ich nicht []
+// TODO: Skalierung von den jeweilig nebeneinaderliegenden sollte einheitlich sein []
+// TODO: SINUS drehen [x]
+// TODO: COS drehen [x]
+// TODO: Kamm funktion verschieben [x]
 // Components
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -52,8 +57,6 @@ class App extends React.Component {
     window.addEventListener('mouseup', (event) => {
       this.mouseUp(event);
     });
-
-
   }
 
   componentDidUpdate() {
@@ -63,7 +66,7 @@ class App extends React.Component {
   }
 
   isMobile() {
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       return true;
     }
 
@@ -119,7 +122,7 @@ class App extends React.Component {
           />
         </div>
       </>
-    ) : null
+    ) : null;
   }
 }
 

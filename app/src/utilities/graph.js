@@ -157,7 +157,6 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
 
   canvasArray.shift();
   canvasArray.pop();
-
 };
 
 /**
