@@ -38,12 +38,23 @@ export const calculateFFT = (real, imag) => {
     else if ((n & (n - 1)) == 0) {
       // Is power of 2
       transformRadix2(real, imag);
+
       output.push([real, imag]);
     }
     // More complicated algorithm for arbitrary sizes
     else {
       transformBluestein(real, imag);
       output.push(real, imag);
+    }
+
+    // Fake epsilon function
+    for (let i = 0; i < output[0][0].length; i++) {
+      if (Math.abs(output[0][0][i]) < 0.001) {
+        output[0][0][i] = 0;
+      }
+      if (Math.abs(output[0][1][i]) < 0.001) {
+        output[0][1][i] = 0;
+      }
     }
     return output;
   }
@@ -115,6 +126,7 @@ export const calculateFFT = (real, imag) => {
         result = (result << 1) | (val & 1);
         val >>>= 1;
       }
+
       return result;
     }
   }

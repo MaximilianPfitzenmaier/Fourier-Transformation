@@ -33296,6 +33296,7 @@ const drawFunction = function(canvasID, arrayFromUserData, custom) {
     let yposition = 0;
     canvasArray.unshift(0);
     canvasArray.push(0);
+    console.log(canvasArray.length);
     for(let i1 = 0; i1 < canvas.width; i1 = i1 + canvas.width / canvasArray.length){
         yposition = -canvasArray[count] * peaks * scale;
         yposition = yposition ? yposition : 0;
@@ -33313,7 +33314,8 @@ const drawFunction = function(canvasID, arrayFromUserData, custom) {
         // draw circles
         ctx.beginPath();
         ctx.arc(i1, yposition, 3, 0, 2 * Math.PI);
-        ctx.fillStyle = "hsl(251, 53%, 45%)";
+        if (count == 0 || count == canvasArray.length || count == canvasArray.length - 1) ctx.fillStyle = "transparent";
+        else ctx.fillStyle = "hsl(251, 53%, 45%)";
         ctx.fill();
         ctx.closePath();
         count++;
@@ -33677,6 +33679,11 @@ const calculateFFT = (real, imag)=>{
         } else {
             transformBluestein(real, imag);
             output.push(real, imag);
+        }
+        // Fake epsilon function
+        for(let i = 0; i < output[0][0].length; i++){
+            if (Math.abs(output[0][0][i]) < 0.001) output[0][0][i] = 0;
+            if (Math.abs(output[0][1][i]) < 0.001) output[0][1][i] = 0;
         }
         return output;
     }

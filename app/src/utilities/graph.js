@@ -130,6 +130,7 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
   canvasArray.unshift(0);
   canvasArray.push(0);
 
+  console.log(canvasArray.length);
   for (let i = 0; i < canvas.width; i = i + canvas.width / canvasArray.length) {
     yposition = -canvasArray[count] * peaks * scale;
     yposition = yposition ? yposition : 0;
@@ -149,7 +150,13 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
     // draw circles
     ctx.beginPath();
     ctx.arc(i, yposition, 3, 0, 2 * Math.PI);
-    ctx.fillStyle = 'hsl(251, 53%, 45%)';
+
+    if (count == 0 || count == canvasArray.length || count == canvasArray.length - 1) {
+      ctx.fillStyle = 'transparent';
+    } else {
+      ctx.fillStyle = 'hsl(251, 53%, 45%)';
+    }
+
     ctx.fill();
     ctx.closePath();
     count++;
