@@ -31577,16 +31577,9 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-// TODO: erstens check ich nicht []
-// TODO: Skalierung von den jeweilig nebeneinaderliegenden sollte einheitlich sein []
-// TODO: SINUS drehen [x]
-// TODO: COS drehen [x]
-// TODO: Kamm funktion verschieben [x]
 // Components
 var _navigation = require("./components/Navigation");
 var _navigationDefault = parcelHelpers.interopDefault(_navigation);
-var _footer = require("./components/Footer");
-var _footerDefault = parcelHelpers.interopDefault(_footer);
 var _filters = require("./components/fft/Filters");
 var _filtersDefault = parcelHelpers.interopDefault(_filters);
 var _realSpatial = require("./components/fft/RealSpatial");
@@ -31648,7 +31641,7 @@ class App extends (0, _reactDefault.default).Component {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 80,
+                    lineNumber: 74,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _filtersDefault.default), {
@@ -31658,7 +31651,7 @@ class App extends (0, _reactDefault.default).Component {
                     handleResetAll: this.handleResetAll
                 }, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 82,
+                    lineNumber: 76,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31677,7 +31670,7 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 90,
+                            lineNumber: 84,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _realSpectralDefault.default), {
@@ -31689,7 +31682,7 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 98,
+                            lineNumber: 92,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _imagSpatialDefault.default), {
@@ -31701,7 +31694,7 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 107,
+                            lineNumber: 101,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _imagSpectralDefault.default), {
@@ -31713,13 +31706,13 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 115,
+                            lineNumber: 109,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/App.js",
-                    lineNumber: 89,
+                    lineNumber: 83,
                     columnNumber: 9
                 }, this)
             ]
@@ -31733,7 +31726,7 @@ exports.default = App;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/Navigation":"ixx0n","./components/Footer":"8pPOA","./components/fft/Filters":"eXqmd","./components/fft/RealSpatial":"fZydW","./components/fft/RealSpectral":"fsweb","./components/fft/ImagSpectral":"eYdXG","./components/fft/ImagSpatial":"jFtd4","./utilities/init":"aQ7J1","./utilities/helper":"d1m9W","./utilities/graph":"aXKMu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"ixx0n":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/Navigation":"ixx0n","./components/fft/Filters":"eXqmd","./components/fft/RealSpatial":"fZydW","./components/fft/RealSpectral":"fsweb","./components/fft/ImagSpectral":"eYdXG","./components/fft/ImagSpatial":"jFtd4","./utilities/init":"aQ7J1","./utilities/helper":"d1m9W","./utilities/graph":"aXKMu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"ixx0n":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -32133,90 +32126,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"react-refresh/runtime":"786KC"}],"8pPOA":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$bc7c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$bc7c.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactRouterDom = require("react-router-dom");
-var _labels = require("../assets/data/labels");
-class Footer extends (0, _reactDefault.default).Component {
-    render() {
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                    children: [
-                        " \xa9 ",
-                        new Date().getFullYear(),
-                        " Giang & Pfitzenmaier | All Rights Reserved"
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/Footer.js",
-                    lineNumber: 10,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                            className: "no-hover",
-                            href: (0, _labels.labels).github,
-                            target: "_blank",
-                            rel: "noopener noreferrer nofollow",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
-                                "data-icon": "github",
-                                role: "img",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                viewBox: "0 0 496 512",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
-                                    d: "M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
-                                }, void 0, false, {
-                                    fileName: "src/components/Footer.js",
-                                    lineNumber: 18,
-                                    columnNumber: 17
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "src/components/Footer.js",
-                                lineNumber: 13,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "src/components/Footer.js",
-                            lineNumber: 12,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.NavLink), {
-                            to: "/legal-notice",
-                            children: (0, _labels.labels).legal
-                        }, void 0, false, {
-                            fileName: "src/components/Footer.js",
-                            lineNumber: 23,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/Footer.js",
-                    lineNumber: 11,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true);
-    }
-}
-exports.default = Footer;
-
-  $parcel$ReactRefreshHelpers$bc7c.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","../assets/data/labels":"cNGYT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eXqmd":[function(require,module,exports) {
+},{"react-refresh/runtime":"786KC"}],"eXqmd":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$04d9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33174,6 +33084,7 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createCanvas", ()=>createCanvas);
+parcelHelpers.export(exports, "callFFT", ()=>callFFT);
 parcelHelpers.export(exports, "getBaseFunction", ()=>getBaseFunction);
 parcelHelpers.export(exports, "drawFunction", ()=>drawFunction);
 /**
@@ -33198,6 +33109,31 @@ const createCanvas = function(canvasID, refName) {
         columnNumber: 10
     }, this);
 };
+const callFFT = function(type, userData) {
+    if (type == "realspectral" || type == "imagspectral") {
+        // fire INVERSE fft from stored arrays in state
+        const [[imagspatial, realspatial]] = (0, _calculateFFT.calculateFFT)(userData.imagspectral, userData.realspectral);
+        // set dropdown to custom
+        userData["selectedBaseFunctions"]["realspatial"] = "0";
+        userData["selectedBaseFunctions"]["imagspatial"] = "0";
+        return {
+            ...userData,
+            imagspatial,
+            realspatial
+        };
+    } else {
+        // fire fft from stored arrays in state
+        const [[realspectral, imagspectral]] = (0, _calculateFFT.calculateFFT)(userData.realspatial, userData.imagspatial);
+        // set dropdown to custom
+        userData["selectedBaseFunctions"]["realspectral"] = "0";
+        userData["selectedBaseFunctions"]["imagspectral"] = "0";
+        return {
+            ...userData,
+            realspectral,
+            imagspectral
+        };
+    }
+};
 const getBaseFunction = function(funcArray, type, newSelectedBaseFunctions) {
     // get state
     const userData = JSON.parse(JSON.stringify(this.state.userData));
@@ -33209,36 +33145,10 @@ const getBaseFunction = function(funcArray, type, newSelectedBaseFunctions) {
     userData[type] = funcArray;
     // set userData selected Basefunction for this canvas
     userData["selectedBaseFunctions"][type] = newSelectedBaseFunctions;
-    // call inverse FFT if spectral button
-    if (type == "realspectral" || type == "imagspectral") {
-        // fire INVERSE fft from stored arrays in state
-        const [[imagspatial, realspatial]] = (0, _calculateFFT.calculateFFT)(userData.imagspectral, userData.realspectral);
-        // set dropdown to custom
-        userData["selectedBaseFunctions"]["realspatial"] = "0";
-        userData["selectedBaseFunctions"]["imagspatial"] = "0";
-        // set all the other Arrays in userData
-        this.setState({
-            userData: {
-                ...userData,
-                realspatial,
-                imagspatial
-            }
-        });
-    } else {
-        // fire fft from stored arrays in state
-        const [[realspectral, imagspectral]] = (0, _calculateFFT.calculateFFT)(userData.realspatial, userData.imagspatial);
-        // set dropdown to custom
-        userData["selectedBaseFunctions"]["realspectral"] = "0";
-        userData["selectedBaseFunctions"]["imagspectral"] = "0";
-        // set all the other Arrays in userData
-        this.setState({
-            userData: {
-                ...userData,
-                realspectral,
-                imagspectral
-            }
-        });
-    }
+    // call ( inverse ) FFT and set the state
+    this.setState({
+        userData: callFFT(type, userData)
+    });
 };
 const drawFunction = function(canvasID, arrayFromUserData, custom) {
     let maxPeak = findPeaks(arrayFromUserData);
@@ -33296,7 +33206,6 @@ const drawFunction = function(canvasID, arrayFromUserData, custom) {
     let yposition = 0;
     canvasArray.unshift(0);
     canvasArray.push(0);
-    console.log(canvasArray.length);
     for(let i1 = 0; i1 < canvas.width; i1 = i1 + canvas.width / canvasArray.length){
         yposition = -canvasArray[count] * peaks * scale;
         yposition = yposition ? yposition : 0;
@@ -33362,36 +33271,10 @@ const mouseDown = function(event) {
                 userData[canvasID] = customArray;
             }
             drawFunction(event.target, customArray, true);
-            // call inverse FFT if spectral button
-            if (canvasTarget.id == "realspectral" || canvasTarget.id == "imagspectral") {
-                // fire INVERSE fft from stored arrays in state
-                const [[imagspatial, realspatial]] = (0, _calculateFFT.calculateFFT)(userData.imagspectral, userData.realspectral);
-                // set dropdown to custom
-                userData["selectedBaseFunctions"]["realspatial"] = "0";
-                userData["selectedBaseFunctions"]["imagspatial"] = "0";
-                userData["realspatial"] = realspatial;
-                userData["imagspatial"] = imagspatial;
-                // set all the other Arrays in userData
-                this.setState({
-                    userData: {
-                        ...userData
-                    }
-                });
-            } else {
-                // fire fft from stored arrays in state
-                const [[realspectral, imagspectral]] = (0, _calculateFFT.calculateFFT)(userData.realspatial, userData.imagspatial);
-                // set dropdown to custom
-                userData["selectedBaseFunctions"]["realspectral"] = "0";
-                userData["selectedBaseFunctions"]["imagspectral"] = "0";
-                userData["realspectral"] = realspectral;
-                userData["imagspectral"] = imagspectral;
-                // set all the other Arrays in userData
-                this.setState({
-                    userData: {
-                        ...userData
-                    }
-                });
-            }
+            // call ( inverse ) FFT and set the state
+            this.setState({
+                userData: callFFT(canvasTarget.id, userData)
+            });
         }
     }
     // Mousewheel
@@ -33455,40 +33338,10 @@ const mouseDown = function(event) {
                 drawFunction(event.target, customArray1, true);
             }
         }
-        if (control == 1) {
-            // call inverse FFT if spectral button
-            if (canvasID1 == "realspectral" || canvasID1 == "imagspectral") {
-                // fire INVERSE fft from stored arrays in state
-                const [[imagspatial1, realspatial1]] = (0, _calculateFFT.calculateFFT)(userData.imagspectral, userData.realspectral);
-                // set dropdown to custom
-                userData["selectedBaseFunctions"]["realspatial"] = "0";
-                userData["selectedBaseFunctions"]["imagspatial"] = "0";
-                // set arrays
-                userData["imagspatial"] = imagspatial1;
-                userData["realspatial"] = realspatial1;
-                // set all the other Arrays in userData
-                this.setState({
-                    userData: {
-                        ...userData
-                    }
-                });
-            } else {
-                // fire fft from stored arrays in state
-                const [[realspectral1, imagspectral1]] = (0, _calculateFFT.calculateFFT)(userData.realspatial, userData.imagspatial);
-                // set dropdown to custom
-                userData["selectedBaseFunctions"]["realspectral"] = "0";
-                userData["selectedBaseFunctions"]["imagspectral"] = "0";
-                // set arrays
-                userData["realspectral"] = realspectral1;
-                userData["imagspectral"] = imagspectral1;
-                // set all the other Arrays in userData
-                this.setState({
-                    userData: {
-                        ...userData
-                    }
-                });
-            }
-        }
+        if (control == 1) // call ( inverse ) FFT and set the state
+        this.setState({
+            userData: callFFT(canvasTarget.id, userData)
+        });
     }
     // Right Click
     if (event.button === 2) {
@@ -33546,36 +33399,10 @@ const mouseMove = function(event) {
             userData[canvasID] = customArray;
         }
         drawFunction(event.target, customArray, true);
-        // call inverse FFT if spectral button
-        if (canvasID == "realspectral" || canvasID == "imagspectral") {
-            // fire INVERSE fft from stored arrays in state
-            const [[imagspatial, realspatial]] = (0, _calculateFFT.calculateFFT)(userData.imagspectral, userData.realspectral);
-            // set dropdown to custom
-            userData["selectedBaseFunctions"]["realspatial"] = "0";
-            userData["selectedBaseFunctions"]["imagspatial"] = "0";
-            // set all the other Arrays in userData
-            this.setState({
-                userData: {
-                    ...userData,
-                    realspatial,
-                    imagspatial
-                }
-            });
-        } else {
-            // fire fft from stored arrays in state
-            const [[realspectral, imagspectral]] = (0, _calculateFFT.calculateFFT)(userData.realspatial, userData.imagspatial);
-            // set dropdown to custom
-            userData["selectedBaseFunctions"]["realspectral"] = "0";
-            userData["selectedBaseFunctions"]["imagspectral"] = "0";
-            // set all the other Arrays in userData
-            this.setState({
-                userData: {
-                    ...userData,
-                    realspectral,
-                    imagspectral
-                }
-            });
-        }
+        // call ( inverse ) FFT and set the state
+        this.setState({
+            userData: callFFT(canvasID, userData)
+        });
     }
     // handle right click move
     if (canvasTarget == event.target.closest("canvas") && rightPressed && currentIndex >= 0 && currentIndex < size) {
@@ -33587,36 +33414,10 @@ const mouseMove = function(event) {
             userData[canvasID1] = customArray1;
         }
         drawFunction(event.target, customArray1, true);
-        // call inverse FFT if spectral button
-        if (canvasID1 == "realspectral" || canvasID1 == "imagspectral") {
-            // fire INVERSE fft from stored arrays in state
-            const [[imagspatial1, realspatial1]] = (0, _calculateFFT.calculateFFT)(userData.imagspectral, userData.realspectral);
-            // set dropdown to custom
-            userData["selectedBaseFunctions"]["realspatial"] = "0";
-            userData["selectedBaseFunctions"]["imagspatial"] = "0";
-            // set all the other Arrays in userData
-            this.setState({
-                userData: {
-                    ...userData,
-                    realspatial: realspatial1,
-                    imagspatial: imagspatial1
-                }
-            });
-        } else {
-            // fire fft from stored arrays in state
-            const [[realspectral1, imagspectral1]] = (0, _calculateFFT.calculateFFT)(userData.realspatial, userData.imagspatial);
-            // set dropdown to custom
-            userData["selectedBaseFunctions"]["realspectral"] = "0";
-            userData["selectedBaseFunctions"]["imagspectral"] = "0";
-            // set all the other Arrays in userData
-            this.setState({
-                userData: {
-                    ...userData,
-                    realspectral: realspectral1,
-                    imagspectral: imagspectral1
-                }
-            });
-        }
+        // call ( inverse ) FFT and set the state
+        this.setState({
+            userData: callFFT(canvasID1, userData)
+        });
     }
 };
 
@@ -36553,7 +36354,90 @@ $RefreshReg$(_c, "Home");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./Navigation":"ixx0n","./Footer":"8pPOA","../assets/images/sinus.png":"hZXY2","../assets/images/cosinus.png":"9RfUf","../assets/images/right-click.png":"ixczD","../assets/images/middle-click.png":"8oP7q","../assets/images/pyramide.png":"dLZMy","../assets/images/kamm.png":"3RFQ6","../assets/images/konstant.png":"2Djwc","../assets/images/single.png":"9Qy58","../assets/images/size-16.png":"6jKBH","../assets/images/size-32.png":"6S5ZL","../assets/images/size-64.png":"dr5um","../assets/images/size-128.png":"g8H7Z","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hZXY2":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./Navigation":"ixx0n","./Footer":"8pPOA","../assets/images/sinus.png":"hZXY2","../assets/images/cosinus.png":"9RfUf","../assets/images/right-click.png":"ixczD","../assets/images/middle-click.png":"8oP7q","../assets/images/pyramide.png":"dLZMy","../assets/images/kamm.png":"3RFQ6","../assets/images/konstant.png":"2Djwc","../assets/images/single.png":"9Qy58","../assets/images/size-16.png":"6jKBH","../assets/images/size-32.png":"6S5ZL","../assets/images/size-64.png":"dr5um","../assets/images/size-128.png":"g8H7Z","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8pPOA":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$bc7c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$bc7c.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouterDom = require("react-router-dom");
+var _labels = require("../assets/data/labels");
+class Footer extends (0, _reactDefault.default).Component {
+    render() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    children: [
+                        " \xa9 ",
+                        new Date().getFullYear(),
+                        " Giang & Pfitzenmaier | All Rights Reserved"
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/Footer.js",
+                    lineNumber: 10,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                            className: "no-hover",
+                            href: (0, _labels.labels).github,
+                            target: "_blank",
+                            rel: "noopener noreferrer nofollow",
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+                                "data-icon": "github",
+                                role: "img",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                viewBox: "0 0 496 512",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                                    d: "M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
+                                }, void 0, false, {
+                                    fileName: "src/components/Footer.js",
+                                    lineNumber: 18,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "src/components/Footer.js",
+                                lineNumber: 13,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "src/components/Footer.js",
+                            lineNumber: 12,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.NavLink), {
+                            to: "/legal-notice",
+                            children: (0, _labels.labels).legal
+                        }, void 0, false, {
+                            fileName: "src/components/Footer.js",
+                            lineNumber: 23,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/Footer.js",
+                    lineNumber: 11,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true);
+    }
+}
+exports.default = Footer;
+
+  $parcel$ReactRefreshHelpers$bc7c.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","../assets/data/labels":"cNGYT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hZXY2":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "sinus.4d8b0770.png" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"lgJ39"}],"9RfUf":[function(require,module,exports) {

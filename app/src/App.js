@@ -1,13 +1,7 @@
 import React from 'react';
 
-// TODO: erstens check ich nicht []
-// TODO: Skalierung von den jeweilig nebeneinaderliegenden sollte einheitlich sein []
-// TODO: SINUS drehen [x]
-// TODO: COS drehen [x]
-// TODO: Kamm funktion verschieben [x]
 // Components
 import Navigation from './components/Navigation';
-import Footer from './components/Footer';
 import Filters from './components/fft/Filters';
 import RealSpatial from './components/fft/RealSpatial';
 import RealSpectral from './components/fft/RealSpectral';

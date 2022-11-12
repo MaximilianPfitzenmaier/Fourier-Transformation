@@ -9,6 +9,31 @@ export const createCanvas = function (canvasID, refName) {
 };
 
 /**
+ *  @param type which canvas (realspectral, realspatial ...)
+ *  @param userData the current userData
+ *  @return object for the state with userData, and calculated FFT
+ */
+export const callFFT = function (type, userData) {
+  if (type == 'realspectral' || type == 'imagspectral') {
+    // fire INVERSE fft from stored arrays in state
+    const [[imagspatial, realspatial]] = calculateFFT(userData.imagspectral, userData.realspectral);
+
+    // set dropdown to custom
+    userData['selectedBaseFunctions']['realspatial'] = '0';
+    userData['selectedBaseFunctions']['imagspatial'] = '0';
+    return { ...userData, imagspatial, realspatial };
+  } else {
+    // fire fft from stored arrays in state
+    const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
+
+    // set dropdown to custom
+    userData['selectedBaseFunctions']['realspectral'] = '0';
+    userData['selectedBaseFunctions']['imagspectral'] = '0';
+    return { ...userData, realspectral, imagspectral };
+  }
+};
+
+/**
  *  @param funcArray Array for one of the Base functions e.g sin, cos
  *  @param type string if button is for real or imag part
  */
@@ -27,40 +52,10 @@ export const getBaseFunction = function (funcArray, type, newSelectedBaseFunctio
   // set userData selected Basefunction for this canvas
   userData['selectedBaseFunctions'][type] = newSelectedBaseFunctions;
 
-  // call inverse FFT if spectral button
-  if (type == 'realspectral' || type == 'imagspectral') {
-    // fire INVERSE fft from stored arrays in state
-    const [[imagspatial, realspatial]] = calculateFFT(userData.imagspectral, userData.realspectral);
-
-    // set dropdown to custom
-    userData['selectedBaseFunctions']['realspatial'] = '0';
-    userData['selectedBaseFunctions']['imagspatial'] = '0';
-
-    // set all the other Arrays in userData
-    this.setState({
-      userData: {
-        ...userData,
-        realspatial,
-        imagspatial,
-      },
-    });
-  } else {
-    // fire fft from stored arrays in state
-    const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
-
-    // set dropdown to custom
-    userData['selectedBaseFunctions']['realspectral'] = '0';
-    userData['selectedBaseFunctions']['imagspectral'] = '0';
-
-    // set all the other Arrays in userData
-    this.setState({
-      userData: {
-        ...userData,
-        realspectral,
-        imagspectral,
-      },
-    });
-  }
+  // call ( inverse ) FFT and set the state
+  this.setState({
+    userData: callFFT(type, userData),
+  });
 };
 
 /**
@@ -130,7 +125,6 @@ export const drawFunction = function (canvasID, arrayFromUserData, custom) {
   canvasArray.unshift(0);
   canvasArray.push(0);
 
-  console.log(canvasArray.length);
   for (let i = 0; i < canvas.width; i = i + canvas.width / canvasArray.length) {
     yposition = -canvasArray[count] * peaks * scale;
     yposition = yposition ? yposition : 0;
@@ -220,42 +214,10 @@ export const mouseDown = function (event) {
       }
       drawFunction(event.target, customArray, true);
 
-      // call inverse FFT if spectral button
-      if (canvasTarget.id == 'realspectral' || canvasTarget.id == 'imagspectral') {
-        // fire INVERSE fft from stored arrays in state
-        const [[imagspatial, realspatial]] = calculateFFT(userData.imagspectral, userData.realspectral);
-
-        // set dropdown to custom
-        userData['selectedBaseFunctions']['realspatial'] = '0';
-        userData['selectedBaseFunctions']['imagspatial'] = '0';
-
-        userData['realspatial'] = realspatial;
-        userData['imagspatial'] = imagspatial;
-
-        // set all the other Arrays in userData
-        this.setState({
-          userData: {
-            ...userData,
-          },
-        });
-      } else {
-        // fire fft from stored arrays in state
-        const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
-
-        // set dropdown to custom
-        userData['selectedBaseFunctions']['realspectral'] = '0';
-        userData['selectedBaseFunctions']['imagspectral'] = '0';
-
-        userData['realspectral'] = realspectral;
-        userData['imagspectral'] = imagspectral;
-
-        // set all the other Arrays in userData
-        this.setState({
-          userData: {
-            ...userData,
-          },
-        });
-      }
+      // call ( inverse ) FFT and set the state
+      this.setState({
+        userData: callFFT(canvasTarget.id, userData),
+      });
     }
   }
 
@@ -328,44 +290,10 @@ export const mouseDown = function (event) {
     }
 
     if (control == 1) {
-      // call inverse FFT if spectral button
-      if (canvasID == 'realspectral' || canvasID == 'imagspectral') {
-        // fire INVERSE fft from stored arrays in state
-        const [[imagspatial, realspatial]] = calculateFFT(userData.imagspectral, userData.realspectral);
-
-        // set dropdown to custom
-        userData['selectedBaseFunctions']['realspatial'] = '0';
-        userData['selectedBaseFunctions']['imagspatial'] = '0';
-
-        // set arrays
-        userData['imagspatial'] = imagspatial;
-        userData['realspatial'] = realspatial;
-
-        // set all the other Arrays in userData
-        this.setState({
-          userData: {
-            ...userData,
-          },
-        });
-      } else {
-        // fire fft from stored arrays in state
-        const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
-
-        // set dropdown to custom
-        userData['selectedBaseFunctions']['realspectral'] = '0';
-        userData['selectedBaseFunctions']['imagspectral'] = '0';
-
-        // set arrays
-        userData['realspectral'] = realspectral;
-        userData['imagspectral'] = imagspectral;
-
-        // set all the other Arrays in userData
-        this.setState({
-          userData: {
-            ...userData,
-          },
-        });
-      }
+      // call ( inverse ) FFT and set the state
+      this.setState({
+        userData: callFFT(canvasTarget.id, userData),
+      });
     }
   }
 
@@ -445,40 +373,10 @@ export const mouseMove = function (event) {
 
     drawFunction(event.target, customArray, true);
 
-    // call inverse FFT if spectral button
-    if (canvasID == 'realspectral' || canvasID == 'imagspectral') {
-      // fire INVERSE fft from stored arrays in state
-      const [[imagspatial, realspatial]] = calculateFFT(userData.imagspectral, userData.realspectral);
-
-      // set dropdown to custom
-      userData['selectedBaseFunctions']['realspatial'] = '0';
-      userData['selectedBaseFunctions']['imagspatial'] = '0';
-
-      // set all the other Arrays in userData
-      this.setState({
-        userData: {
-          ...userData,
-          realspatial,
-          imagspatial,
-        },
-      });
-    } else {
-      // fire fft from stored arrays in state
-      const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
-
-      // set dropdown to custom
-      userData['selectedBaseFunctions']['realspectral'] = '0';
-      userData['selectedBaseFunctions']['imagspectral'] = '0';
-
-      // set all the other Arrays in userData
-      this.setState({
-        userData: {
-          ...userData,
-          realspectral,
-          imagspectral,
-        },
-      });
-    }
+    // call ( inverse ) FFT and set the state
+    this.setState({
+      userData: callFFT(canvasID, userData),
+    });
   }
 
   // handle right click move
@@ -494,39 +392,9 @@ export const mouseMove = function (event) {
 
     drawFunction(event.target, customArray, true);
 
-    // call inverse FFT if spectral button
-    if (canvasID == 'realspectral' || canvasID == 'imagspectral') {
-      // fire INVERSE fft from stored arrays in state
-      const [[imagspatial, realspatial]] = calculateFFT(userData.imagspectral, userData.realspectral);
-
-      // set dropdown to custom
-      userData['selectedBaseFunctions']['realspatial'] = '0';
-      userData['selectedBaseFunctions']['imagspatial'] = '0';
-
-      // set all the other Arrays in userData
-      this.setState({
-        userData: {
-          ...userData,
-          realspatial,
-          imagspatial,
-        },
-      });
-    } else {
-      // fire fft from stored arrays in state
-      const [[realspectral, imagspectral]] = calculateFFT(userData.realspatial, userData.imagspatial);
-
-      // set dropdown to custom
-      userData['selectedBaseFunctions']['realspectral'] = '0';
-      userData['selectedBaseFunctions']['imagspectral'] = '0';
-
-      // set all the other Arrays in userData
-      this.setState({
-        userData: {
-          ...userData,
-          realspectral,
-          imagspectral,
-        },
-      });
-    }
+    // call ( inverse ) FFT and set the state
+    this.setState({
+      userData: callFFT(canvasID, userData),
+    });
   }
 };
