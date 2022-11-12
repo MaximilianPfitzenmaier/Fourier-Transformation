@@ -44,11 +44,11 @@ export const slideToggle = (target, duration = 500) =>
 
 // Set current Array values to SessionStorage
 export const setSessionStorage = function () {
-  if (!sessionStorage.getItem('bv_project')) {
-    sessionStorage.setItem('bv_project', JSON.stringify(this.state.userData));
+  if (!sessionStorage.getItem('FFT')) {
+    sessionStorage.setItem('FFT', JSON.stringify(this.state.userData));
   } else {
-    sessionStorage.removeItem('bv_project');
-    sessionStorage.setItem('bv_project', JSON.stringify(this.state.userData));
+    sessionStorage.removeItem('FFT');
+    sessionStorage.setItem('FFT', JSON.stringify(this.state.userData));
   }
 };
 

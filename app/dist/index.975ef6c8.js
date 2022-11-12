@@ -31606,6 +31606,9 @@ class App extends (0, _reactDefault.default).Component {
         this.handleResetAll = _helper.handleResetAll.bind(this);
         // Bind Graph functions
         this.getBaseFunction = _graph.getBaseFunction.bind(this);
+        this.handleCenteredZero = _graph.handleCenteredZero.bind(this);
+        this.drawLine = _graph.drawLine.bind(this);
+        this.handleScaleAll = _graph.handleScaleAll.bind(this);
         // Bind eventListener
         this.mouseDown = _graph.mouseDown.bind(this);
         this.mouseMove = _graph.mouseMove.bind(this);
@@ -31641,17 +31644,22 @@ class App extends (0, _reactDefault.default).Component {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 74,
+                    lineNumber: 77,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _filtersDefault.default), {
                     labels: s.appData.labels,
                     arraySize: s.userData.arraySize,
                     handleArraySizeChange: this.handleArraySizeChange,
+                    centeredZero: s.userData.centeredZero,
+                    handleCenteredZero: this.handleCenteredZero,
+                    line: s.userData.line,
+                    drawLine: this.drawLine,
+                    handleScaleAll: this.handleScaleAll,
                     handleResetAll: this.handleResetAll
                 }, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 76,
+                    lineNumber: 79,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31670,7 +31678,7 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 84,
+                            lineNumber: 92,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _realSpectralDefault.default), {
@@ -31682,7 +31690,7 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 92,
+                            lineNumber: 100,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _imagSpatialDefault.default), {
@@ -31694,7 +31702,7 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 101,
+                            lineNumber: 109,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _imagSpectralDefault.default), {
@@ -31706,13 +31714,13 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 109,
+                            lineNumber: 117,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/App.js",
-                    lineNumber: 83,
+                    lineNumber: 91,
                     columnNumber: 9
                 }, this)
             ]
@@ -31990,6 +31998,9 @@ const labels = {
     // Filters
     chooseArraySize: "Choose the size:",
     reset: "Reset all Functions",
+    centeredZeroCheckbox: "Set centered Zero",
+    drawLine: "Draw Line",
+    scale: "Scale all Functions",
     // Gridlabels
     realspatial: "Spatial Real",
     realspectral: "Spectral Real",
@@ -32206,13 +32217,71 @@ class Filters extends (0, _reactDefault.default).Component {
             columnNumber: 7
         }, this);
     }
+    centeredZeroCheckbox() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                htmlFor: "centeredZero",
+                children: [
+                    this.props.labels.centeredZeroCheckbox,
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        name: "centeredZero",
+                        type: "checkbox",
+                        defaultChecked: this.props.centeredZero,
+                        onChange: this.props.handleCenteredZero
+                    }, void 0, false, {
+                        fileName: "src/components/fft/Filters.js",
+                        lineNumber: 28,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/fft/Filters.js",
+                lineNumber: 26,
+                columnNumber: 9
+            }, this)
+        }, void 0, false);
+    }
+    drawLine() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                htmlFor: "drawLine",
+                children: [
+                    this.props.labels.drawLine,
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        name: "drawLine",
+                        type: "checkbox",
+                        defaultChecked: this.props.line,
+                        onChange: this.props.drawLine
+                    }, void 0, false, {
+                        fileName: "src/components/fft/Filters.js",
+                        lineNumber: 39,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/fft/Filters.js",
+                lineNumber: 37,
+                columnNumber: 9
+            }, this)
+        }, void 0, false);
+    }
     resetAll() {
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
             onClick: this.props.handleResetAll,
             children: this.props.labels.reset
         }, void 0, false, {
             fileName: "src/components/fft/Filters.js",
-            lineNumber: 24,
+            lineNumber: 46,
+            columnNumber: 12
+        }, this);
+    }
+    scaleAll() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            onClick: this.props.handleScaleAll,
+            children: this.props.labels.scale
+        }, void 0, false, {
+            fileName: "src/components/fft/Filters.js",
+            lineNumber: 50,
             columnNumber: 12
         }, this);
     }
@@ -32221,11 +32290,14 @@ class Filters extends (0, _reactDefault.default).Component {
             className: "filters",
             children: [
                 this.sizeFilter(),
+                this.centeredZeroCheckbox(),
+                this.drawLine(),
+                this.scaleAll(),
                 this.resetAll()
             ]
         }, void 0, true, {
             fileName: "src/components/fft/Filters.js",
-            lineNumber: 29,
+            lineNumber: 55,
             columnNumber: 7
         }, this);
     }
@@ -32235,7 +32307,12 @@ Filters.propTypes = {
     handleArraySizeChange: (0, _propTypesDefault.default).func,
     labels: (0, _propTypesDefault.default).object,
     handleResetAll: (0, _propTypesDefault.default).func,
-    arraySize: (0, _propTypesDefault.default).number
+    handleScaleAll: (0, _propTypesDefault.default).func,
+    arraySize: (0, _propTypesDefault.default).number,
+    centeredZero: (0, _propTypesDefault.default).bool,
+    handleCenteredZero: (0, _propTypesDefault.default).func,
+    line: (0, _propTypesDefault.default).bool,
+    drawLine: (0, _propTypesDefault.default).func
 };
 
   $parcel$ReactRefreshHelpers$04d9.postlude(module);
@@ -33094,6 +33171,9 @@ parcelHelpers.export(exports, "drawFunction", ()=>drawFunction);
 parcelHelpers.export(exports, "mouseDown", ()=>mouseDown);
 parcelHelpers.export(exports, "mouseUp", ()=>mouseUp);
 parcelHelpers.export(exports, "mouseMove", ()=>mouseMove);
+parcelHelpers.export(exports, "handleCenteredZero", ()=>handleCenteredZero);
+parcelHelpers.export(exports, "drawLine", ()=>drawLine);
+parcelHelpers.export(exports, "handleScaleAll", ()=>handleScaleAll);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _calculateFFT = require("./calculateFFT");
 const createCanvas = function(canvasID, refName) {
@@ -33419,6 +33499,42 @@ const mouseMove = function(event) {
             userData: callFFT(canvasID1, userData)
         });
     }
+};
+const handleCenteredZero = function() {
+    // get state
+    const userData = JSON.parse(JSON.stringify(this.state.userData));
+    let zero = userData["centeredZero"];
+    if (false === zero) zero = true;
+    else zero = false;
+    userData["centeredZero"] = zero;
+    // set new zero status
+    this.setState({
+        userData: {
+            ...userData
+        }
+    });
+};
+const drawLine = function() {
+    const userData = JSON.parse(JSON.stringify(this.state.userData));
+    let line = userData["line"];
+    if (false === line) line = true;
+    else line = false;
+    userData["line"] = line;
+    // set new zero status
+    this.setState({
+        userData: {
+            ...userData
+        }
+    });
+};
+const handleScaleAll = function() {
+    const userData = JSON.parse(JSON.stringify(this.state.userData));
+    // set new zero status
+    this.setState({
+        userData: {
+            ...userData
+        }
+    });
 };
 
   $parcel$ReactRefreshHelpers$97f1.postlude(module);
@@ -35785,7 +35901,7 @@ var _labels = require("../assets/data/labels");
 const getSessionStorage = function() {
     let data = {};
     // if session storage not set, set new one
-    if (!sessionStorage.getItem("bv_project")) {
+    if (!sessionStorage.getItem("FFT")) {
         const selectedBaseFunctions = (0, _helper.resetAllDropdowns)();
         const custom = (0, _helper.getCustomBoolean)();
         data = {
@@ -35795,10 +35911,12 @@ const getSessionStorage = function() {
             imagspatial: (0, _basedata.zero)[64],
             realspectral: (0, _basedata.zero)[64],
             imagspectral: (0, _basedata.zero)[64],
-            custom
+            custom,
+            centeredZero: false,
+            line: false
         };
     } else // get current session storage
-    data = JSON.parse(sessionStorage.getItem("bv_project"));
+    data = JSON.parse(sessionStorage.getItem("FFT"));
     return data;
 };
 const initialize = function() {
@@ -35895,10 +36013,10 @@ const slideDown = (target, duration)=>{
 };
 const slideToggle = (target, duration = 500)=>window.getComputedStyle(target).display === "none" ? slideDown(target, duration) : slideUp(target, duration);
 const setSessionStorage = function() {
-    if (!sessionStorage.getItem("bv_project")) sessionStorage.setItem("bv_project", JSON.stringify(this.state.userData));
+    if (!sessionStorage.getItem("FFT")) sessionStorage.setItem("FFT", JSON.stringify(this.state.userData));
     else {
-        sessionStorage.removeItem("bv_project");
-        sessionStorage.setItem("bv_project", JSON.stringify(this.state.userData));
+        sessionStorage.removeItem("FFT");
+        sessionStorage.setItem("FFT", JSON.stringify(this.state.userData));
     }
 };
 const handleArraySizeChange = function(event) {

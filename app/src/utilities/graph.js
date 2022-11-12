@@ -398,3 +398,55 @@ export const mouseMove = function (event) {
     });
   }
 };
+
+export const handleCenteredZero = function () {
+  // get state
+  const userData = JSON.parse(JSON.stringify(this.state.userData));
+
+  let zero = userData['centeredZero'];
+  if (false === zero) {
+    zero = true;
+  } else {
+    zero = false;
+  }
+
+  userData['centeredZero'] = zero;
+
+  // set new zero status
+  this.setState({
+    userData: {
+      ...userData,
+    },
+  });
+};
+
+export const drawLine = function () {
+  const userData = JSON.parse(JSON.stringify(this.state.userData));
+
+  let line = userData['line'];
+  if (false === line) {
+    line = true;
+  } else {
+    line = false;
+  }
+
+  userData['line'] = line;
+
+  // set new zero status
+  this.setState({
+    userData: {
+      ...userData,
+    },
+  });
+};
+
+export const handleScaleAll = function () {
+  const userData = JSON.parse(JSON.stringify(this.state.userData));
+
+  // set new zero status
+  this.setState({
+    userData: {
+      ...userData,
+    },
+  });
+};

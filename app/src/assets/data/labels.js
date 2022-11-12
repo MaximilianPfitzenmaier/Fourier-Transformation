@@ -13,6 +13,9 @@ export const labels = {
   // Filters
   chooseArraySize: 'Choose the size:',
   reset: 'Reset all Functions',
+  centeredZeroCheckbox: 'Set centered Zero',
+  drawLine: 'Draw Line',
+  scale: 'Scale all Functions',
 
   // Gridlabels
   realspatial: 'Spatial Real',
@@ -29,5 +32,5 @@ export const labels = {
   // Links
   uni: 'https://uni-tuebingen.de/',
   github: 'https://github.com/MaximilianPfitzenmaier/Fourier-Transformation',
-  nayuki: 'https://www.nayuki.io/page/free-small-fft-in-multiple-languages/'
+  nayuki: 'https://www.nayuki.io/page/free-small-fft-in-multiple-languages/',
 };

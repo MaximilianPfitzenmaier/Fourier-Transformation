@@ -28,6 +28,9 @@ class App extends React.Component {
 
     // Bind Graph functions
     this.getBaseFunction = GraphUtils.getBaseFunction.bind(this);
+    this.handleCenteredZero = GraphUtils.handleCenteredZero.bind(this);
+    this.drawLine = GraphUtils.drawLine.bind(this);
+    this.handleScaleAll = GraphUtils.handleScaleAll.bind(this);
 
     // Bind eventListener
     this.mouseDown = GraphUtils.mouseDown.bind(this);
@@ -77,6 +80,11 @@ class App extends React.Component {
           labels={s.appData.labels}
           arraySize={s.userData.arraySize}
           handleArraySizeChange={this.handleArraySizeChange}
+          centeredZero={s.userData.centeredZero}
+          handleCenteredZero={this.handleCenteredZero}
+          line={s.userData.line}
+          drawLine={this.drawLine}
+          handleScaleAll={this.handleScaleAll}
           handleResetAll={this.handleResetAll}
         />
 
