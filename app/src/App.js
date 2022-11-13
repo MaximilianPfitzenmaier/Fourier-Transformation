@@ -82,7 +82,6 @@ class App extends React.Component {
           handleArraySizeChange={this.handleArraySizeChange}
           centeredZero={s.userData.centeredZero}
           handleCenteredZero={this.handleCenteredZero}
-          line={s.userData.line}
           drawLine={this.drawLine}
           handleScaleAll={this.handleScaleAll}
           handleResetAll={this.handleResetAll}
@@ -90,7 +89,9 @@ class App extends React.Component {
 
         <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
           <RealSpatial
+            centeredZero={s.userData.centeredZero}
             custom={s.userData.custom.realspatial}
+            line={s.userData.line}
             selectedBaseFunctions={s.userData.selectedBaseFunctions.realspatial}
             labels={s.appData.labels}
             arraySize={s.userData.arraySize}
@@ -98,16 +99,19 @@ class App extends React.Component {
             getBaseFunction={this.getBaseFunction}
           />
           <RealSpectral
+            centeredZero={s.userData.centeredZero}
             custom={s.userData.custom.realspectral}
+            line={s.userData.line}
             selectedBaseFunctions={s.userData.selectedBaseFunctions.realspectral}
             labels={s.appData.labels}
             arraySize={s.userData.arraySize}
             arrayFromState={s.userData.realspectral}
             getBaseFunction={this.getBaseFunction}
           />
-
           <ImagSpatial
+            centeredZero={s.userData.centeredZero}
             custom={s.userData.custom.imagspatial}
+            line={s.userData.line}
             selectedBaseFunctions={s.userData.selectedBaseFunctions.imagspatial}
             labels={s.appData.labels}
             arraySize={s.userData.arraySize}
@@ -115,7 +119,9 @@ class App extends React.Component {
             getBaseFunction={this.getBaseFunction}
           />
           <ImagSpectral
+            centeredZero={s.userData.centeredZero}
             custom={s.userData.custom.imagspectral}
+            line={s.userData.line}
             selectedBaseFunctions={s.userData.selectedBaseFunctions.imagspectral}
             labels={s.appData.labels}
             arraySize={s.userData.arraySize}
