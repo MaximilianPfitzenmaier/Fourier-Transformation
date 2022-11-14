@@ -1,4 +1,4 @@
-import { calculateFFT, calculateFFTCentered } from './calculateFFT';
+import { calculateFFT } from './calculateFFT';
 
 /**
  *  @param canvasID String for the ID and the REF
@@ -14,19 +14,50 @@ export const createCanvas = function (canvasID, refName) {
  *  @return object for the state with userData, and calculated FFT
  */
 export const callFFTCustom = function (type, userData, index) {
+  let canvasHeight = document.getElementById(type).getAttribute('height');
   // normalize all arrays
-  if (type == 'realspectral') userData.realspectral[index] = userData.realspectral[index] * ((350 / 2) * 0.65);
-  if (type == 'realspatial') userData.realspatial[index] = userData.realspatial[index] * ((350 / 2) * 0.65);
-  if (type == 'imagspectral') userData.imagspectral[index] = userData.imagspectral[index] * ((350 / 2) * 0.65);
-  if (type == 'imagspatial') userData.imagspatial[index] = userData.imagspatial[index] * ((350 / 2) * 0.65);
+  if (type == 'realspectral') userData.realspectral[index] = userData.realspectral[index] * ((canvasHeight / 2) * 0.65);
+  if (type == 'realspatial') userData.realspatial[index] = userData.realspatial[index] * ((canvasHeight / 2) * 0.65);
+  if (type == 'imagspectral') userData.imagspectral[index] = userData.imagspectral[index] * ((canvasHeight / 2) * 0.65);
+  if (type == 'imagspatial') userData.imagspatial[index] = userData.imagspatial[index] * ((canvasHeight / 2) * 0.65);
 
   if (type == 'realspectral' || type == 'imagspectral') {
     if (userData['centeredZero']) {
-      // fire INVERSE fft from stored arrays in state
-      const [[imagspatial, realspatial]] = calculateFFTCentered(userData.imagspectral, userData.realspectral);
+      // fire INVERSE fft from stored arrays in statefrom shifted array
+      const [[imagspatial, realspatial]] = calculateFFT(shiftArray(userData.imagspectral), shiftArray(userData.realspectral));
+
+      // let mid = true;
+      // let allother = false;
+      // for (let i = 0; i < userData[type].length; i++) {
+      //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
+      //     allother = true;
+      //     break;
+      //   }
+      // }
+
+      // if (userData[type][userData[type].length / 2] != 0) {
+      //   mid = true;
+      // } else {
+      //   mid = false;
+      // }
+
+      // if (!mid || allother) {
+      //   console.log('hello');
+      //   if (type == 'realspectral') {
+      //     for (let i = 0; i < realspatial.length; i++) {
+      //       realspatial[i] = realspatial[i] * -1;
+      //     }
+      //   } else {
+      //     for (let i = 0; i < imagspatial.length; i++) {
+      //       imagspatial[i] = imagspatial[i] * -1;
+      //     }
+      //   }
+      // }
+
       // set dropdown to custom
       userData['selectedBaseFunctions']['realspatial'] = '0';
       userData['selectedBaseFunctions']['imagspatial'] = '0';
+
       return { ...userData, imagspatial, realspatial };
     } else {
       const [[imagspatial, realspatial]] = calculateFFT(userData.imagspectral, userData.realspectral);
@@ -38,11 +69,40 @@ export const callFFTCustom = function (type, userData, index) {
   } else {
     if (userData['centeredZero']) {
       // fire fft from stored arrays in state
-      const [[realspectral, imagspectral]] = calculateFFTCentered(userData.realspatial, userData.imagspatial);
+      const [[realspectral, imagspectral]] = calculateFFT(shiftArray(userData.realspatial), shiftArray(userData.imagspatial));
+
+      // let mid = true;
+      // let allother = false;
+      // for (let i = 0; i < userData[type].length; i++) {
+      //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
+      //     allother = true;
+      //     break;
+      //   }
+      // }
+
+      // if (userData[type][userData[type].length / 2] != 0) {
+      //   mid = true;
+      // } else {
+      //   mid = false;
+      // }
+
+      // if (!mid || allother) {
+      //   console.log('hello');
+      //   if (type == 'realspatial') {
+      //     for (let i = 0; i < realspectral.length; i++) {
+      //       realspectral[i] = realspectral[i] * -1;
+      //     }
+      //   } else {
+      //     for (let i = 0; i < imagspectral.length; i++) {
+      //       imagspectral[i] = imagspectral[i] * -1;
+      //     }
+      //   }
+      // }
 
       // set dropdown to custom
       userData['selectedBaseFunctions']['realspectral'] = '0';
       userData['selectedBaseFunctions']['imagspectral'] = '0';
+
       return { ...userData, realspectral, imagspectral };
     } else {
       // fire fft from stored arrays in state
@@ -63,18 +123,44 @@ export const callFFTCustom = function (type, userData, index) {
  */
 export const callFFT = function (type, userData) {
   // normalize all arrays
+  let canvasHeight = document.getElementById(type).getAttribute('height');
 
   for (let i = 0; i < userData.realspectral.length; i++) {
-    if (type == 'realspectral') userData.realspectral[i] = userData.realspectral[i] * ((350 / 2) * 0.65);
-    if (type == 'realspatial') userData.realspatial[i] = userData.realspatial[i] * ((350 / 2) * 0.65);
-    if (type == 'imagspectral') userData.imagspectral[i] = userData.imagspectral[i] * ((350 / 2) * 0.65);
-    if (type == 'imagspatial') userData.imagspatial[i] = userData.imagspatial[i] * ((350 / 2) * 0.65);
+    if (type == 'realspectral') userData.realspectral[i] = userData.realspectral[i] * ((canvasHeight / 2) * 0.65);
+    if (type == 'realspatial') userData.realspatial[i] = userData.realspatial[i] * ((canvasHeight / 2) * 0.65);
+    if (type == 'imagspectral') userData.imagspectral[i] = userData.imagspectral[i] * ((canvasHeight / 2) * 0.65);
+    if (type == 'imagspatial') userData.imagspatial[i] = userData.imagspatial[i] * ((canvasHeight / 2) * 0.65);
   }
 
   if (type == 'realspectral' || type == 'imagspectral') {
     if (userData['centeredZero']) {
       // fire INVERSE fft from stored arrays in state
-      const [[imagspatial, realspatial]] = calculateFFTCentered(userData.imagspectral, userData.realspectral);
+      const [[imagspatial, realspatial]] = calculateFFT(shiftArray(userData.imagspectral), shiftArray(userData.realspectral));
+
+      // let mid = true;
+      // let allother = false;
+      // for (let i = 0; i < userData[type].length; i++) {
+      //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
+      //     allother = true;
+      //     break;
+      //   }
+      // }
+
+      // if (userData[type][userData[type].length / 2] != 0) {
+      //   mid = true;
+      // }
+
+      // if (!mid || allother) {
+      //   if (type == 'realspectral') {
+      //     for (let i = 0; i < realspatial.length; i++) {
+      //       realspatial[i] = realspatial[i] * -1;
+      //     }
+      //   } else {
+      //     for (let i = 0; i < imagspatial.length; i++) {
+      //       imagspatial[i] = imagspatial[i] * -1;
+      //     }
+      //   }
+      // }
 
       // set dropdown to custom
       userData['selectedBaseFunctions']['realspatial'] = '0';
@@ -92,7 +178,32 @@ export const callFFT = function (type, userData) {
   } else {
     if (userData['centeredZero']) {
       // fire fft from stored arrays in state
-      const [[realspectral, imagspectral]] = calculateFFTCentered(userData.realspatial, userData.imagspatial);
+      const [[realspectral, imagspectral]] = calculateFFT(shiftArray(userData.realspatial), shiftArray(userData.imagspatial));
+
+      // let mid = true;
+      // let allother = false;
+      // for (let i = 0; i < userData[type].length; i++) {
+      //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
+      //     allother = true;
+      //     break;
+      //   }
+      // }
+
+      // if (userData[type][userData[type].length / 2] != 0) {
+      //   mid = true;
+      // }
+
+      // if (!mid || allother) {
+      //   if (type == 'realspatial') {
+      //     for (let i = 0; i < realspectral.length; i++) {
+      //       realspectral[i] = realspectral[i] * -1;
+      //     }
+      //   } else {
+      //     for (let i = 0; i < imagspectral.length; i++) {
+      //       imagspectral[i] = imagspectral[i] * -1;
+      //     }
+      //   }
+      // }
 
       // set dropdown to custom
       userData['selectedBaseFunctions']['realspectral'] = '0';
@@ -488,6 +599,11 @@ export const handleCenteredZero = function () {
     zero = false;
   }
 
+  userData.realspatial = shiftArray(userData.realspatial);
+  userData.realspectral = shiftArray(userData.realspectral);
+  userData.imagspatial = shiftArray(userData.imagspatial);
+  userData.imagspectral = shiftArray(userData.imagspectral);
+
   userData['centeredZero'] = zero;
 
   // set new zero status
@@ -556,4 +672,12 @@ export const findPeak = function (userData, part) {
   let minRight = Math.min(...userData[arrayRight]);
 
   return Math.max(Math.abs(maxLeft), Math.abs(maxRight), Math.abs(minLeft), Math.abs(minRight));
+};
+
+export const shiftArray = function (array) {
+  const middle = Math.floor(array.length / 2);
+  const left = array.slice(0, middle);
+  const right = array.slice(middle);
+
+  return right.concat(left);
 };

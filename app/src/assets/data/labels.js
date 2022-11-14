@@ -13,7 +13,7 @@ export const labels = {
   // Filters
   chooseArraySize: 'Choose the size:',
   reset: 'Reset all Functions',
-  centeredZeroCheckbox: 'Set centered Zero',
+  centeredZeroCheckbox: 'Origin centered',
   drawLine: 'Draw Line',
   scale: 'Scale all Functions',
 

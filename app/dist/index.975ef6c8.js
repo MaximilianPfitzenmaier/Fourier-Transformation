@@ -32005,7 +32005,7 @@ const labels = {
     // Filters
     chooseArraySize: "Choose the size:",
     reset: "Reset all Functions",
-    centeredZeroCheckbox: "Set centered Zero",
+    centeredZeroCheckbox: "Origin centered",
     drawLine: "Draw Line",
     scale: "Scale all Functions",
     // Gridlabels
@@ -33180,6 +33180,7 @@ parcelHelpers.export(exports, "handleCenteredZero", ()=>handleCenteredZero);
 parcelHelpers.export(exports, "drawLine", ()=>drawLine);
 parcelHelpers.export(exports, "handleScaleAll", ()=>handleScaleAll);
 parcelHelpers.export(exports, "findPeak", ()=>findPeak);
+parcelHelpers.export(exports, "shiftArray", ()=>shiftArray);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _calculateFFT = require("./calculateFFT");
 const createCanvas = function(canvasID, refName) {
@@ -33196,15 +33197,41 @@ const createCanvas = function(canvasID, refName) {
     }, this);
 };
 const callFFTCustom = function(type, userData, index) {
+    let canvasHeight = document.getElementById(type).getAttribute("height");
     // normalize all arrays
-    if (type == "realspectral") userData.realspectral[index] = userData.realspectral[index] * 113.75;
-    if (type == "realspatial") userData.realspatial[index] = userData.realspatial[index] * 113.75;
-    if (type == "imagspectral") userData.imagspectral[index] = userData.imagspectral[index] * 113.75;
-    if (type == "imagspatial") userData.imagspatial[index] = userData.imagspatial[index] * 113.75;
+    if (type == "realspectral") userData.realspectral[index] = userData.realspectral[index] * (canvasHeight / 2 * 0.65);
+    if (type == "realspatial") userData.realspatial[index] = userData.realspatial[index] * (canvasHeight / 2 * 0.65);
+    if (type == "imagspectral") userData.imagspectral[index] = userData.imagspectral[index] * (canvasHeight / 2 * 0.65);
+    if (type == "imagspatial") userData.imagspatial[index] = userData.imagspatial[index] * (canvasHeight / 2 * 0.65);
     if (type == "realspectral" || type == "imagspectral") {
         if (userData["centeredZero"]) {
-            // fire INVERSE fft from stored arrays in state
-            const [[imagspatial, realspatial]] = (0, _calculateFFT.calculateFFTCentered)(userData.imagspectral, userData.realspectral);
+            // fire INVERSE fft from stored arrays in statefrom shifted array
+            const [[imagspatial, realspatial]] = (0, _calculateFFT.calculateFFT)(shiftArray(userData.imagspectral), shiftArray(userData.realspectral));
+            // let mid = true;
+            // let allother = false;
+            // for (let i = 0; i < userData[type].length; i++) {
+            //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
+            //     allother = true;
+            //     break;
+            //   }
+            // }
+            // if (userData[type][userData[type].length / 2] != 0) {
+            //   mid = true;
+            // } else {
+            //   mid = false;
+            // }
+            // if (!mid || allother) {
+            //   console.log('hello');
+            //   if (type == 'realspectral') {
+            //     for (let i = 0; i < realspatial.length; i++) {
+            //       realspatial[i] = realspatial[i] * -1;
+            //     }
+            //   } else {
+            //     for (let i = 0; i < imagspatial.length; i++) {
+            //       imagspatial[i] = imagspatial[i] * -1;
+            //     }
+            //   }
+            // }
             // set dropdown to custom
             userData["selectedBaseFunctions"]["realspatial"] = "0";
             userData["selectedBaseFunctions"]["imagspatial"] = "0";
@@ -33226,7 +33253,32 @@ const callFFTCustom = function(type, userData, index) {
         }
     } else if (userData["centeredZero"]) {
         // fire fft from stored arrays in state
-        const [[realspectral, imagspectral]] = (0, _calculateFFT.calculateFFTCentered)(userData.realspatial, userData.imagspatial);
+        const [[realspectral, imagspectral]] = (0, _calculateFFT.calculateFFT)(shiftArray(userData.realspatial), shiftArray(userData.imagspatial));
+        // let mid = true;
+        // let allother = false;
+        // for (let i = 0; i < userData[type].length; i++) {
+        //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
+        //     allother = true;
+        //     break;
+        //   }
+        // }
+        // if (userData[type][userData[type].length / 2] != 0) {
+        //   mid = true;
+        // } else {
+        //   mid = false;
+        // }
+        // if (!mid || allother) {
+        //   console.log('hello');
+        //   if (type == 'realspatial') {
+        //     for (let i = 0; i < realspectral.length; i++) {
+        //       realspectral[i] = realspectral[i] * -1;
+        //     }
+        //   } else {
+        //     for (let i = 0; i < imagspectral.length; i++) {
+        //       imagspectral[i] = imagspectral[i] * -1;
+        //     }
+        //   }
+        // }
         // set dropdown to custom
         userData["selectedBaseFunctions"]["realspectral"] = "0";
         userData["selectedBaseFunctions"]["imagspectral"] = "0";
@@ -33250,16 +33302,39 @@ const callFFTCustom = function(type, userData, index) {
 };
 const callFFT = function(type, userData) {
     // normalize all arrays
+    let canvasHeight = document.getElementById(type).getAttribute("height");
     for(let i = 0; i < userData.realspectral.length; i++){
-        if (type == "realspectral") userData.realspectral[i] = userData.realspectral[i] * 113.75;
-        if (type == "realspatial") userData.realspatial[i] = userData.realspatial[i] * 113.75;
-        if (type == "imagspectral") userData.imagspectral[i] = userData.imagspectral[i] * 113.75;
-        if (type == "imagspatial") userData.imagspatial[i] = userData.imagspatial[i] * 113.75;
+        if (type == "realspectral") userData.realspectral[i] = userData.realspectral[i] * (canvasHeight / 2 * 0.65);
+        if (type == "realspatial") userData.realspatial[i] = userData.realspatial[i] * (canvasHeight / 2 * 0.65);
+        if (type == "imagspectral") userData.imagspectral[i] = userData.imagspectral[i] * (canvasHeight / 2 * 0.65);
+        if (type == "imagspatial") userData.imagspatial[i] = userData.imagspatial[i] * (canvasHeight / 2 * 0.65);
     }
     if (type == "realspectral" || type == "imagspectral") {
         if (userData["centeredZero"]) {
             // fire INVERSE fft from stored arrays in state
-            const [[imagspatial, realspatial]] = (0, _calculateFFT.calculateFFTCentered)(userData.imagspectral, userData.realspectral);
+            const [[imagspatial, realspatial]] = (0, _calculateFFT.calculateFFT)(shiftArray(userData.imagspectral), shiftArray(userData.realspectral));
+            // let mid = true;
+            // let allother = false;
+            // for (let i = 0; i < userData[type].length; i++) {
+            //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
+            //     allother = true;
+            //     break;
+            //   }
+            // }
+            // if (userData[type][userData[type].length / 2] != 0) {
+            //   mid = true;
+            // }
+            // if (!mid || allother) {
+            //   if (type == 'realspectral') {
+            //     for (let i = 0; i < realspatial.length; i++) {
+            //       realspatial[i] = realspatial[i] * -1;
+            //     }
+            //   } else {
+            //     for (let i = 0; i < imagspatial.length; i++) {
+            //       imagspatial[i] = imagspatial[i] * -1;
+            //     }
+            //   }
+            // }
             // set dropdown to custom
             userData["selectedBaseFunctions"]["realspatial"] = "0";
             userData["selectedBaseFunctions"]["imagspatial"] = "0";
@@ -33282,7 +33357,29 @@ const callFFT = function(type, userData) {
         }
     } else if (userData["centeredZero"]) {
         // fire fft from stored arrays in state
-        const [[realspectral, imagspectral]] = (0, _calculateFFT.calculateFFTCentered)(userData.realspatial, userData.imagspatial);
+        const [[realspectral, imagspectral]] = (0, _calculateFFT.calculateFFT)(shiftArray(userData.realspatial), shiftArray(userData.imagspatial));
+        // let mid = true;
+        // let allother = false;
+        // for (let i = 0; i < userData[type].length; i++) {
+        //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
+        //     allother = true;
+        //     break;
+        //   }
+        // }
+        // if (userData[type][userData[type].length / 2] != 0) {
+        //   mid = true;
+        // }
+        // if (!mid || allother) {
+        //   if (type == 'realspatial') {
+        //     for (let i = 0; i < realspectral.length; i++) {
+        //       realspectral[i] = realspectral[i] * -1;
+        //     }
+        //   } else {
+        //     for (let i = 0; i < imagspectral.length; i++) {
+        //       imagspectral[i] = imagspectral[i] * -1;
+        //     }
+        //   }
+        // }
         // set dropdown to custom
         userData["selectedBaseFunctions"]["realspectral"] = "0";
         userData["selectedBaseFunctions"]["imagspectral"] = "0";
@@ -33607,6 +33704,10 @@ const handleCenteredZero = function() {
     let zero = userData["centeredZero"];
     if (false === zero) zero = true;
     else zero = false;
+    userData.realspatial = shiftArray(userData.realspatial);
+    userData.realspectral = shiftArray(userData.realspectral);
+    userData.imagspatial = shiftArray(userData.imagspatial);
+    userData.imagspectral = shiftArray(userData.imagspectral);
     userData["centeredZero"] = zero;
     // set new zero status
     this.setState({
@@ -33654,6 +33755,12 @@ const findPeak = function(userData, part) {
     let minRight = Math.min(...userData[arrayRight]);
     return Math.max(Math.abs(maxLeft), Math.abs(maxRight), Math.abs(minLeft), Math.abs(minRight));
 };
+const shiftArray = function(array) {
+    const middle = Math.floor(array.length / 2);
+    const left = array.slice(0, middle);
+    const right = array.slice(middle);
+    return right.concat(left);
+};
 
   $parcel$ReactRefreshHelpers$97f1.postlude(module);
 } finally {
@@ -33664,190 +33771,7 @@ const findPeak = function(userData, part) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "calculateFFT", ()=>calculateFFT);
-parcelHelpers.export(exports, "calculateFFTCentered", ()=>calculateFFTCentered);
 const calculateFFT = (real, imag)=>{
-    const realexp = [
-        ...real
-    ];
-    const imagexp = [
-        ...imag
-    ];
-    const inputArray = [
-        realexp,
-        imagexp
-    ];
-    /*
-   * Computes the discrete Fourier transform (DFT) of the given complex vector, storing the result back into the vector.
-   * The vector can have any length. This is a wrapper function.
-   */ function transform(real, imag) {
-        let output = new Array();
-        const n = real.length;
-        if (n != imag.length) throw new RangeError("Mismatched lengths");
-        if (n == 0) return;
-        else if ((n & n - 1) == 0) {
-            // Is power of 2
-            transformRadix2(real, imag);
-            output.push([
-                real,
-                imag
-            ]);
-        } else {
-            transformBluestein(real, imag);
-            output.push(real, imag);
-        }
-        // // Fake epsilon function
-        // for (let i = 0; i < output[0][0].length; i++) {
-        //   if (Math.abs(output[0][0][i]) < Math.epsilon) {
-        //     output[0][0][i] = 0;
-        //   }
-        //   if (Math.abs(output[0][1][i]) < Math.epsilon) {
-        //     output[0][1][i] = 0;
-        //   }
-        // }
-        return output;
-    }
-    /*
-   * Computes the inverse discrete Fourier transform (IDFT) of the given complex vector, storing the result back into the vector.
-   * The vector can have any length. This is a wrapper function. This transform does not perform scaling, so the inverse is not a true inverse.
-   */ function inverseTransform(real, imag) {
-        transform(imag, real);
-    }
-    /*
-   * Computes the discrete Fourier transform (DFT) of the given complex vector, storing the result back into the vector.
-   * The vector's length must be a power of 2. Uses the Cooley-Tukey decimation-in-time radix-2 algorithm.
-   */ function transformRadix2(real, imag) {
-        // Length variables
-        const n = real.length;
-        if (n != imag.length) throw new RangeError("Mismatched lengths");
-        if (n == 1) // Trivial transform
-        return;
-        let levels = -1;
-        for(let i = 0; i < 32; i++)if (1 << i == n) levels = i; // Equal to log2(n)
-        if (levels == -1) throw new RangeError("Length is not a power of 2");
-        // Trigonometric tables
-        const cosTable = new Array(n / 2);
-        const sinTable = new Array(n / 2);
-        for(let i1 = 0; i1 < n / 2; i1++){
-            cosTable[i1] = Math.cos(2 * Math.PI * i1 / n);
-            sinTable[i1] = Math.sin(2 * Math.PI * i1 / n);
-        }
-        // Bit-reversed addressing permutation
-        for(let i2 = 0; i2 < n; i2++){
-            const j = reverseBits(i2, levels);
-            if (j > i2) {
-                let temp = real[i2];
-                real[i2] = real[j];
-                real[j] = temp;
-                temp = imag[i2];
-                imag[i2] = imag[j];
-                imag[j] = temp;
-            }
-        }
-        // Cooley-Tukey decimation-in-time radix-2 FFT
-        for(let size = 2; size <= n; size *= 2){
-            const halfsize = size / 2;
-            const tablestep = n / size;
-            for(let i3 = 0; i3 < n; i3 += size)for(let j1 = i3, k = 0; j1 < i3 + halfsize; j1++, k += tablestep){
-                const l = j1 + halfsize;
-                const tpre = real[l] * cosTable[k] + imag[l] * sinTable[k];
-                const tpim = -real[l] * sinTable[k] + imag[l] * cosTable[k];
-                real[l] = real[j1] - tpre;
-                imag[l] = imag[j1] - tpim;
-                real[j1] += tpre;
-                imag[j1] += tpim;
-            }
-        }
-        // Returns the integer whose value is the reverse of the lowest 'width' bits of the integer 'val'.
-        function reverseBits(val, width) {
-            let result = 0;
-            for(let i = 0; i < width; i++){
-                result = result << 1 | val & 1;
-                val >>>= 1;
-            }
-            return result;
-        }
-    }
-    /*
-   * Computes the discrete Fourier transform (DFT) of the given complex vector, storing the result back into the vector.
-   * The vector can have any length. This requires the convolution function, which in turn requires the radix-2 FFT function.
-   * Uses Bluestein's chirp z-transform algorithm.
-   */ function transformBluestein(real, imag) {
-        // Find a power-of-2 convolution length m such that m >= n * 2 + 1
-        const n = real.length;
-        if (n != imag.length) throw new RangeError("Mismatched lengths");
-        let m = 1;
-        while(m < n * 2 + 1)m *= 2;
-        // Trigonometric tables
-        let cosTable = new Array(n);
-        let sinTable = new Array(n);
-        for(let i = 0; i < n; i++){
-            const j = i * i % (n * 2); // This is more accurate than j = i * i
-            cosTable[i] = Math.cos(Math.PI * j / n);
-            sinTable[i] = Math.sin(Math.PI * j / n);
-        }
-        // Temporary vectors and preprocessing
-        let areal = newArrayOfZeros(m);
-        let aimag = newArrayOfZeros(m);
-        for(let i1 = 0; i1 < n; i1++){
-            areal[i1] = real[i1] * cosTable[i1] + imag[i1] * sinTable[i1];
-            aimag[i1] = -real[i1] * sinTable[i1] + imag[i1] * cosTable[i1];
-        }
-        let breal = newArrayOfZeros(m);
-        let bimag = newArrayOfZeros(m);
-        breal[0] = cosTable[0];
-        bimag[0] = sinTable[0];
-        for(let i2 = 1; i2 < n; i2++){
-            breal[i2] = breal[m - i2] = cosTable[i2];
-            bimag[i2] = bimag[m - i2] = sinTable[i2];
-        }
-        // Convolution
-        let creal = new Array(m);
-        let cimag = new Array(m);
-        convolveComplex(areal, aimag, breal, bimag, creal, cimag);
-        // Postprocessing
-        for(let i3 = 0; i3 < n; i3++){
-            real[i3] = creal[i3] * cosTable[i3] + cimag[i3] * sinTable[i3];
-            imag[i3] = -creal[i3] * sinTable[i3] + cimag[i3] * cosTable[i3];
-        }
-    }
-    /*
-   * Computes the circular convolution of the given real vectors. Each vector's length must be the same.
-   */ function convolveReal(xvec, yvec, outvec) {
-        const n = xvec.length;
-        if (n != yvec.length || n != outvec.length) throw new RangeError("Mismatched lengths");
-        convolveComplex(xvec, newArrayOfZeros(n), yvec, newArrayOfZeros(n), outvec, newArrayOfZeros(n));
-    }
-    /*
-   * Computes the circular convolution of the given complex vectors. Each vector's length must be the same.
-   */ function convolveComplex(xreal, ximag, yreal, yimag, outreal, outimag) {
-        const n = xreal.length;
-        if (n != ximag.length || n != yreal.length || n != yimag.length || n != outreal.length || n != outimag.length) throw new RangeError("Missmatched lengths");
-        xreal = xreal.slice();
-        ximag = ximag.slice();
-        yreal = yreal.slice();
-        yimag = yimag.slice();
-        transform(xreal, ximag);
-        transform(yreal, yimag);
-        for(let i = 0; i < n; i++){
-            let temp = xreal[i] * yreal[i] - ximag[i] * yimag[i];
-            ximag[i] = ximag[i] * yreal[i] + xreal[i] * yimag[i];
-            xreal[i] = temp;
-        }
-        inverseTransform(xreal, ximag);
-        for(let i1 = 0; i1 < n; i1++){
-            // Scaling (because this FFT implementation omits it)
-            outreal[i1] = xreal[i1] / n;
-            outimag[i1] = ximag[i1] / n;
-        }
-    }
-    function newArrayOfZeros(n) {
-        let result = [];
-        for(let i = 0; i < n; i++)result.push(0);
-        return result;
-    }
-    return transform(inputArray[0], inputArray[1]);
-};
-const calculateFFTCentered = (real, imag)=>{
     const realexp = [
         ...real
     ];
