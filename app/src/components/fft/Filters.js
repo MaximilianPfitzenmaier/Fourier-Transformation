@@ -20,14 +20,43 @@ class Filters extends React.Component {
     );
   }
 
+  centeredZeroCheckbox() {
+    return (
+      <>
+        <label htmlFor="centeredZero">
+          {this.props.labels.centeredZeroCheckbox}
+          <input name="centeredZero" type="checkbox" defaultChecked={this.props.centeredZero} onChange={this.props.handleCenteredZero}></input>
+        </label>
+      </>
+    );
+  }
+
+  drawLine() {
+    return (
+      <>
+        <label htmlFor="drawLine">
+          {this.props.labels.drawLine}
+          <input name="drawLine" type="checkbox" defaultChecked={this.props.line} onChange={this.props.drawLine}></input>
+        </label>
+      </>
+    );
+  }
+
   resetAll() {
     return <button onClick={this.props.handleResetAll}>{this.props.labels.reset}</button>;
+  }
+
+  scaleAll() {
+    return <button onClick={this.props.handleScaleAll}>{this.props.labels.scale}</button>;
   }
 
   render() {
     return (
       <div className="filters">
         {this.sizeFilter()}
+        {this.centeredZeroCheckbox()}
+        {this.drawLine()}
+        {this.scaleAll()}
         {this.resetAll()}
       </div>
     );
@@ -40,5 +69,10 @@ Filters.propTypes = {
   handleArraySizeChange: PropTypes.func,
   labels: PropTypes.object,
   handleResetAll: PropTypes.func,
+  handleScaleAll: PropTypes.func,
   arraySize: PropTypes.number,
+  centeredZero: PropTypes.bool,
+  handleCenteredZero: PropTypes.func,
+  line: PropTypes.bool,
+  drawLine: PropTypes.func,
 };

@@ -28,6 +28,9 @@ class App extends React.Component {
 
     // Bind Graph functions
     this.getBaseFunction = GraphUtils.getBaseFunction.bind(this);
+    this.handleCenteredZero = GraphUtils.handleCenteredZero.bind(this);
+    this.drawLine = GraphUtils.drawLine.bind(this);
+    this.handleScaleAll = GraphUtils.handleScaleAll.bind(this);
 
     // Bind eventListener
     this.mouseDown = GraphUtils.mouseDown.bind(this);
@@ -77,12 +80,18 @@ class App extends React.Component {
           labels={s.appData.labels}
           arraySize={s.userData.arraySize}
           handleArraySizeChange={this.handleArraySizeChange}
+          centeredZero={s.userData.centeredZero}
+          handleCenteredZero={this.handleCenteredZero}
+          drawLine={this.drawLine}
+          handleScaleAll={this.handleScaleAll}
           handleResetAll={this.handleResetAll}
         />
 
         <div className="fourier fourier--basegrid-fourier" style={{ '--count': '1fr 1fr', '--areas': '"left_top right_top" "left_bottom right_bottom"' }}>
           <RealSpatial
+            centeredZero={s.userData.centeredZero}
             custom={s.userData.custom.realspatial}
+            line={s.userData.line}
             selectedBaseFunctions={s.userData.selectedBaseFunctions.realspatial}
             labels={s.appData.labels}
             arraySize={s.userData.arraySize}
@@ -90,16 +99,19 @@ class App extends React.Component {
             getBaseFunction={this.getBaseFunction}
           />
           <RealSpectral
+            centeredZero={s.userData.centeredZero}
             custom={s.userData.custom.realspectral}
+            line={s.userData.line}
             selectedBaseFunctions={s.userData.selectedBaseFunctions.realspectral}
             labels={s.appData.labels}
             arraySize={s.userData.arraySize}
             arrayFromState={s.userData.realspectral}
             getBaseFunction={this.getBaseFunction}
           />
-
           <ImagSpatial
+            centeredZero={s.userData.centeredZero}
             custom={s.userData.custom.imagspatial}
+            line={s.userData.line}
             selectedBaseFunctions={s.userData.selectedBaseFunctions.imagspatial}
             labels={s.appData.labels}
             arraySize={s.userData.arraySize}
@@ -107,7 +119,9 @@ class App extends React.Component {
             getBaseFunction={this.getBaseFunction}
           />
           <ImagSpectral
+            centeredZero={s.userData.centeredZero}
             custom={s.userData.custom.imagspectral}
+            line={s.userData.line}
             selectedBaseFunctions={s.userData.selectedBaseFunctions.imagspectral}
             labels={s.appData.labels}
             arraySize={s.userData.arraySize}

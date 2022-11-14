@@ -31606,6 +31606,9 @@ class App extends (0, _reactDefault.default).Component {
         this.handleResetAll = _helper.handleResetAll.bind(this);
         // Bind Graph functions
         this.getBaseFunction = _graph.getBaseFunction.bind(this);
+        this.handleCenteredZero = _graph.handleCenteredZero.bind(this);
+        this.drawLine = _graph.drawLine.bind(this);
+        this.handleScaleAll = _graph.handleScaleAll.bind(this);
         // Bind eventListener
         this.mouseDown = _graph.mouseDown.bind(this);
         this.mouseMove = _graph.mouseMove.bind(this);
@@ -31641,17 +31644,21 @@ class App extends (0, _reactDefault.default).Component {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 74,
+                    lineNumber: 77,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _filtersDefault.default), {
                     labels: s.appData.labels,
                     arraySize: s.userData.arraySize,
                     handleArraySizeChange: this.handleArraySizeChange,
+                    centeredZero: s.userData.centeredZero,
+                    handleCenteredZero: this.handleCenteredZero,
+                    drawLine: this.drawLine,
+                    handleScaleAll: this.handleScaleAll,
                     handleResetAll: this.handleResetAll
                 }, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 76,
+                    lineNumber: 79,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31662,7 +31669,9 @@ class App extends (0, _reactDefault.default).Component {
                     },
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _realSpatialDefault.default), {
+                            centeredZero: s.userData.centeredZero,
                             custom: s.userData.custom.realspatial,
+                            line: s.userData.line,
                             selectedBaseFunctions: s.userData.selectedBaseFunctions.realspatial,
                             labels: s.appData.labels,
                             arraySize: s.userData.arraySize,
@@ -31670,11 +31679,13 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 84,
+                            lineNumber: 91,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _realSpectralDefault.default), {
+                            centeredZero: s.userData.centeredZero,
                             custom: s.userData.custom.realspectral,
+                            line: s.userData.line,
                             selectedBaseFunctions: s.userData.selectedBaseFunctions.realspectral,
                             labels: s.appData.labels,
                             arraySize: s.userData.arraySize,
@@ -31682,11 +31693,13 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 92,
+                            lineNumber: 101,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _imagSpatialDefault.default), {
+                            centeredZero: s.userData.centeredZero,
                             custom: s.userData.custom.imagspatial,
+                            line: s.userData.line,
                             selectedBaseFunctions: s.userData.selectedBaseFunctions.imagspatial,
                             labels: s.appData.labels,
                             arraySize: s.userData.arraySize,
@@ -31694,11 +31707,13 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 101,
+                            lineNumber: 111,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _imagSpectralDefault.default), {
+                            centeredZero: s.userData.centeredZero,
                             custom: s.userData.custom.imagspectral,
+                            line: s.userData.line,
                             selectedBaseFunctions: s.userData.selectedBaseFunctions.imagspectral,
                             labels: s.appData.labels,
                             arraySize: s.userData.arraySize,
@@ -31706,13 +31721,13 @@ class App extends (0, _reactDefault.default).Component {
                             getBaseFunction: this.getBaseFunction
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 109,
+                            lineNumber: 121,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/App.js",
-                    lineNumber: 83,
+                    lineNumber: 90,
                     columnNumber: 9
                 }, this)
             ]
@@ -31990,6 +32005,9 @@ const labels = {
     // Filters
     chooseArraySize: "Choose the size:",
     reset: "Reset all Functions",
+    centeredZeroCheckbox: "Origin centered",
+    drawLine: "Draw Line",
+    scale: "Scale all Functions",
     // Gridlabels
     realspatial: "Spatial Real",
     realspectral: "Spectral Real",
@@ -32206,13 +32224,71 @@ class Filters extends (0, _reactDefault.default).Component {
             columnNumber: 7
         }, this);
     }
+    centeredZeroCheckbox() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                htmlFor: "centeredZero",
+                children: [
+                    this.props.labels.centeredZeroCheckbox,
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        name: "centeredZero",
+                        type: "checkbox",
+                        defaultChecked: this.props.centeredZero,
+                        onChange: this.props.handleCenteredZero
+                    }, void 0, false, {
+                        fileName: "src/components/fft/Filters.js",
+                        lineNumber: 28,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/fft/Filters.js",
+                lineNumber: 26,
+                columnNumber: 9
+            }, this)
+        }, void 0, false);
+    }
+    drawLine() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                htmlFor: "drawLine",
+                children: [
+                    this.props.labels.drawLine,
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        name: "drawLine",
+                        type: "checkbox",
+                        defaultChecked: this.props.line,
+                        onChange: this.props.drawLine
+                    }, void 0, false, {
+                        fileName: "src/components/fft/Filters.js",
+                        lineNumber: 39,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/fft/Filters.js",
+                lineNumber: 37,
+                columnNumber: 9
+            }, this)
+        }, void 0, false);
+    }
     resetAll() {
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
             onClick: this.props.handleResetAll,
             children: this.props.labels.reset
         }, void 0, false, {
             fileName: "src/components/fft/Filters.js",
-            lineNumber: 24,
+            lineNumber: 46,
+            columnNumber: 12
+        }, this);
+    }
+    scaleAll() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            onClick: this.props.handleScaleAll,
+            children: this.props.labels.scale
+        }, void 0, false, {
+            fileName: "src/components/fft/Filters.js",
+            lineNumber: 50,
             columnNumber: 12
         }, this);
     }
@@ -32221,11 +32297,14 @@ class Filters extends (0, _reactDefault.default).Component {
             className: "filters",
             children: [
                 this.sizeFilter(),
+                this.centeredZeroCheckbox(),
+                this.drawLine(),
+                this.scaleAll(),
                 this.resetAll()
             ]
         }, void 0, true, {
             fileName: "src/components/fft/Filters.js",
-            lineNumber: 29,
+            lineNumber: 55,
             columnNumber: 7
         }, this);
     }
@@ -32235,7 +32314,12 @@ Filters.propTypes = {
     handleArraySizeChange: (0, _propTypesDefault.default).func,
     labels: (0, _propTypesDefault.default).object,
     handleResetAll: (0, _propTypesDefault.default).func,
-    arraySize: (0, _propTypesDefault.default).number
+    handleScaleAll: (0, _propTypesDefault.default).func,
+    arraySize: (0, _propTypesDefault.default).number,
+    centeredZero: (0, _propTypesDefault.default).bool,
+    handleCenteredZero: (0, _propTypesDefault.default).func,
+    line: (0, _propTypesDefault.default).bool,
+    drawLine: (0, _propTypesDefault.default).func
 };
 
   $parcel$ReactRefreshHelpers$04d9.postlude(module);
@@ -33014,12 +33098,12 @@ class RealSpatial extends (0, _reactDefault.default).Component {
     }
     canvasID = "realspatial";
     componentDidMount() {
-        this.drawFunction(this.canvas, this.props.arrayFromState, this.props.custom);
+        this.drawFunction(this.canvas, this.props.arrayFromState, this.props.centeredZero, this.props.line);
     }
     componentDidUpdate(prevProps) {
         if (prevProps.selectedBaseFunctions !== this.props.selectedBaseFunctions) this.updateValue(this.props.selectedBaseFunctions);
         const p = this.props;
-        this.drawFunction(this.canvas, p.arrayFromState, p.custom);
+        this.drawFunction(this.canvas, p.arrayFromState, p.centeredZero, p.line);
         this.getDropdown(p.labels, p.selectedBaseFunctions);
     }
     updateValue(value) {
@@ -33066,7 +33150,8 @@ RealSpatial.propTypes = {
     arraySize: (0, _propTypesDefault.default).number,
     labels: (0, _propTypesDefault.default).object,
     selectedBaseFunctions: (0, _propTypesDefault.default).string,
-    custom: (0, _propTypesDefault.default).bool
+    centeredZero: (0, _propTypesDefault.default).bool,
+    line: (0, _propTypesDefault.default).bool
 };
 
   $parcel$ReactRefreshHelpers$3c09.postlude(module);
@@ -33084,16 +33169,18 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createCanvas", ()=>createCanvas);
+parcelHelpers.export(exports, "callFFTCustom", ()=>callFFTCustom);
 parcelHelpers.export(exports, "callFFT", ()=>callFFT);
 parcelHelpers.export(exports, "getBaseFunction", ()=>getBaseFunction);
 parcelHelpers.export(exports, "drawFunction", ()=>drawFunction);
-/**
- *  @param Array which has to be drawn
- *  @return highest Peak
- */ parcelHelpers.export(exports, "findPeaks", ()=>findPeaks);
 parcelHelpers.export(exports, "mouseDown", ()=>mouseDown);
 parcelHelpers.export(exports, "mouseUp", ()=>mouseUp);
 parcelHelpers.export(exports, "mouseMove", ()=>mouseMove);
+parcelHelpers.export(exports, "handleCenteredZero", ()=>handleCenteredZero);
+parcelHelpers.export(exports, "drawLine", ()=>drawLine);
+parcelHelpers.export(exports, "handleScaleAll", ()=>handleScaleAll);
+parcelHelpers.export(exports, "findPeak", ()=>findPeak);
+parcelHelpers.export(exports, "shiftArray", ()=>shiftArray);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _calculateFFT = require("./calculateFFT");
 const createCanvas = function(canvasID, refName) {
@@ -33109,21 +33196,89 @@ const createCanvas = function(canvasID, refName) {
         columnNumber: 10
     }, this);
 };
-const callFFT = function(type, userData) {
+const callFFTCustom = function(type, userData, index) {
+    let canvasHeight = document.getElementById(type).getAttribute("height");
+    // normalize all arrays
+    if (type == "realspectral") userData.realspectral[index] = userData.realspectral[index] * (canvasHeight / 2 * 0.65);
+    if (type == "realspatial") userData.realspatial[index] = userData.realspatial[index] * (canvasHeight / 2 * 0.65);
+    if (type == "imagspectral") userData.imagspectral[index] = userData.imagspectral[index] * (canvasHeight / 2 * 0.65);
+    if (type == "imagspatial") userData.imagspatial[index] = userData.imagspatial[index] * (canvasHeight / 2 * 0.65);
     if (type == "realspectral" || type == "imagspectral") {
-        // fire INVERSE fft from stored arrays in state
-        const [[imagspatial, realspatial]] = (0, _calculateFFT.calculateFFT)(userData.imagspectral, userData.realspectral);
-        // set dropdown to custom
-        userData["selectedBaseFunctions"]["realspatial"] = "0";
-        userData["selectedBaseFunctions"]["imagspatial"] = "0";
-        return {
-            ...userData,
-            imagspatial,
-            realspatial
-        };
-    } else {
+        if (userData["centeredZero"]) {
+            // fire INVERSE fft from stored arrays in statefrom shifted array
+            const [[imagspatial, realspatial]] = (0, _calculateFFT.calculateFFT)(shiftArray(userData.imagspectral), shiftArray(userData.realspectral));
+            // let mid = true;
+            // let allother = false;
+            // for (let i = 0; i < userData[type].length; i++) {
+            //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
+            //     allother = true;
+            //     break;
+            //   }
+            // }
+            // if (userData[type][userData[type].length / 2] != 0) {
+            //   mid = true;
+            // } else {
+            //   mid = false;
+            // }
+            // if (!mid || allother) {
+            //   console.log('hello');
+            //   if (type == 'realspectral') {
+            //     for (let i = 0; i < realspatial.length; i++) {
+            //       realspatial[i] = realspatial[i] * -1;
+            //     }
+            //   } else {
+            //     for (let i = 0; i < imagspatial.length; i++) {
+            //       imagspatial[i] = imagspatial[i] * -1;
+            //     }
+            //   }
+            // }
+            // set dropdown to custom
+            userData["selectedBaseFunctions"]["realspatial"] = "0";
+            userData["selectedBaseFunctions"]["imagspatial"] = "0";
+            return {
+                ...userData,
+                imagspatial,
+                realspatial
+            };
+        } else {
+            const [[imagspatial1, realspatial1]] = (0, _calculateFFT.calculateFFT)(userData.imagspectral, userData.realspectral);
+            // set dropdown to custom
+            userData["selectedBaseFunctions"]["realspatial"] = "0";
+            userData["selectedBaseFunctions"]["imagspatial"] = "0";
+            return {
+                ...userData,
+                imagspatial: imagspatial1,
+                realspatial: realspatial1
+            };
+        }
+    } else if (userData["centeredZero"]) {
         // fire fft from stored arrays in state
-        const [[realspectral, imagspectral]] = (0, _calculateFFT.calculateFFT)(userData.realspatial, userData.imagspatial);
+        const [[realspectral, imagspectral]] = (0, _calculateFFT.calculateFFT)(shiftArray(userData.realspatial), shiftArray(userData.imagspatial));
+        // let mid = true;
+        // let allother = false;
+        // for (let i = 0; i < userData[type].length; i++) {
+        //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
+        //     allother = true;
+        //     break;
+        //   }
+        // }
+        // if (userData[type][userData[type].length / 2] != 0) {
+        //   mid = true;
+        // } else {
+        //   mid = false;
+        // }
+        // if (!mid || allother) {
+        //   console.log('hello');
+        //   if (type == 'realspatial') {
+        //     for (let i = 0; i < realspectral.length; i++) {
+        //       realspectral[i] = realspectral[i] * -1;
+        //     }
+        //   } else {
+        //     for (let i = 0; i < imagspectral.length; i++) {
+        //       imagspectral[i] = imagspectral[i] * -1;
+        //     }
+        //   }
+        // }
         // set dropdown to custom
         userData["selectedBaseFunctions"]["realspectral"] = "0";
         userData["selectedBaseFunctions"]["imagspectral"] = "0";
@@ -33131,6 +33286,118 @@ const callFFT = function(type, userData) {
             ...userData,
             realspectral,
             imagspectral
+        };
+    } else {
+        // fire fft from stored arrays in state
+        const [[realspectral1, imagspectral1]] = (0, _calculateFFT.calculateFFT)(userData.realspatial, userData.imagspatial);
+        // set dropdown to custom
+        userData["selectedBaseFunctions"]["realspectral"] = "0";
+        userData["selectedBaseFunctions"]["imagspectral"] = "0";
+        return {
+            ...userData,
+            realspectral: realspectral1,
+            imagspectral: imagspectral1
+        };
+    }
+};
+const callFFT = function(type, userData) {
+    // normalize all arrays
+    let canvasHeight = document.getElementById(type).getAttribute("height");
+    for(let i = 0; i < userData.realspectral.length; i++){
+        if (type == "realspectral") userData.realspectral[i] = userData.realspectral[i] * (canvasHeight / 2 * 0.65);
+        if (type == "realspatial") userData.realspatial[i] = userData.realspatial[i] * (canvasHeight / 2 * 0.65);
+        if (type == "imagspectral") userData.imagspectral[i] = userData.imagspectral[i] * (canvasHeight / 2 * 0.65);
+        if (type == "imagspatial") userData.imagspatial[i] = userData.imagspatial[i] * (canvasHeight / 2 * 0.65);
+    }
+    if (type == "realspectral" || type == "imagspectral") {
+        if (userData["centeredZero"]) {
+            // fire INVERSE fft from stored arrays in state
+            const [[imagspatial, realspatial]] = (0, _calculateFFT.calculateFFT)(shiftArray(userData.imagspectral), shiftArray(userData.realspectral));
+            // let mid = true;
+            // let allother = false;
+            // for (let i = 0; i < userData[type].length; i++) {
+            //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
+            //     allother = true;
+            //     break;
+            //   }
+            // }
+            // if (userData[type][userData[type].length / 2] != 0) {
+            //   mid = true;
+            // }
+            // if (!mid || allother) {
+            //   if (type == 'realspectral') {
+            //     for (let i = 0; i < realspatial.length; i++) {
+            //       realspatial[i] = realspatial[i] * -1;
+            //     }
+            //   } else {
+            //     for (let i = 0; i < imagspatial.length; i++) {
+            //       imagspatial[i] = imagspatial[i] * -1;
+            //     }
+            //   }
+            // }
+            // set dropdown to custom
+            userData["selectedBaseFunctions"]["realspatial"] = "0";
+            userData["selectedBaseFunctions"]["imagspatial"] = "0";
+            return {
+                ...userData,
+                imagspatial,
+                realspatial
+            };
+        } else {
+            // fire INVERSE fft from stored arrays in state
+            const [[imagspatial1, realspatial1]] = (0, _calculateFFT.calculateFFT)(userData.imagspectral, userData.realspectral);
+            // set dropdown to custom
+            userData["selectedBaseFunctions"]["realspatial"] = "0";
+            userData["selectedBaseFunctions"]["imagspatial"] = "0";
+            return {
+                ...userData,
+                imagspatial: imagspatial1,
+                realspatial: realspatial1
+            };
+        }
+    } else if (userData["centeredZero"]) {
+        // fire fft from stored arrays in state
+        const [[realspectral, imagspectral]] = (0, _calculateFFT.calculateFFT)(shiftArray(userData.realspatial), shiftArray(userData.imagspatial));
+        // let mid = true;
+        // let allother = false;
+        // for (let i = 0; i < userData[type].length; i++) {
+        //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
+        //     allother = true;
+        //     break;
+        //   }
+        // }
+        // if (userData[type][userData[type].length / 2] != 0) {
+        //   mid = true;
+        // }
+        // if (!mid || allother) {
+        //   if (type == 'realspatial') {
+        //     for (let i = 0; i < realspectral.length; i++) {
+        //       realspectral[i] = realspectral[i] * -1;
+        //     }
+        //   } else {
+        //     for (let i = 0; i < imagspectral.length; i++) {
+        //       imagspectral[i] = imagspectral[i] * -1;
+        //     }
+        //   }
+        // }
+        // set dropdown to custom
+        userData["selectedBaseFunctions"]["realspectral"] = "0";
+        userData["selectedBaseFunctions"]["imagspectral"] = "0";
+        return {
+            ...userData,
+            realspectral,
+            imagspectral
+        };
+    } else {
+        // fire fft from stored arrays in state
+        const [[realspectral1, imagspectral1]] = (0, _calculateFFT.calculateFFT)(userData.realspatial, userData.imagspatial);
+        // set dropdown to custom
+        userData["selectedBaseFunctions"]["realspectral"] = "0";
+        userData["selectedBaseFunctions"]["imagspectral"] = "0";
+        return {
+            ...userData,
+            realspectral: realspectral1,
+            imagspectral: imagspectral1
         };
     }
 };
@@ -33150,12 +33417,7 @@ const getBaseFunction = function(funcArray, type, newSelectedBaseFunctions) {
         userData: callFFT(type, userData)
     });
 };
-const drawFunction = function(canvasID, arrayFromUserData, custom) {
-    let maxPeak = findPeaks(arrayFromUserData);
-    if (!custom) for(let i = 0; i < arrayFromUserData.length; i++){
-        maxPeak = maxPeak ? maxPeak : 1;
-        arrayFromUserData[i] = arrayFromUserData[i] / maxPeak;
-    }
+const drawFunction = function(canvasID, arrayFromUserData, centeredZero, line) {
     let canvasArray = arrayFromUserData;
     let canvas;
     let ctx;
@@ -33174,12 +33436,6 @@ const drawFunction = function(canvasID, arrayFromUserData, custom) {
     const height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     canvas.width = width / 2 - 20;
     canvas.height = height / 2 - 120;
-    let peaks = 1;
-    let scale = canvas.height / 2 * 0.65;
-    if (!custom) {
-        scale = 1;
-        peaks = canvas.height / 2 / findPeaks(canvasArray) * 0.6;
-    }
     ctx.translate(0, canvas.height / 2);
     ctx.beginPath();
     ctx.setLineDash([
@@ -33195,8 +33451,13 @@ const drawFunction = function(canvasID, arrayFromUserData, custom) {
     ctx.beginPath();
     ctx.lineWidth = 1;
     ctx.strokeStyle = "hsl(176, 72%, 71%)";
-    ctx.moveTo(canvas.width / 2, -canvas.height / 2);
-    ctx.lineTo(canvas.width / 2, canvas.height);
+    if (centeredZero) {
+        ctx.moveTo(canvas.width / 2, -canvas.height / 2);
+        ctx.lineTo(canvas.width / 2, canvas.height);
+    } else {
+        ctx.moveTo(0 + canvas.width / (canvasArray.length + 2), -canvas.height / 2);
+        ctx.lineTo(0 + canvas.width / (canvasArray.length + 2), canvas.height);
+    }
     ctx.stroke();
     ctx.setLineDash([
         0,
@@ -33204,27 +33465,38 @@ const drawFunction = function(canvasID, arrayFromUserData, custom) {
     ]);
     let count = 0;
     let yposition = 0;
+    let yposition2 = 0;
     canvasArray.unshift(0);
     canvasArray.push(0);
-    for(let i1 = 0; i1 < canvas.width; i1 = i1 + canvas.width / canvasArray.length){
-        yposition = -canvasArray[count] * peaks * scale;
+    for(let i = 0; i < canvas.width; i = i + canvas.width / canvasArray.length){
+        yposition = -canvasArray[count]; //* peaks * scale;
         yposition = yposition ? yposition : 0;
+        yposition2 = -canvasArray[count + 1]; //* peaks * scale;
+        yposition2 = yposition2 ? yposition2 : 0;
         ctx.beginPath();
         ctx.lineWidth = 2;
-        //ctx.lineWidth = canvas.width / (canvasArray.length * 2);
-        var grad = ctx.createLinearGradient(i1, 0, i1, yposition);
+        var grad = ctx.createLinearGradient(i, 0, i, yposition);
         grad.addColorStop(0, "hsl(176, 72%, 71%)");
         grad.addColorStop(1, "hsl(251, 53%, 45%)");
         ctx.strokeStyle = grad;
-        ctx.moveTo(i1, 0);
-        ctx.lineTo(i1, yposition);
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, yposition);
         ctx.stroke();
         ctx.closePath();
-        // draw circles
-        ctx.beginPath();
-        ctx.arc(i1, yposition, 3, 0, 2 * Math.PI);
-        if (count == 0 || count == canvasArray.length || count == canvasArray.length - 1) ctx.fillStyle = "transparent";
-        else ctx.fillStyle = "hsl(251, 53%, 45%)";
+        if (line) {
+            // draw line
+            ctx.beginPath();
+            ctx.strokeStyle = "hsl(251, 53%, 45%)";
+            ctx.moveTo(i, yposition);
+            ctx.lineTo(i + canvas.width / canvasArray.length, yposition2);
+            ctx.stroke();
+        } else {
+            // draw circles
+            ctx.beginPath();
+            ctx.arc(i, yposition, 3, 0, 2 * Math.PI);
+            if (count == 0 || count == canvasArray.length || count == canvasArray.length - 1) ctx.fillStyle = "transparent";
+            else ctx.fillStyle = "hsl(251, 53%, 45%)";
+        }
         ctx.fill();
         ctx.closePath();
         count++;
@@ -33232,29 +33504,21 @@ const drawFunction = function(canvasID, arrayFromUserData, custom) {
     canvasArray.shift();
     canvasArray.pop();
 };
-function findPeaks(arr) {
-    let smallest_number = Math.min(...arr);
-    let largest_number = Math.max(...arr);
-    let peaks = 0;
-    smallest_number < 0 ? smallest_number = smallest_number * -1 : smallest_number;
-    smallest_number > largest_number ? peaks = smallest_number : peaks = largest_number;
-    return peaks;
-}
 let isPressed = false;
 let rightPressed = false;
 let middlePressed = false; // must be assigned
 let canvasTarget, firstRight, firstMiddleX, firstMiddleY, nextMiddleX, nextMiddleY;
 let control = 1;
-const mouseDown = function(event) {
+const mouseDown = function(event1) {
     const userData = JSON.parse(JSON.stringify(this.state.userData));
     // draw on click
-    const canvas = event.target;
-    canvasTarget = event.target;
+    const canvas = event1.target;
+    canvasTarget = event1.target;
     const rect = canvas.getBoundingClientRect();
-    const x = event.clientX - rect.left;
+    const x = event1.clientX - rect.left;
     const size = userData.arraySize + 2;
     let currentIndex = Math.floor(Math.floor(x) / (Math.floor(canvas.width) / size) - 0.5);
-    if (event.button === 0) {
+    if (event1.button === 0) {
         // reset if mouseheel was used before
         firstMiddleX = 0;
         firstMiddleY = 0;
@@ -33262,25 +33526,24 @@ const mouseDown = function(event) {
         nextMiddleY = 0;
         control = 1;
         isPressed = true;
-        if (canvasTarget == event.target.closest("canvas") && currentIndex >= 0 && currentIndex < size) {
-            const y = event.clientY - rect.top;
-            const canvasID = event.target.id;
+        if (canvasTarget == event1.target.closest("canvas") && currentIndex >= 0 && currentIndex < size - 2) {
+            const y = event1.clientY - rect.top;
+            const canvasID = event1.target.id;
             const customArray = userData[canvasID];
             if (currentIndex >= 0 && currentIndex < userData.arraySize) {
                 customArray[currentIndex] = -(y - canvas.height / 2) / (canvas.height / 2.65);
                 userData[canvasID] = customArray;
             }
-            drawFunction(event.target, customArray, true);
             // call ( inverse ) FFT and set the state
             this.setState({
-                userData: callFFT(canvasTarget.id, userData)
+                userData: callFFTCustom(canvasTarget.id, userData, currentIndex)
             });
         }
     }
     // Mousewheel
-    if (event.button === 1) {
-        const y1 = event.clientY - rect.top; // must be assigned
-        const canvasID1 = event.target.id;
+    if (event1.button === 1) {
+        const y1 = event1.clientY - rect.top; // must be assigned
+        const canvasID1 = event1.target.id;
         const customArray1 = userData[canvasID1];
         const xArray = [
             0,
@@ -33291,7 +33554,7 @@ const mouseDown = function(event) {
             0
         ];
         let differenceX, differenceY;
-        if (canvasTarget != event.target.closest("canvas")) {
+        if (canvasTarget != event1.target.closest("canvas")) {
             firstMiddleX = 0;
             firstMiddleY = 0;
             nextMiddleX = 0;
@@ -33299,12 +33562,12 @@ const mouseDown = function(event) {
             control = 1;
         }
         if (control % 2 == 1) {
-            firstMiddleX = Math.floor(Math.floor(event.clientX - rect.left) / (Math.floor(canvas.width) / size) - 0.5);
-            firstMiddleY = -(event.clientY - rect.top - canvas.height / 2) / (canvas.height / 2.65);
+            firstMiddleX = Math.floor(Math.floor(event1.clientX - rect.left) / (Math.floor(canvas.width) / size) - 0.5);
+            firstMiddleY = -(event1.clientY - rect.top - canvas.height / 2) / (canvas.height / 2.65);
             control = 2;
         } else {
-            nextMiddleX = Math.floor(Math.floor(event.clientX - rect.left) / (Math.floor(canvas.width) / size) - 0.5);
-            nextMiddleY = -(event.clientY - rect.top - canvas.height / 2) / (canvas.height / 2.65);
+            nextMiddleX = Math.floor(Math.floor(event1.clientX - rect.left) / (Math.floor(canvas.width) / size) - 0.5);
+            nextMiddleY = -(event1.clientY - rect.top - canvas.height / 2) / (canvas.height / 2.65);
             control = 1;
         }
         xArray[0] = firstMiddleX;
@@ -33325,7 +33588,6 @@ const mouseDown = function(event) {
                     stepClone = stepClone + steps;
                 }
                 userData[canvasID1] = customArray1;
-                drawFunction(event.target, customArray1, true);
             } else {
                 for(let i1 = Math.max(...xArray); i1 >= Math.min(...xArray); i1--)if (firstMiddleY > nextMiddleY) {
                     customArray1[i1] = -Math.min(...yArray) + stepClone;
@@ -33335,7 +33597,6 @@ const mouseDown = function(event) {
                     stepClone = stepClone + steps;
                 }
                 userData[canvasID1] = customArray1;
-                drawFunction(event.target, customArray1, true);
             }
         }
         if (control == 1) // call ( inverse ) FFT and set the state
@@ -33344,7 +33605,7 @@ const mouseDown = function(event) {
         });
     }
     // Right Click
-    if (event.button === 2) {
+    if (event1.button === 2) {
         // reset if mouseheel was used before
         firstMiddleX = 0;
         firstMiddleY = 0;
@@ -33353,16 +33614,16 @@ const mouseDown = function(event) {
         control = 1;
         // rechts click alle gleich hoch beim moven wie der erste
         rightPressed = true;
-        canvasTarget = event.target;
-        firstRight = event.clientY - rect.top;
+        canvasTarget = event1.target;
+        firstRight = event1.clientY - rect.top;
     }
     // set all custom statemants to false
     userData["custom"]["realspatial"] = false;
     userData["custom"]["imagspatial"] = false;
     userData["custom"]["imagspectral"] = false;
     userData["custom"]["realspectral"] = false;
-    if (event.target.closest("canvas")) {
-        canvasTarget = event.target;
+    if (event1.target.closest("canvas")) {
+        canvasTarget = event1.target;
         const canvasid = canvasTarget.id;
         // set this select to custom
         userData["selectedBaseFunctions"][canvasid] = "0";
@@ -33379,46 +33640,126 @@ const mouseUp = function() {
     isPressed = false;
     rightPressed = false;
     middlePressed = false;
-};
-const mouseMove = function(event) {
     const userData = JSON.parse(JSON.stringify(this.state.userData));
     const canvas = event.target;
+    const canvasID = event.target.id;
+    const customArray = userData[canvasID];
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
+    const size = userData.arraySize + 2;
+    let currentIndex = Math.floor(Math.floor(x) / (Math.floor(canvas.width) / size) - 0.5);
+    if (canvasTarget == event.target.closest("canvas") && currentIndex >= 0 && currentIndex < size - 2 && !isNaN(currentIndex)) {
+        const y = event.clientY - rect.top;
+        if (currentIndex >= 0 && currentIndex < userData.arraySize) {
+            customArray[currentIndex] = -(y - canvas.height / 2) / (canvas.height / 2.65);
+            userData[canvasID] = customArray;
+        }
+        // call ( inverse ) FFT and set the state
+        this.setState({
+            userData: callFFTCustom(canvasID, userData, currentIndex)
+        });
+    }
+};
+const mouseMove = function(event1) {
+    const userData = JSON.parse(JSON.stringify(this.state.userData));
+    const canvas = event1.target;
+    const rect = canvas.getBoundingClientRect();
+    const x = event1.clientX - rect.left;
     // size + 2 because we add 0 at the beginning and end of each array
     const size = userData.arraySize + 2;
     // -0,5 because of mouse click diffrence
     let currentIndex = Math.floor(Math.floor(x) / (Math.floor(canvas.width) / size) - 0.5);
     // handle left click move
-    if (canvasTarget == event.target.closest("canvas") && isPressed && currentIndex >= 0 && currentIndex < size) {
-        const y = event.clientY - rect.top;
-        const canvasID = event.target.id;
+    if (canvasTarget == event1.target.closest("canvas") && isPressed && currentIndex >= 0 && currentIndex < size - 2) {
+        const y = event1.clientY - rect.top;
+        const canvasID = event1.target.id;
         const customArray = userData[canvasID];
         if (currentIndex >= 0 && currentIndex < userData.arraySize) {
             customArray[currentIndex] = -(y - canvas.height / 2) / (canvas.height / 2.65);
             userData[canvasID] = customArray;
         }
-        drawFunction(event.target, customArray, true);
         // call ( inverse ) FFT and set the state
         this.setState({
-            userData: callFFT(canvasID, userData)
+            userData: callFFTCustom(canvasID, userData, currentIndex)
         });
     }
     // handle right click move
-    if (canvasTarget == event.target.closest("canvas") && rightPressed && currentIndex >= 0 && currentIndex < size) {
-        const y1 = event.clientY - rect.top; // must be assigned
-        const canvasID1 = event.target.id;
+    if (canvasTarget == event1.target.closest("canvas") && rightPressed && currentIndex >= 0 && currentIndex < size - 2) {
+        const y1 = event1.clientY - rect.top; // must be assigned
+        const canvasID1 = event1.target.id;
         const customArray1 = userData[canvasID1];
         if (currentIndex >= 0 && currentIndex < userData.arraySize) {
             customArray1[currentIndex] = -(firstRight - canvas.height / 2) / (canvas.height / 2.65);
             userData[canvasID1] = customArray1;
         }
-        drawFunction(event.target, customArray1, true);
         // call ( inverse ) FFT and set the state
         this.setState({
-            userData: callFFT(canvasID1, userData)
+            userData: callFFTCustom(canvasID1, userData, currentIndex)
         });
     }
+};
+const handleCenteredZero = function() {
+    // get state
+    const userData = JSON.parse(JSON.stringify(this.state.userData));
+    let zero = userData["centeredZero"];
+    if (false === zero) zero = true;
+    else zero = false;
+    userData.realspatial = shiftArray(userData.realspatial);
+    userData.realspectral = shiftArray(userData.realspectral);
+    userData.imagspatial = shiftArray(userData.imagspatial);
+    userData.imagspectral = shiftArray(userData.imagspectral);
+    userData["centeredZero"] = zero;
+    // set new zero status
+    this.setState({
+        userData: {
+            ...userData
+        }
+    });
+};
+const drawLine = function() {
+    const userData = JSON.parse(JSON.stringify(this.state.userData));
+    let line = userData["line"];
+    if (false === line) line = true;
+    else line = false;
+    userData["line"] = line;
+    // set new zero status
+    this.setState({
+        userData: {
+            ...userData
+        }
+    });
+};
+const handleScaleAll = function() {
+    const userData = JSON.parse(JSON.stringify(this.state.userData));
+    let peakSpectral = findPeak(userData, "spectral");
+    let peakSpatial = findPeak(userData, "spatial");
+    for(let i = 0; i < userData.realspectral.length; i++){
+        userData.realspectral[i] = userData.realspectral[i] * 113.75 / peakSpectral;
+        userData.realspatial[i] = userData.realspatial[i] * 115.05 / peakSpatial;
+        userData.imagspectral[i] = userData.imagspectral[i] * 115.05 / peakSpectral;
+        userData.imagspatial[i] = userData.imagspatial[i] * 115.05 / peakSpatial;
+    }
+    // set new zero status
+    this.setState({
+        userData: {
+            ...userData
+        }
+    });
+};
+const findPeak = function(userData, part) {
+    let arrayLeft = "real" + part;
+    let arrayRight = "imag" + part;
+    let maxLeft = Math.max(...userData[arrayLeft]);
+    let minLeft = Math.min(...userData[arrayLeft]);
+    let maxRight = Math.max(...userData[arrayRight]);
+    let minRight = Math.min(...userData[arrayRight]);
+    return Math.max(Math.abs(maxLeft), Math.abs(maxRight), Math.abs(minLeft), Math.abs(minRight));
+};
+const shiftArray = function(array) {
+    const middle = Math.floor(array.length / 2);
+    const left = array.slice(0, middle);
+    const right = array.slice(middle);
+    return right.concat(left);
 };
 
   $parcel$ReactRefreshHelpers$97f1.postlude(module);
@@ -33431,28 +33772,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "calculateFFT", ()=>calculateFFT);
 const calculateFFT = (real, imag)=>{
-    /*
-   * Free FFT and convolution (compiled from TypeScript)
-   *
-   * Copyright (c) 2022 Project Nayuki. (MIT License)
-   * https://www.nayuki.io/page/free-small-fft-in-multiple-languages
-   *
-   * Permission is hereby granted, free of charge, to any person obtaining a copy of
-   * this software and associated documentation files (the "Software"), to deal in
-   * the Software without restriction, including without limitation the rights to
-   * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-   * the Software, and to permit persons to whom the Software is furnished to do so,
-   * subject to the following conditions:
-   * - The above copyright notice and this permission notice shall be included in
-   *   all copies or substantial portions of the Software.
-   * - The Software is provided "as is", without warranty of any kind, express or
-   *   implied, including but not limited to the warranties of merchantability,
-   *   fitness for a particular purpose and noninfringement. In no event shall the
-   *   authors or copyright holders be liable for any claim, damages or other
-   *   liability, whether in an action of contract, tort or otherwise, arising from,
-   *   out of or in connection with the Software or the use or other dealings in the
-   *   Software.
-   */ const realexp = [
+    const realexp = [
         ...real
     ];
     const imagexp = [
@@ -33481,11 +33801,15 @@ const calculateFFT = (real, imag)=>{
             transformBluestein(real, imag);
             output.push(real, imag);
         }
-        // Fake epsilon function
-        for(let i = 0; i < output[0][0].length; i++){
-            if (Math.abs(output[0][0][i]) < 0.001) output[0][0][i] = 0;
-            if (Math.abs(output[0][1][i]) < 0.001) output[0][1][i] = 0;
-        }
+        // // Fake epsilon function
+        // for (let i = 0; i < output[0][0].length; i++) {
+        //   if (Math.abs(output[0][0][i]) < Math.epsilon) {
+        //     output[0][0][i] = 0;
+        //   }
+        //   if (Math.abs(output[0][1][i]) < Math.epsilon) {
+        //     output[0][1][i] = 0;
+        //   }
+        // }
         return output;
     }
     /*
@@ -35534,12 +35858,12 @@ class RealSpectral extends (0, _reactDefault.default).Component {
     }
     canvasID = "realspectral";
     componentDidMount() {
-        this.drawFunction(this.canvas, this.props.arrayFromState, this.props.custom);
+        this.drawFunction(this.canvas, this.props.arrayFromState, this.props.centeredZero, this.props.line);
     }
     componentDidUpdate(prevProps) {
         if (prevProps.selectedBaseFunctions !== this.props.selectedBaseFunctions) this.updateValue(this.props.selectedBaseFunctions);
         const p = this.props;
-        this.drawFunction(this.canvas, p.arrayFromState, p.custom);
+        this.drawFunction(this.canvas, p.arrayFromState, p.centeredZero, p.line);
         this.getDropdown(p.labels, p.selectedBaseFunctions);
     }
     updateValue(value) {
@@ -35586,7 +35910,8 @@ RealSpectral.propTypes = {
     arraySize: (0, _propTypesDefault.default).number,
     selectedBaseFunctions: (0, _propTypesDefault.default).string,
     labels: (0, _propTypesDefault.default).object,
-    custom: (0, _propTypesDefault.default).bool
+    centeredZero: (0, _propTypesDefault.default).bool,
+    line: (0, _propTypesDefault.default).bool
 };
 
   $parcel$ReactRefreshHelpers$c2dd.postlude(module);
@@ -35624,12 +35949,12 @@ class ImagSpectral extends (0, _reactDefault.default).Component {
     }
     canvasID = "imagspectral";
     componentDidMount() {
-        this.drawFunction(this.canvas, this.props.arrayFromState, this.props.custom);
+        this.drawFunction(this.canvas, this.props.arrayFromState, this.props.centeredZero, this.props.line);
     }
     componentDidUpdate(prevProps) {
         if (prevProps.selectedBaseFunctions !== this.props.selectedBaseFunctions) this.updateValue(this.props.selectedBaseFunctions);
         const p = this.props;
-        this.drawFunction(this.canvas, p.arrayFromState, p.custom);
+        this.drawFunction(this.canvas, p.arrayFromState, p.centeredZero, p.line);
         this.getDropdown(p.labels, p.selectedBaseFunctions);
     }
     updateValue(value) {
@@ -35676,7 +36001,8 @@ ImagSpectral.propTypes = {
     arraySize: (0, _propTypesDefault.default).number,
     selectedBaseFunctions: (0, _propTypesDefault.default).string,
     labels: (0, _propTypesDefault.default).object,
-    custom: (0, _propTypesDefault.default).bool
+    centeredZero: (0, _propTypesDefault.default).bool,
+    line: (0, _propTypesDefault.default).bool
 };
 
   $parcel$ReactRefreshHelpers$34e7.postlude(module);
@@ -35714,12 +36040,12 @@ class ImagSpatial extends (0, _reactDefault.default).Component {
     }
     canvasID = "imagspatial";
     componentDidMount() {
-        this.drawFunction(this.canvas, this.props.arrayFromState, this.props.custom);
+        this.drawFunction(this.canvas, this.props.arrayFromState, this.props.centeredZero, this.props.line);
     }
     componentDidUpdate(prevProps) {
         if (prevProps.selectedBaseFunctions !== this.props.selectedBaseFunctions) this.updateValue(this.props.selectedBaseFunctions);
         const p = this.props;
-        this.drawFunction(this.canvas, p.arrayFromState, p.custom);
+        this.drawFunction(this.canvas, p.arrayFromState, p.centeredZero, p.line);
         this.getDropdown(p.labels, p.selectedBaseFunctions);
     }
     updateValue(value) {
@@ -35766,7 +36092,8 @@ ImagSpatial.propTypes = {
     arraySize: (0, _propTypesDefault.default).number,
     labels: (0, _propTypesDefault.default).object,
     selectedBaseFunctions: (0, _propTypesDefault.default).string,
-    custom: (0, _propTypesDefault.default).bool
+    centeredZero: (0, _propTypesDefault.default).bool,
+    line: (0, _propTypesDefault.default).bool
 };
 
   $parcel$ReactRefreshHelpers$8454.postlude(module);
@@ -35785,7 +36112,7 @@ var _labels = require("../assets/data/labels");
 const getSessionStorage = function() {
     let data = {};
     // if session storage not set, set new one
-    if (!sessionStorage.getItem("bv_project")) {
+    if (!sessionStorage.getItem("FFT")) {
         const selectedBaseFunctions = (0, _helper.resetAllDropdowns)();
         const custom = (0, _helper.getCustomBoolean)();
         data = {
@@ -35795,10 +36122,12 @@ const getSessionStorage = function() {
             imagspatial: (0, _basedata.zero)[64],
             realspectral: (0, _basedata.zero)[64],
             imagspectral: (0, _basedata.zero)[64],
-            custom
+            custom,
+            centeredZero: false,
+            line: false
         };
     } else // get current session storage
-    data = JSON.parse(sessionStorage.getItem("bv_project"));
+    data = JSON.parse(sessionStorage.getItem("FFT"));
     return data;
 };
 const initialize = function() {
@@ -35895,10 +36224,10 @@ const slideDown = (target, duration)=>{
 };
 const slideToggle = (target, duration = 500)=>window.getComputedStyle(target).display === "none" ? slideDown(target, duration) : slideUp(target, duration);
 const setSessionStorage = function() {
-    if (!sessionStorage.getItem("bv_project")) sessionStorage.setItem("bv_project", JSON.stringify(this.state.userData));
+    if (!sessionStorage.getItem("FFT")) sessionStorage.setItem("FFT", JSON.stringify(this.state.userData));
     else {
-        sessionStorage.removeItem("bv_project");
-        sessionStorage.setItem("bv_project", JSON.stringify(this.state.userData));
+        sessionStorage.removeItem("FFT");
+        sessionStorage.setItem("FFT", JSON.stringify(this.state.userData));
     }
 };
 const handleArraySizeChange = function(event) {

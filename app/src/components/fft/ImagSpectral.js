@@ -21,7 +21,7 @@ class ImagSpectral extends React.Component {
   canvasID = 'imagspectral';
 
   componentDidMount() {
-    this.drawFunction(this.canvas, this.props.arrayFromState, this.props.custom);
+    this.drawFunction(this.canvas, this.props.arrayFromState, this.props.centeredZero, this.props.line);
   }
 
   componentDidUpdate(prevProps) {
@@ -29,7 +29,7 @@ class ImagSpectral extends React.Component {
       this.updateValue(this.props.selectedBaseFunctions);
     }
     const p = this.props;
-    this.drawFunction(this.canvas, p.arrayFromState, p.custom);
+    this.drawFunction(this.canvas, p.arrayFromState, p.centeredZero, p.line);
     this.getDropdown(p.labels, p.selectedBaseFunctions);
   }
 
@@ -66,5 +66,6 @@ ImagSpectral.propTypes = {
   arraySize: PropTypes.number,
   selectedBaseFunctions: PropTypes.string,
   labels: PropTypes.object,
-  custom: PropTypes.bool,
+  centeredZero: PropTypes.bool,
+  line: PropTypes.bool,
 };

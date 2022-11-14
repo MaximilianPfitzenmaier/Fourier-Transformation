@@ -21,7 +21,7 @@ class RealSpatial extends React.Component {
   canvasID = 'realspatial';
 
   componentDidMount() {
-    this.drawFunction(this.canvas, this.props.arrayFromState, this.props.custom);
+    this.drawFunction(this.canvas, this.props.arrayFromState, this.props.centeredZero, this.props.line);
   }
 
   componentDidUpdate(prevProps) {
@@ -30,7 +30,7 @@ class RealSpatial extends React.Component {
     }
 
     const p = this.props;
-    this.drawFunction(this.canvas, p.arrayFromState, p.custom);
+    this.drawFunction(this.canvas, p.arrayFromState, p.centeredZero, p.line);
     this.getDropdown(p.labels, p.selectedBaseFunctions);
   }
 
@@ -67,5 +67,6 @@ RealSpatial.propTypes = {
   arraySize: PropTypes.number,
   labels: PropTypes.object,
   selectedBaseFunctions: PropTypes.string,
-  custom: PropTypes.bool,
+  centeredZero: PropTypes.bool,
+  line: PropTypes.bool,
 };
