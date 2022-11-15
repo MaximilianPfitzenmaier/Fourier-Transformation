@@ -24,35 +24,9 @@ export const callFFTCustom = function (type, userData, index) {
   if (type == 'realspectral' || type == 'imagspectral') {
     if (userData['centeredZero']) {
       // fire INVERSE fft from stored arrays in statefrom shifted array
-      const [[imagspatial, realspatial]] = calculateFFT(shiftArray(userData.imagspectral), shiftArray(userData.realspectral));
-
-      // let mid = true;
-      // let allother = false;
-      // for (let i = 0; i < userData[type].length; i++) {
-      //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
-      //     allother = true;
-      //     break;
-      //   }
-      // }
-
-      // if (userData[type][userData[type].length / 2] != 0) {
-      //   mid = true;
-      // } else {
-      //   mid = false;
-      // }
-
-      // if (!mid || allother) {
-      //   console.log('hello');
-      //   if (type == 'realspectral') {
-      //     for (let i = 0; i < realspatial.length; i++) {
-      //       realspatial[i] = realspatial[i] * -1;
-      //     }
-      //   } else {
-      //     for (let i = 0; i < imagspatial.length; i++) {
-      //       imagspatial[i] = imagspatial[i] * -1;
-      //     }
-      //   }
-      // }
+      let [[imagspatial, realspatial]] = calculateFFT(shiftArray(userData.imagspectral), shiftArray(userData.realspectral));
+      imagspatial = shiftArray(imagspatial);
+      realspatial = shiftArray(realspatial);
 
       // set dropdown to custom
       userData['selectedBaseFunctions']['realspatial'] = '0';
@@ -69,35 +43,9 @@ export const callFFTCustom = function (type, userData, index) {
   } else {
     if (userData['centeredZero']) {
       // fire fft from stored arrays in state
-      const [[realspectral, imagspectral]] = calculateFFT(shiftArray(userData.realspatial), shiftArray(userData.imagspatial));
-
-      // let mid = true;
-      // let allother = false;
-      // for (let i = 0; i < userData[type].length; i++) {
-      //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
-      //     allother = true;
-      //     break;
-      //   }
-      // }
-
-      // if (userData[type][userData[type].length / 2] != 0) {
-      //   mid = true;
-      // } else {
-      //   mid = false;
-      // }
-
-      // if (!mid || allother) {
-      //   console.log('hello');
-      //   if (type == 'realspatial') {
-      //     for (let i = 0; i < realspectral.length; i++) {
-      //       realspectral[i] = realspectral[i] * -1;
-      //     }
-      //   } else {
-      //     for (let i = 0; i < imagspectral.length; i++) {
-      //       imagspectral[i] = imagspectral[i] * -1;
-      //     }
-      //   }
-      // }
+      let [[realspectral, imagspectral]] = calculateFFT(shiftArray(userData.realspatial), shiftArray(userData.imagspatial));
+      realspectral = shiftArray(realspectral);
+      imagspectral = shiftArray(imagspectral);
 
       // set dropdown to custom
       userData['selectedBaseFunctions']['realspectral'] = '0';
@@ -135,32 +83,9 @@ export const callFFT = function (type, userData) {
   if (type == 'realspectral' || type == 'imagspectral') {
     if (userData['centeredZero']) {
       // fire INVERSE fft from stored arrays in state
-      const [[imagspatial, realspatial]] = calculateFFT(shiftArray(userData.imagspectral), shiftArray(userData.realspectral));
-
-      // let mid = true;
-      // let allother = false;
-      // for (let i = 0; i < userData[type].length; i++) {
-      //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
-      //     allother = true;
-      //     break;
-      //   }
-      // }
-
-      // if (userData[type][userData[type].length / 2] != 0) {
-      //   mid = true;
-      // }
-
-      // if (!mid || allother) {
-      //   if (type == 'realspectral') {
-      //     for (let i = 0; i < realspatial.length; i++) {
-      //       realspatial[i] = realspatial[i] * -1;
-      //     }
-      //   } else {
-      //     for (let i = 0; i < imagspatial.length; i++) {
-      //       imagspatial[i] = imagspatial[i] * -1;
-      //     }
-      //   }
-      // }
+      let [[imagspatial, realspatial]] = calculateFFT(shiftArray(userData.imagspectral), shiftArray(userData.realspectral));
+      imagspatial = shiftArray(imagspatial);
+      realspatial = shiftArray(realspatial);
 
       // set dropdown to custom
       userData['selectedBaseFunctions']['realspatial'] = '0';
@@ -178,32 +103,9 @@ export const callFFT = function (type, userData) {
   } else {
     if (userData['centeredZero']) {
       // fire fft from stored arrays in state
-      const [[realspectral, imagspectral]] = calculateFFT(shiftArray(userData.realspatial), shiftArray(userData.imagspatial));
-
-      // let mid = true;
-      // let allother = false;
-      // for (let i = 0; i < userData[type].length; i++) {
-      //   if (userData[type][i] != 0 && i != userData[type].length / 2) {
-      //     allother = true;
-      //     break;
-      //   }
-      // }
-
-      // if (userData[type][userData[type].length / 2] != 0) {
-      //   mid = true;
-      // }
-
-      // if (!mid || allother) {
-      //   if (type == 'realspatial') {
-      //     for (let i = 0; i < realspectral.length; i++) {
-      //       realspectral[i] = realspectral[i] * -1;
-      //     }
-      //   } else {
-      //     for (let i = 0; i < imagspectral.length; i++) {
-      //       imagspectral[i] = imagspectral[i] * -1;
-      //     }
-      //   }
-      // }
+      let [[realspectral, imagspectral]] = calculateFFT(shiftArray(userData.realspatial), shiftArray(userData.imagspatial));
+      realspectral = shiftArray(realspectral);
+      imagspectral = shiftArray(imagspectral);
 
       // set dropdown to custom
       userData['selectedBaseFunctions']['realspectral'] = '0';
@@ -235,7 +137,11 @@ export const getBaseFunction = function (funcArray, type, newSelectedBaseFunctio
   userData['custom']['imagspectral'] = false;
 
   // set userData Array of this canvas to clicked function
-  userData[type] = funcArray;
+  if (userData.centeredZero) {
+    userData[type] = shiftArray(funcArray);
+  } else {
+    userData[type] = funcArray;
+  }
 
   // set userData selected Basefunction for this canvas
   userData['selectedBaseFunctions'][type] = newSelectedBaseFunctions;
@@ -313,12 +219,19 @@ export const drawFunction = function (canvasID, arrayFromUserData, centeredZero,
 
     ctx.beginPath();
     ctx.lineWidth = 2;
-    var grad = ctx.createLinearGradient(i, 0, i, yposition);
+    let grad = ctx.createLinearGradient(i, 0, i, yposition);
     grad.addColorStop(0, 'hsl(176, 72%, 71%)');
     grad.addColorStop(1, 'hsl(251, 53%, 45%)');
     ctx.strokeStyle = grad;
     ctx.moveTo(i, 0);
-    ctx.lineTo(i, yposition);
+
+    // line to empty circle
+    if (yposition > 0) {
+      ctx.lineTo(i, yposition - 2);
+    } else {
+      ctx.lineTo(i, yposition + 2);
+    }
+
     ctx.stroke();
     ctx.closePath();
 
@@ -334,9 +247,22 @@ export const drawFunction = function (canvasID, arrayFromUserData, centeredZero,
       // draw circles
       ctx.beginPath();
       ctx.arc(i, yposition, 3, 0, 2 * Math.PI);
-
+      let centered = centeredZero ? canvasArray.length / 2 : 1;
+      // Buffer circles transparent
       if (count == 0 || count == canvasArray.length || count == canvasArray.length - 1) {
+        ctx.beginPath();
+        ctx.arc(i, yposition, 3, 0, 2 * Math.PI);
         ctx.fillStyle = 'transparent';
+
+        // zero circle not filled
+      } else if (count == centered) {
+        ctx.beginPath();
+        ctx.arc(i, yposition, 3, 0, 2 * Math.PI);
+        ctx.fillStyle = 'transparent';
+        ctx.strokeStyle = 'hsl(251, 53%, 45%)';
+        ctx.stroke();
+
+        // filled circle
       } else {
         ctx.fillStyle = 'hsl(251, 53%, 45%)';
       }
@@ -513,7 +439,7 @@ export const mouseDown = function (event) {
  *  @param mouseup event
  * end of drawing when isPressed is false
  */
-export const mouseUp = function () {
+export const mouseUp = function (event) {
   isPressed = false;
   rightPressed = false;
   middlePressed = false;
@@ -526,16 +452,20 @@ export const mouseUp = function () {
   const x = event.clientX - rect.left;
   const size = userData.arraySize + 2;
   let currentIndex = Math.floor(Math.floor(x) / (Math.floor(canvas.width) / size) - 0.5);
-  if (canvasTarget == event.target.closest('canvas') && currentIndex >= 0 && currentIndex < size - 2 && !isNaN(currentIndex)) {
-    const y = event.clientY - rect.top;
-    if (currentIndex >= 0 && currentIndex < userData.arraySize) {
-      customArray[currentIndex] = -(y - canvas.height / 2) / (canvas.height / 2.65);
-      userData[canvasID] = customArray;
+
+  // only for left and right click
+  if (event.button === 0 || event.button === 2) {
+    if (canvasTarget == event.target.closest('canvas') && currentIndex >= 0 && currentIndex < size - 2 && !isNaN(currentIndex)) {
+      const y = event.clientY - rect.top;
+      if (currentIndex >= 0 && currentIndex < userData.arraySize) {
+        customArray[currentIndex] = -(y - canvas.height / 2) / (canvas.height / 2.65);
+        userData[canvasID] = customArray;
+      }
+      // call ( inverse ) FFT and set the state
+      this.setState({
+        userData: callFFTCustom(canvasID, userData, currentIndex),
+      });
     }
-    // call ( inverse ) FFT and set the state
-    this.setState({
-      userData: callFFTCustom(canvasID, userData, currentIndex),
-    });
   }
 };
 
