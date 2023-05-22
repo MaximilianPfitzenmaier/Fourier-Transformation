@@ -1,4 +1,8 @@
 # 2D Fourier-Transformation Application
+"The Fourier Transformation App is a web-based application that enables users to perform Fourier transformations on different functions. With an intuitive interface, users can easily select from a range of pre-defined functions or draw their own to analyze their frequency spectra. This app provides a visual representation of the Fourier transformation results, making it an invaluable tool for students, researchers, and anyone interested in signal processing and frequency analysis."
+
+Feel free to modify and tailor these descriptions to align with the specific features and functionalities of your application.
+
 ## Live Demo:
 https://fourier-transformation.netlify.app/
 
@@ -32,4 +36,5 @@ Using the latest LTS version of node.js should work just fine: https://nodejs.or
 
 You should now be able to reach your site.
 
-[To the top](#Fourier-Transformation)
+Keywords: Fourier transformation app, Fourier transform tool, Fourier analysis application, Fourier series calculator, Fourier spectrum visualization, Fourier transform function selector, Interactive Fourier transformation, Fourier transform visualizer, Fourier analysis software, Fourier transform graph generator
+made with love by: https://github.com/MaximilianPfitzenmaier/
